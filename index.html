@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Practical Guide to SVGs on the web</title>
+  <script>document.documentElement.classList.add('wf-loading');</script>
+  <link rel="stylesheet" href="/assets/css/style.min.css">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+</head>
+
+<body>
+
+  <header class="global-header">
+    <div class="section typeset">
+      <div class="column">
+        <h2 class="zeta">SVG on the web</h2>
+        <h1 class="mega">A Practical Guide</h1>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h6>About</h6>
+        <p>This page accompanies a talk given by <a href="https://twitter.com/designbyjake">Jake Giltsoff</a> at <a href="http://breakingborde.rs/">Breaking Borders</a> on the 16th of June 2015. It outlines some techniques you can use to prepare, implement, and work with <span class="small-caps">SVG</span>s on the web. Anything to add or change? Fork this on <a href="https://github.com/designbyjake/svgontheweb">Github</a>. If you would like Jake to talk about <span class="small-caps">SVG</span>s for your team or event, <a href="https://twitter.com/designbyjake">get in touch</a>.</p>
+      </div>
+
+      <div class="column column--main">
+        <h6>Introduction</h6>
+        <p>We live in the age of pixels. As designers &amp; developers of the web, pixels can be both our friends and our enemies. We want everything to look nice and sharp for anyone who uses any of the websites we work on, but we need to keep file sizes down for performance. There is pretty much only one way to go with icons, logos and illustrations on the web — <span class="small-caps">SVG</span>. Scalable Vector Graphics can look crisp at all screen resolutions, can have super small file sizes, and can be easily edited and modified.</p>
+
+        <p>This guide aims to give a practical overview of how you can use <span class="small-caps">SVG</span>s on your websites — with some tips and tricks along the way to get the most out of them. If you are an <span class="small-caps">SVG</span> beginner or expert, hopefully there will be something new for you here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--1" id="#svgs">
+    <div class="section typeset">
+      <div class="column">
+        <h2>SVGs</h2>
+      </div>
+      <div class="column column--duo">
+        <p>Scalable Vector Graphics are <span class="small-caps">XML</span> based markup containing two-dimensional vectors. The vectors can be simple shapes, paths, or well just about anything you can do in Illustrator. They are an image format that has more in common with a typical web page that it does with a <span class="small-caps">JPEG</span>. <span class="small-caps">SVG</span>s are much more powerful than other image formats we can use on the web as we can manipulate them in with code (either in a text editor or with <span class="small-caps">CSS / JS</span>).</p>
+      </div>
+
+      <div class="column column--duo">
+        <ul>
+          <li>Resolution independent</li>
+          <li>Supported by all modern browsers</li>
+          <li>Future-proof (<span class="small-caps">W3C</span> standard)</li>
+          <li>Easy to make and edit</li>
+          <li>Manipulatable with <span class="small-caps">CSS &amp; JS</span></li>
+          <li>Highly compressible</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--2" id="preparation">
+    <div class="section typeset">
+      <div class="column">
+        <h2>Preparing &amp; Optimising</h2>
+      </div>
+      <div class="column column--main column--left">
+        <p>Preparing <span class="small-caps">SVG</span>s for web is a simple process and no more complicated that exporting a <span class="small-caps">JPEG</span> or <span class="small-caps">PNG</span>. Work as you typically would in your preferred vector graphics editor (Illustrator, Sketch, etc [or even Photoshop if you have shape layers]) with the graphic at the size that you expect to use it. You’ll probably want to convert any text to outlines as it most likely will not show in the correct font unless you plan on styling them with a web font you are using on the page. Don’t worry about expanding all your objects to solid shapes, particularly if you have strokes as you may want to manipulate these on the page and this doesn’t make the file size any smaller. Any names you put on layers / groups will be added into the <span class="small-caps">SVG</span> as an ID on that element. This can be handy for styling, but adds to the overall file size.</p>
+
+        <p>To export, check that the design is sitting in an area of whole pixels (i.e. not <span class="lining-numerals">23.3px &times; 86.8px</span>) otherwise it may not actually be crisp and crop the artboard around it. You can do this in Illustrator with <code>Object > Artboards > Fit to Artwork Bounds</code>. Then <code>save as</code> an <span class="small-caps">SVG</span> with the default settings.</p>
+
+        <h3 class="delta">Tips for smaller file sizes</h3>
+
+        <p class="caption sidenote">(See <a href="#resources">resources</a> for external articles links)</p>
+
+        <p>There are a number of good articles on <span class="small-caps">SVG</span> optimisation on the web which offer a wealth of knowledge on this subject, but I would like to share a few tips and tricks that I have found to be most effective and useful for me. They also don’t take much extra work and can be easily added into your workflow.</p>
+
+        <p>To keep your <span class="small-caps">SVG</span>s as small as possible you want to remove anything unnecessary. The most well known and best (at least I think so) tool to post process <span class="small-caps">SVG</span>s is <a href="https://github.com/svg/svgo" class="small-caps">SVGO</a>. This strips out all the code that isnt’t needed — but remember to be careful when using this if you plan to manipulate with <span class="small-caps">CSS / JS</span> as it will also strip out any layer names etc you have added. The best thing with <span class="small-caps">SVGO</span> is it can be added to your build process so it is automatic (or you can use a <span class="small-caps"><a href="https://github.com/svg/svgo-gui">GUI</a></span> to do it yourself).</p>
+
+        <p>Taking things a step further in ‘removing anything unnecessary’ we can do some more in the graphics editor. First you want to make sure you are using as few paths / shapes as possible to achieve what you want and also that there as few points on these paths as possible. You want to combine and simplify anything that you can. <a href="http://www.astutegraphics.com/software/vectorscribe/">VectorScribe</a> is an Illustrator plugin that has as part of it a <code>Smart Remove Brush Tool</code> — this allows you to remove as many points as possible whilst still keeping the overall shape the same.</p>
+
+        <p class="caption sidenote">Pre optimisation</p>
+
+        <p><img src="/assets/img/2point.png" alt="Pre optimisation"></p>
+
+        <p class="caption sidenote">Smart Remove Brush Tool removed point</p>
+
+        <p><img src="/assets/img/1point.png" alt="Post optimisation"></p>
+
+        <p>Next you are going to want to zoom in. In Illustrator you will want to enable the Pixel Preview with <code>View > Pixel Preview</code> and take a look at where your path points sit. For the smallest file sizes you want these to sit on the pixel grid (i.e. at whole pixel values). This takes a little bit of time to snap them all in place but is worth the extra bit of effort as this also ensures the sharpest rendering (notice how before you can end up with some half-pixel areas).</p>
+
+        <p class="caption sidenote">Points off pixels</p>
+
+        <p><img src="/assets/img/nosnap.png" alt="Points off pixels"></p>
+
+        <p class="caption sidenote">Pixel snapped</p>
+
+        <p><img src="/assets/img/snap.png" alt="Pixel snapped"></p>
+
+        <p>A thing to look out for is two (or more) shapes that align can appear to have a thin white line between them, so sometimes you need to overlap them a little to prevent this. Note: in <span class="small-caps">SVG</span> the <code>z-index</code> is defined by the order they appear in the file with the bottom being the highest.</p>
+
+        <p><img src="/assets/img/whiteline.png" alt="Post optimisation"></p>
+
+        <p>Last but not least, one that is often forgotten about, remember to enable gzip compression for <span class="small-caps">SVG</span>s on your websites in the <code>.htaccess</code> file.</p>
+
+        <pre><code>AddType image/svg+xml svg svgz
+&lt;IfModule mod_deflate.c&gt;
+    &lt;IfModule mod_filter.c&gt;
+        AddOutputFilterByType DEFLATE "image/svg+xml" \
+                                      "text/css" \
+                                      "text/html" \
+                                      "text/javascript"
+                                      ... etc
+    &lt;/IfModule&gt;
+&lt;/IfModule&gt;</code></pre>
+
+        <hr>
+
+        <p>As an example of how effective these techniques can be, I took the original <a href="http://breakingborde.rs/">Breaking Borders</a> logo and optimised it as so: re-sized it, tidied the paths, removed as many points as possible, moved the points to whole pixel values, removed as much of the overlapping area as possible, and used <span class="small-caps">SVGO</span>.</p>
+
+        <h4 class="zeta">Original: 1,413b</h4>
+
+        <img src="/assets/img/bblogo.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <h4 class="zeta">Optimised: 409b</h4>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <p>All in all thats makes it <span class="lining-numerals">~71%</span> smaller (and <span class="lining-numerals">~83%</span> smaller if gzipped)</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--3" id="implementation">
+    <div class="section typeset">
+      <div class="column">
+        <h2>Implementation options</h2>
+      </div>
+      <div class="column column--main">
+        <p>When it comes to using <span class="small-caps">SVG</span>s on the web there are a number of different ways you can go. Some of them have benefits which can be useful depending on what you would like to achieve and some of them are just best to be avoided, but if you want to just keep things basic to get the resolution independence and file size benefits you can reference the <span class="small-caps">SVG</span> in an <code>img</code> or as a <code>background-image</code> in <span class="small-caps">CSS</span> just as you would any other image format.</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Img</h4>
+        <p>Just as you would with any other image. You can also use <span class="small-caps">SVG</span>s in a <code>&lt;picture&gt;</code> element. Note that this method limits manipulation functionality.</p>
+        <pre><code>&lt;img src="bblogo.svg" alt="Breaking Borders Logo" height="65" width="68"&gt;</code></pre>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Background-image</h4>
+        <p>It’s best not to <span class="lining-numerals">base64</span> encode them as it this will block the loading of the rest of the styles while it downloads. Note that this method limits manipulation functionality.</p>
+        <pre><code>.logo {
+  background-image: url(bblogo.svg);
+}</code></pre>
+        <div class="bb-bg"></div>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Iframe</h4>
+        <p>You can load <span class="small-caps">SVG</span>s in an <code>&lt;iframe&gt;</code> however there isn’t any real benefit and it is more difficult to manipulate with JavaScript. I would try to avoid using this.</p>
+        <pre><code>&lt;iframe src="bblogo.svg"&gt;Your browser does not support iframes&lt;/iframe&gt;</code></pre>
+        <iframe src="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support iframes</iframe>
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Embed</h4>
+        <p><code>&lt;embed&gt;</code> is supported by most browsers but isn’t part of any spec. You could use it for <span class="small-caps">SVG</span>s but yea just don’t.</p>
+        <pre><code>&lt;embed type="image/svg+xml" src="bblogo.svg" /&gt;</code></pre>
+        <embed type="image/svg+xml" src="/assets/img/bblogo-optim.svg" class="bb-logo-example" />
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Object</h4>
+        <p><code>&lt;object&gt;</code> is pretty much the best option to use if you want to be able to manipulate an <span class="small-caps">SVG</span>.</p>
+        <pre><code>&lt;object type="image/svg+xml" data="bblogo.svg"&gt;Your browser does not support SVGs&lt;/object&gt;</code></pre>
+        <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Inline</h4>
+        <p>Putting your <span class="small-caps">SVG</span> code inline in your HTML will save an <span class="small-caps">HTTP</span> request but it will mean the image isn’t cached by the browser.</p>
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column">
+        <hr>
+      </div>
+      <div class="column column--main">
+        <h3 class="zeta">To Conclude</h3>
+        <p>If you want to get the most out of your <span class="small-caps">SVG</span>s use <code>&lt;object&gt;</code>. Alternatively you can use them inline to save the <span class="small-caps">HTTP</span> request, but note that it will not be cached. If you just want to use <span class="small-caps">SVG</span>s as you would any other image use <code>&lt;img&gt;</code> or a <code>background-image</code>.</p>
+      </div>
+      <div class="column">
+        <table id="implementation-support">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Object</th>
+              <th>Inline</th>
+              <th>Img</th>
+              <th>Background-image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="feature"><span class="small-caps">CSS</span> Manipulation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Some inline</td>
+              <td>Some inline</td>
+            </tr>
+            <tr>
+              <th class="feature"><span class="small-caps">JS</span> Manipulation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th class="feature"><span class="small-caps">SVG</span> Animation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <th class="feature">Interactive <span class="small-caps">SVG</span> Animation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--4" id="styling">
+    <div class="section typeset">
+      <div class="column">
+        <h2>Fixed width vs responsive</h2>
+      </div>
+      <div class="column column--main">
+        <p>When using images on the web in responsive designs there are two options you can use to style them, you can keep them at a fixed-size and adjust at breakpoints if needed, or allow them to resize with the page depending on their parent container.</p>
+
+        <p>If they are a fixed size the only thing you need to be careful of is if you are using the <span class="small-caps">SVG</span> as a <code>background-image</code> you need to make sure to include a <code>background-size</code> because browsers can get a bit confused and either crop it or shrink it, particularly if you are showing it at a different size to the actual size of the image.</p>
+
+        <p>When implementing <span class="small-caps">SVG</span>s that can resize there are a couple of things to be remember (again mostly with the <code>background-image</code> implementation) as outlined here:</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--quad">
+        <h4 class="epsilon">Object</h4>
+        <p>Works as expected with <code>width: 100%;</code></p>
+
+        <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-resp">Your browser does not support SVGs</object>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Inline</h4>
+        <p>Previously needed a <code>max-height</code> value to work, of recent works as expected. Note Safari doesn’t redraw these as quickly (if they are complex) on window resize.</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-resp"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Img</h4>
+        <p>Works as expected with <code>width: 100%;</code></p>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-resp">
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Background-image</h4>
+        <p>Needs <code>padding-bottom: #%;</code> to keep the proportions of the image else it will not show.</p>
+
+        <div class="bb-bg-resp"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--5" id="animating">
+    <div class="section typeset">
+      <div class="column">
+        <h2>Animating</h2>
+      </div>
+      <div class="column column--main">
+        <p>When it comes to animating <span class="small-caps">SVG</span>s there are a few different options that we can use — <span class="small-caps">SVG</span> animation (based on the <span class="small-caps">SMIL</span> spec), <span class="small-caps">CSS3</span> animations, or <span class="small-caps">JS</span> animations. <span class="small-caps">SVG</span> animation and <span class="small-caps">CSS3</span> animations let you do most things you will want to do — with <span class="small-caps">SVG</span> animation being slightly more powerful in that it has control over a few extra things. JavaScript allows you to do some pretty complex animations relatively easily, especially with libraries such as <a href="http://snapsvg.io/">Snap.svg</a>. This is a little beyond my knowledge of JavaScript so I’ll let you check out their demos to see for yourself if that is the right option.</p>
+
+        <p><span class="small-caps">SVG</span> animation is super powerful but I’m not going to go into too much depth on it as to be honest I’ve not really ever used it. I can imagine it being useful for illustrations that you would like to have some nice animations happening with, but from a practical point of view not every project has the time or budget to spend on this. If you do it is actually pretty simple to start playing around with and there are some <a href="#resources">great tutorials</a> online. Basically you can add a child element of <code>&lt;animate&gt;</code> to any paths and shapes in your <span class="small-caps">SVG</span>s which will control the animations. The best thing about it is it works in all implementation methods. Here’s a little demo to show you. Note: I’ve lightened the blue to make it easier to see the animation.</p>
+
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+    &lt;/path&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column">
+        <h4><span class="small-caps">SVG</span> animation</h4>
+      </div>
+      <div class="column column--quad">
+        <h4 class="epsilon">Object</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-anim2.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Inline</h4>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path></svg>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Img</h4>
+        <img src="/assets/img/bblogo-anim2.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Background-image</h4>
+        <div class="bb-bg-anim"></div>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--main">
+        <p>Often when we want to animate icons or illustrations on the web it will be for an interaction, i.e. on hover etc. This falls under <span class="small-caps">CSS</span> Manipulation and Interactive <span class="small-caps">SVG</span> Animation in the <a href="#implementation-support">table of support</a> above and thus doesn’t work for either <span class="small-caps">SVG</span> animation or <span class="small-caps">CSS3</span> animations if you use <code>&lt;img&gt;</code> or <code>background-image</code>. To get interactive animations in <span class="small-caps">SVG</span> animation we can add <code>begin="mouseover"</code> &amp; <code>begin="mouseout"</code> and with <span class="small-caps">CSS3</span> animations just as you would anywhere else — add classes to the <span class="small-caps">SVG</span> elements and style them on <code>hover</code>. One thing to note is if you want to style the animations from your external stylesheet it will work as expected if you have the <span class="small-caps">SVG</span> inline, but if you use <code>&lt;object&gt;</code> you will need to reference the external stylesheet from within the <span class="small-caps">SVG</span> too.</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">Interactive <span class="small-caps">SVG</span> animation</h4>
+        <p>Only works with <code>&lt;object&gt;</code> or inline.</p>
+        <object type="image/svg+xml" data="/assets/img/bblogo-anim.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon"><span class="small-caps">CSS3</span> animation</h4>
+        <p>Only works with <code>&lt;object&gt;</code> or inline.</p>
+        <object type="image/svg+xml" data="/assets/img/bblogo-animcss.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &ltstyle type="text/css"&gt;
+    &lt![CDATA[
+    .firstb { fill: #000; transition: fill 0.1s; }
+    .firstb:hover { fill: #4e86b1; }
+    .secondb { fill: #4e86b1; transition: fill 0.1s; }
+    .secondb:hover { fill: #000; }
+    ]]&gt;
+  &lt;/style&gt;
+  &lt;path class="secondb" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path class="firstb" d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">External <span class="small-caps">CSS3</span> animation</h4>
+        <p>Works inline as is. Works with <code>&lt;object&gt;</code> if reference included in the <span class="small-caps">SVG</span> file.</p>
+        <object type="image/svg+xml" data="/assets/img/bblogo-animnocss.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>Add to very start of SVG file before &lt;svg&gt;
+&lt;?xml-stylesheet type="text/css" href="style.css"?&gt;</code></pre>
+        <pre><code>.bb-hover-anim .firstb { fill: #000; transition: fill 0.1s; }
+.bb-hover-anim .firstb:hover { fill: #4e86b1; }
+.bb-hover-anim .secondb { fill: #4e86b1; transition: fill 0.1s; }
+.bb-hover-anim .secondb:hover { fill: #000; }</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--6" id="spriting">
+    <div class="section typeset">
+      <div class="column">
+        <h2>Spriting</h2>
+      </div>
+      <div class="column column--main">
+        <p>You can create and use <span class="small-caps">SVG</span> sprites just as we typically do with <span class="small-caps">PNG</span>s and <code>background-image</code> to get the resolution benefits or you can take it a step further using the extra power we have with <span class="small-caps">SVG</span>. I’m not going to go into too much depth here again as it does get pretty complex and I’ve never found a need to implement them personally. The benefit is getting all the power of <span class="small-caps">SVG</span> with less <span class="small-caps">HTTP</span> requests.
+
+          There are two approaches you can take — in the first you define all the icons within <code>&lt;symbol&gt;</code> elements in the <span class="small-caps">SVG</span> but hide them. Then reference each later when needed with a <code>&lt;use&gt;</code> element referencing the <code>&lt;symbol&gt;</code> with <code>xlink:href="#id"</code>. The second uses the <span class="small-caps">SVG</span> <code>viewbox</code> attribute to crop the artboard (area of the <span class="small-caps">SVG</span> that shows) around a certain area. This are both quite advanced <span class="small-caps">SVG</span> uses so only worry about them if you want to use them.</p>
+
+          <p>If you do want to learn how to implement these techniques please take a look at the links in the <a href="#resources">resources</a>, especially Sara Soueidan’s 24ways article.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--7" id="mediaqueries">
+    <div class="section typeset">
+      <div class="column">
+        <h2>Media queries</h2>
+      </div>
+      <div class="column column--main">
+        <p>A really cool thing about <span class="small-caps">SVG</span>s is if you use media queries in the styles you embed within the file, instead of them working from the viewport size they will work from the <span class="small-caps">SVG</span>s viewport size. Basically that means they have their own working implementation of element queries out of the box. Nice. This allows us to control how the <span class="small-caps">SVG</span> will look at whatever size it is shown.</p>
+
+        <p>Imagine you are a big brand and you want people to use your logo correctly no matter what size it’s shown. Well you pretty much can! Just embed some media queries and you can change its formatting based on what size it is displayed at. This works with all implementations apart from <code>background-image</code>. Have a play with the slider below to see an example of how that could work:</p>
+
+        <form oninput="magic('image').setAttribute('width',value=slider.value);" style="min-height: 200px;">
+          <input id="slider" type="range" min="30" max="335" value="335"></input>
+          <br>
+          <img id="image" class="slider-image" src="/assets/img/bblogo-resp.svg" width="335" alt="svg">
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--8" id="resources">
+    <div class="section typeset">
+      <div class="column">
+        <h2>Resources</h2>
+      </div>
+      <div class="column column--duo">
+        <h3 class="zeta">General</h3>
+        <ul>
+          <li><a href="http://www.webdesignerdepot.com/2015/01/the-ultimate-guide-to-svg/">Ultimate guide to <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://www.sitepoint.com/add-svg-to-web-page/">How to Add <span class="small-caps">SVG</span>s to Your Web Page</a></li>
+          <li><a href="http://www.w3.org/Graphics/SVG/About.html"><span class="small-caps">W3C</span> About <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://www.smashingmagazine.com/2014/03/05/rethinking-responsive-svg/">Rethinking Responsive <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://tympanus.net/Tutorials/ResponsiveSVGs/index6.html">Making <span class="small-caps">SVG</span>s Responsive</a></li>
+          <li><a href="https://css-tricks.com/using-svg/">Using <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://blogs.adobe.com/webplatform/2013/01/08/svg-styling/"><span class="small-caps">SVG</span> Styling</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--duo">
+        <h3 class="zeta">Optimising</h3>
+        <ul>
+          <li><a href="http://calendar.perfplanet.com/2014/tips-for-optimising-svg-delivery-for-the-web/">Tips For Optimising <span class="small-caps">SVG</span> Delivery For The Web</a></li>
+          <li><a href="http://jaydenseric.com/blog/how-to-optimize-svg">How To Optimize <span class="small-caps">SVG</span></a></li>
+          <li><a href="https://css-tricks.com/understanding-and-manually-improving-svg-optimization/">Understanding and Manually Improving <span class="small-caps">SVG</span> Optimization</a></li>
+          <li><a href="https://www.youtube.com/watch?v=1AdX8odLC8M"><span class="small-caps">SVG</span> Optimization Video</a></li>
+          <li><a href="https://jakearchibald.github.io/svgomg/"><span class="small-caps">SVGOMG</span> — <span class="small-caps">SVGO GUI</span> in browser</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h3 class="zeta">Animating</h3>
+        <ul>
+          <li><a href="https://css-tricks.com/guide-svg-animations-smil/">A Guide to <span class="small-caps">SVG</span> Animations</a></li>
+          <li><a href="http://www.smashingmagazine.com/2014/11/03/styling-and-animating-svgs-with-css/">Styling And Animating <span class="small-caps">SVG</span>s With <span class="small-caps">CSS</span></a></li>
+          <li><a href="http://product.voxmedia.com/2013/11/25/5426880/polygon-feature-design-svg-animations-for-fun-and-profit"><span class="small-caps">SVG</span> animations for fun and profit</a></li>
+          <li><a href="http://snapsvg.io/">Snap.svg</a></li>
+          <li><a href="http://svgjs.com/"><span class="small-caps">SVG</span>.js</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--duo">
+        <h3 class="zeta">Spriting</h3>
+        <ul>
+          <li><a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">An Overview of <span class="small-caps">SVG</span> Sprite Creation Techniques</a></li>
+          <li><a href="http://sarasoueidan.com/blog/structuring-grouping-referencing-in-svg/">Structuring, Grouping, and Referencing in <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://taye.me/blog/svg/a-guide-to-svg-use-elements/">A guide to <span class="small-caps">SVG</span> &lt;use&gt; elements</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="global-footer">
+    <p>An <a href="https://github.com/designbyjake/svgontheweb">open source</a> side project from <a href="https://twitter.com/designbyjake">Jake Giltsoff</a></p>
+  </footer>
+
+  <script src="//use.typekit.net/nvz8bvz.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript">
+  function magic(id) {
+    return document.getElementById(id);
+  }
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23355677-22', 'auto');
+  ga('send', 'pageview');
+  </script>
+</body>
+</html>

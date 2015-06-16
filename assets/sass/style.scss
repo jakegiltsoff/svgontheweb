@@ -1,0 +1,20 @@
+/* CSS compiled from SCSS */
+/* --------------------------------------- */
+
+// Import Sassline base SCSS files in order so variables are read correctly.
+@import "base/reset";
+@import "base/variables";
+@import "base/modular-scale";
+@import "base/mixins";
+@import "base/typography";
+@import "base/layouts";
+
+// Import all SCSS modules with Sass globbing.
+@import "modules/*.*";
+
+.wf-loading {
+
+  h1, h2, h3, h4, h5, h6, p, li, table, hr, pre, code {
+    visibility: hidden;
+  }
+}

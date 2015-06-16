@@ -1,0 +1,30 @@
+// Header demo styles
+// ---------------------------------------
+
+.global-header {
+  background: $head;
+  background: -moz-linear-gradient(45deg, $head 0%, $head2 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,$head), color-stop(100%,$head2));
+  background: -webkit-linear-gradient(45deg, $head 0%,$head2 100%);
+  background: -o-linear-gradient(45deg, $head 0%,$head2 100%);
+  background: -ms-linear-gradient(45deg, $head 0%,$head2 100%);
+  background: linear-gradient(45deg, $head 0%,$head2 100%);
+
+  h1 {
+    color: $white;
+    font-weight: map-get($headingtype, regular);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h2 {
+    color: $white;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    &:after {
+      content: ' —';
+      display: inline;
+    }
+  }
+}
