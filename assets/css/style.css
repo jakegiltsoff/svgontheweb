@@ -535,6 +535,8 @@ a {
   -ms-font-feature-settings: 'onum' 1, 'kern' 1;
   -o-font-feature-settings: 'onum' 1, 'kern' 1;
   font-feature-settings: 'onum' 1, 'kern' 1; }
+.typeset .highlight {
+  background-color: #FFFA96; }
 
 .section {
   margin: 0 auto;
