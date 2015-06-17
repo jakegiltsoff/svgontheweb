@@ -490,7 +490,7 @@ a {
   padding-top: 3rem; }
 .typeset code, .typeset pre {
   background-color: #F5F4F2;
-  font-family: Menlo, monospace; }
+  font-family: "source-code-pro", monospace; }
 .typeset pre {
   display: block;
   margin-bottom: 2rem;
@@ -1023,6 +1023,3 @@ img:not(.slider-image) {
   @media screen and (min-width: 40em) {
     .js .nav-toggle {
       display: none; } }
-
-.wf-loading h1, .wf-loading h2, .wf-loading h3, .wf-loading h4, .wf-loading h5, .wf-loading h6, .wf-loading p, .wf-loading li, .wf-loading table, .wf-loading hr, .wf-loading pre, .wf-loading code {
-  visibility: hidden; }

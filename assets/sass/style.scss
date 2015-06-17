@@ -11,10 +11,3 @@
 
 // Import all SCSS modules with Sass globbing.
 @import "modules/*.*";
-
-.wf-loading {
-
-  h1, h2, h3, h4, h5, h6, p, li, table, hr, pre, code {
-    visibility: hidden;
-  }
-}
