@@ -25,7 +25,7 @@
     <div class="section typeset">
       <div class="column column--sidebar">
         <h6>About</h6>
-        <p>This page accompanies a talk given by <a href="https://twitter.com/designbyjake">Jake Giltsoff</a> at <a href="http://breakingborde.rs/">Breaking Borders</a> on the 16th of June 2015. It outlines some techniques you can use to prepare, implement, and work with <span class="small-caps">SVG</span>s on the web. Anything to add or change? Fork this on <a href="https://github.com/designbyjake/svgontheweb">Github</a>. If you would like Jake to talk about <span class="small-caps">SVG</span>s for your team or event, <a href="https://twitter.com/designbyjake">get in touch</a>.</p>
+        <p>This page accompanies a talk given by <a href="https://twitter.com/designbyjake">Jake Giltsoff</a> at <a href="http://breakingborde.rs/past-events/shaping-the-web/">Breaking Borders</a> on the 16th of June 2015. It outlines some techniques you can use to prepare, implement, and work with <span class="small-caps">SVG</span>s on the web. Anything to add or change? Fork this on <a href="https://github.com/designbyjake/svgontheweb">Github</a>. If you would like Jake to talk about <span class="small-caps">SVG</span>s for your team or event, <a href="https://twitter.com/designbyjake">get in touch</a>.</p>
       </div>
 
       <div class="column column--main">
@@ -171,7 +171,7 @@
     <div class="section typeset">
       <div class="column column--duo">
         <h4 class="epsilon">Iframe</h4>
-        <p>You can load <span class="small-caps">SVG</span>s in an <code>&lt;iframe&gt;</code> however there isn’t any real benefit and it is more difficult to manipulate with JavaScript. I would try to avoid using this.</p>
+        <p>You can load <span class="small-caps">SVG</span>s in an <code>&lt;iframe&gt;</code> however there isn’t any real benefit. I would try to avoid using this.</p>
         <pre><code>&lt;iframe src="bblogo.svg"&gt;Your browser does not support iframes&lt;/iframe&gt;</code></pre>
         <iframe src="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support iframes</iframe>
       </div>
@@ -186,14 +186,14 @@
     <div class="section typeset">
       <div class="column column--duo">
         <h4 class="epsilon">Object</h4>
-        <p><code>&lt;object&gt;</code> is pretty much the best option to use if you want to be able to manipulate an <span class="small-caps">SVG</span>.</p>
+        <p><code>&lt;object&gt;</code> is pretty much the best option to use if you want to be able to manipulate an <span class="small-caps">SVG</span> without having to put it inline in your <span class="small-caps">HTML</span>.</p>
         <pre><code>&lt;object type="image/svg+xml" data="bblogo.svg"&gt;Your browser does not support SVGs&lt;/object&gt;</code></pre>
         <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support SVGs</object>
       </div>
 
       <div class="column column--duo">
         <h4 class="epsilon">Inline</h4>
-        <p>Putting your <span class="small-caps">SVG</span> code inline in your HTML will save an <span class="small-caps">HTTP</span> request but it will mean the image isn’t cached by the browser.</p>
+        <p>Putting your <span class="small-caps">SVG</span> code inline will save an <span class="small-caps">HTTP</span> request but it will mean the image isn’t cached by the browser. It is the easiest way to manipulate however maintaining inline <span class="small-caps">SVG</span> code can be a pain.</p>
         <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
   &lt;path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
   &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
@@ -207,7 +207,7 @@
       </div>
       <div class="column column--main">
         <h3 class="zeta">To Conclude</h3>
-        <p>If you want to get the most out of your <span class="small-caps">SVG</span>s use <code>&lt;object&gt;</code>. Alternatively you can use them inline to save the <span class="small-caps">HTTP</span> request, but note that it will not be cached. If you just want to use <span class="small-caps">SVG</span>s as you would any other image use <code>&lt;img&gt;</code> or a <code>background-image</code>.</p>
+        <p>If you want to get the most out of your <span class="small-caps">SVG</span>s use <code>&lt;object&gt;</code>. Alternatively you can use them inline to save the <span class="small-caps">HTTP</span> request, but note that it will not be cached. If you just want to use <span class="small-caps">SVG</span>s as you would any other image use <code>&lt;img&gt;</code> or a <code>background-image</code>. You have the ability to use <code>&lt;iframe&gt;</code> and <code>&lt;embed&gt;</code> but I don’t think they are the best options going forward.</p>
       </div>
       <div class="column">
         <table id="implementation-support">
@@ -413,7 +413,7 @@
       <div class="column column--main">
         <p>You can create and use <span class="small-caps">SVG</span> sprites just as we typically do with <span class="small-caps">PNG</span>s and <code>background-image</code> to get the resolution benefits or you can take it a step further using the extra power we have with <span class="small-caps">SVG</span>. I’m not going to go into too much depth here again as it does get pretty complex and I’ve never found a need to implement them personally. The benefit is getting all the power of <span class="small-caps">SVG</span> with less <span class="small-caps">HTTP</span> requests.
 
-          There are two approaches you can take — in the first you define all the icons within <code>&lt;symbol&gt;</code> elements in the <span class="small-caps">SVG</span> but hide them. Then reference each later when needed with a <code>&lt;use&gt;</code> element referencing the <code>&lt;symbol&gt;</code> with <code>xlink:href="#id"</code>. The second uses the <span class="small-caps">SVG</span> <code>viewbox</code> attribute to crop the artboard (area of the <span class="small-caps">SVG</span> that shows) around a certain area. This are both quite advanced <span class="small-caps">SVG</span> uses so only worry about them if you want to use them.</p>
+          There are two approaches you can take — in the first you define all the icons within <code>&lt;symbol&gt;</code> elements in the <span class="small-caps">SVG</span> but hide them. Then reference each later when needed with a <code>&lt;use&gt;</code> element referencing the <code>&lt;symbol&gt;</code> with <code>xlink:href="#id"</code>. The second uses the <span class="small-caps">SVG</span> <code>viewbox</code> attribute to crop the artboard (area of the <span class="small-caps">SVG</span> that shows) around a certain area. These are both quite advanced <span class="small-caps">SVG</span> uses so only worry about them if you want to use them.</p>
 
           <p>If you do want to learn how to implement these techniques please take a look at the links in the <a href="#resources">resources</a>, especially Sara Soueidan’s 24ways article.</p>
       </div>
