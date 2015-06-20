@@ -427,27 +427,27 @@ a {
   width: 100%;
   line-height: 2rem;
   font-size: 1.19167rem;
-  margin-bottom: -0.69614rem;
+  margin-bottom: 1.30387rem;
   padding-top: 0.69614rem; }
   @media screen and (min-width: 40em) {
     .typeset table {
       font-size: 1.09286rem;
-      margin-bottom: -0.72133rem;
+      margin-bottom: 1.27867rem;
       padding-top: 0.72133rem; } }
   @media screen and (min-width: 50em) {
     .typeset table {
       font-size: 1.08667rem;
-      margin-bottom: -0.72291rem;
+      margin-bottom: 1.27709rem;
       padding-top: 0.72291rem; } }
   @media screen and (min-width: 64em) {
     .typeset table {
       font-size: 0.99412rem;
-      margin-bottom: -0.74651rem;
+      margin-bottom: 1.25349rem;
       padding-top: 0.74651rem; } }
   @media screen and (min-width: 100em) {
     .typeset table {
       font-size: 0.92632rem;
-      margin-bottom: -0.7638rem;
+      margin-bottom: 1.2362rem;
       padding-top: 0.7638rem; } }
   .typeset table thead th {
     line-height: 2rem;
@@ -738,6 +738,46 @@ a {
     max-width: 36.46154%;
     left: 63.53846%; } }
 
+.bb-logo-example {
+  height: 65px !important;
+  margin: 1rem 0 2rem 0 !important;
+  width: 68px !important; }
+
+.bb-logo-resp {
+  margin: 1rem 0 2rem 0;
+  width: 100%; }
+
+.bb-bg {
+  background-image: url(/assets/img/bblogo-optim.svg);
+  background-size: 68px 65px;
+  height: 65px;
+  margin: 1rem 0 2rem 0;
+  width: 68px; }
+
+.bb-bg-anim {
+  background-image: url(/assets/img/bblogo-anim2.svg);
+  background-size: 68px 65px;
+  height: 65px;
+  margin: 1rem 0 2rem 0;
+  width: 68px; }
+
+.bb-styles .firstb {
+  fill: yellow; }
+.bb-styles .secondb {
+  fill: red; }
+
+.bb-bg-resp {
+  background-image: url(/assets/img/bblogo-optim.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 1rem 0 2rem 0;
+  padding-bottom: 93%;
+  width: 100%; }
+
+.slider-image {
+  max-width: 100%;
+  height: auto; }
+
 .global-footer p {
   color: #BDC8CC;
   font-family: "comenia-sans-web", sans-serif;
@@ -822,65 +862,28 @@ img:not(.slider-image) {
   background-color: #2BA8D9; }
 
 .group--4:before {
-  background-color: #D9985F; }
+  background-color: #EFECCA; }
 
 .group--5:before {
-  background-color: #2C3E50; }
+  background-color: #7E8AA2; }
 
 .group--6:before {
-  background-color: #FFD34E; }
+  background-color: #D9985F; }
 
 .group--7:before {
-  background-color: #468966; }
+  background-color: #2C3E50; }
 
 .group--8:before {
+  background-color: #FFD34E; }
+
+.group--9:before {
+  background-color: #468966; }
+
+.group--10:before {
+  background-color: #A7A37E; }
+
+.group--11:before {
   background-color: #ECF0F1; }
-
-.bb-logo-example {
-  height: 65px !important;
-  margin: 1rem 0 2rem 0 !important;
-  width: 68px !important; }
-
-.bb-logo-resp {
-  margin: 1rem 0 2rem 0;
-  width: 100%; }
-
-.bb-bg {
-  background-image: url(/assets/img/bblogo-optim.svg);
-  background-size: 68px 65px;
-  height: 65px;
-  margin: 1rem 0 2rem 0;
-  width: 68px; }
-
-.bb-bg-anim {
-  background-image: url(/assets/img/bblogo-anim2.svg);
-  background-size: 68px 65px;
-  height: 65px;
-  margin: 1rem 0 2rem 0;
-  width: 68px; }
-
-.bb-hover-anim .firstb {
-  fill: #000;
-  transition: fill 0.1s; }
-  .bb-hover-anim .firstb:hover {
-    fill: #4e86b1; }
-.bb-hover-anim .secondb {
-  fill: #4e86b1;
-  transition: fill 0.1s; }
-  .bb-hover-anim .secondb:hover {
-    fill: #000; }
-
-.bb-bg-resp {
-  background-image: url(/assets/img/bblogo-optim.svg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  margin: 1rem 0 2rem 0;
-  padding-bottom: 93%;
-  width: 100%; }
-
-.slider-image {
-  max-width: 100%;
-  height: auto; }
 
 .global-header {
   background: #64AFC0;
@@ -902,126 +905,3 @@ img:not(.slider-image) {
     .global-header h2:after {
       content: ' —';
       display: inline; }
-
-.nav-collapse ul {
-  display: block;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 100%; }
-.nav-collapse li {
-  display: block;
-  width: 100%; }
-.nav-collapse.opened {
-  max-height: 9999px; }
-
-.js .nav-collapse {
-  clip: rect(0 0 0 0);
-  display: block;
-  max-height: 0;
-  overflow: hidden;
-  position: absolute;
-  zoom: 1; }
-  @media screen and (min-width: 40em) {
-    .js .nav-collapse {
-      max-height: none;
-      position: relative; } }
-
-.disable-pointer-events {
-  pointer-events: none !important; }
-
-.nav-toggle {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none; }
-  @media screen and (min-width: 40em) {
-    .nav-toggle {
-      display: none; } }
-
-@media screen and (min-width: 40em) {
-  .main-nav {
-    display: inline-block;
-    width: calc(100% - 132px - 2rem);
-    vertical-align: middle; } }
-.main-nav .main-nav__list {
-  border-top: 0.1rem solid #d9d9d9; }
-  @media screen and (min-width: 40em) {
-    .main-nav .main-nav__list {
-      border: 0;
-      background-color: transparent;
-      margin-left: 0;
-      text-align: right;
-      width: 100%; } }
-.main-nav li {
-  font-family: "comenia-sans-web", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.33333rem; }
-  .main-nav li a, .main-nav li span {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border-bottom: 0.1rem solid #d9d9d9;
-    color: #57A5B3;
-    cursor: pointer;
-    display: block;
-    padding: 10px 3%; }
-    .main-nav li a:hover, .main-nav li a:active, .main-nav li a:focus, .main-nav li span:hover, .main-nav li span:active, .main-nav li span:focus {
-      background-color: #57A5B3;
-      color: #FFFFFF; }
-  @media screen and (min-width: 40em) {
-    .main-nav li {
-      display: inline-block;
-      letter-spacing: 0.1rem;
-      margin-right: 2rem;
-      padding: 1rem 0;
-      text-transform: uppercase;
-      width: auto;
-      font-size: 0.85714rem; }
-      .main-nav li a, .main-nav li span {
-        border: 0;
-        color: #BDC8CC;
-        display: inline;
-        padding: 0; }
-        .main-nav li a:hover, .main-nav li a:active, .main-nav li a:focus, .main-nav li span:hover, .main-nav li span:active, .main-nav li span:focus {
-          background-color: transparent;
-          color: #57A5B3; } }
-  @media screen and (min-width: 50em) {
-    .main-nav li {
-      font-size: 0.8rem; } }
-  @media screen and (min-width: 64em) {
-    .main-nav li {
-      font-size: 0.70588rem; } }
-  @media screen and (min-width: 100em) {
-    .main-nav li {
-      font-size: 0.63158rem; } }
-
-@media screen and (min-width: 40em) {
-  .js .nav-collapse {
-    display: inline-block;
-    max-height: none;
-    position: relative; } }
-.js .nav-toggle {
-  display: block;
-  line-height: 0;
-  position: absolute;
-  right: 3%;
-  top: 1.3rem; }
-  .js .nav-toggle:after {
-    background-image: url(../img/menu.svg);
-    background-position: 0 0;
-    background-size: 30px 60px;
-    content: '';
-    display: block;
-    height: 30px;
-    width: 30px; }
-  .js .nav-toggle.active:after {
-    background-position: 0 30px; }
-  @media screen and (min-width: 40em) {
-    .js .nav-toggle {
-      display: none; } }

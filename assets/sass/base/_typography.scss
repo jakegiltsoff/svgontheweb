@@ -228,7 +228,7 @@ a {
     font-weight: map-get($headingtype, regular);
     width: 100%;
 
-    @include sassline(eta, $headingtype, 2, 0, all);
+    @include sassline(eta, $headingtype, 2, 2, all);
 
     thead {
 

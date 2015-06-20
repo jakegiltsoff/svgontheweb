@@ -1,0 +1,49 @@
+// Example styles
+// ---------------------------------------
+
+.bb-logo-example {
+  height: 65px !important;
+  margin: 1rem 0 2rem 0 !important;
+  width: 68px !important;
+}
+
+.bb-logo-resp {
+  margin: 1rem 0 2rem 0;
+  width: 100%;
+}
+
+.bb-bg {
+  background-image: url(/assets/img/bblogo-optim.svg);
+  background-size: 68px 65px;
+  height: 65px;
+  margin: 1rem 0 2rem 0;
+  width: 68px;
+}
+
+.bb-bg-anim {
+  background-image: url(/assets/img/bblogo-anim2.svg);
+  background-size: 68px 65px;
+  height: 65px;
+  margin: 1rem 0 2rem 0;
+  width: 68px;
+}
+
+.bb-styles {
+
+  .firstb { fill: yellow; }
+  .secondb { fill: red; }
+}
+
+.bb-bg-resp {
+  background-image: url(/assets/img/bblogo-optim.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 1rem 0 2rem 0;
+  padding-bottom: 93%;
+  width: 100%;
+}
+
+.slider-image {
+  max-width: 100%;
+  height: auto;
+}

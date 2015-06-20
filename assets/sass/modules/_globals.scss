@@ -1,4 +1,4 @@
-// Global demo styles
+// Global styles
 // ---------------------------------------
 
 body {
@@ -71,96 +71,55 @@ img:not(.slider-image) {
 .group--4 {
 
   &:before {
-    background-color: #D9985F;
+    background-color: #EFECCA;
   }
 }
 
 .group--5 {
 
   &:before {
-    background-color: #2C3E50;
+    background-color: #7E8AA2;
   }
 }
 
 .group--6 {
 
   &:before {
-    background-color: #FFD34E;
+    background-color: #D9985F;
   }
 }
 
 .group--7 {
 
   &:before {
-    background-color: #468966;
+    background-color: #2C3E50;
   }
 }
 
 .group--8 {
 
   &:before {
+    background-color: #FFD34E;
+  }
+}
+
+.group--9 {
+
+  &:before {
+    background-color: #468966;
+  }
+}
+
+.group--10 {
+
+  &:before {
+    background-color: #A7A37E;
+  }
+}
+
+.group--11 {
+
+  &:before {
     background-color: #ECF0F1;
   }
-}
-
-.bb-logo-example {
-  height: 65px !important;
-  margin: 1rem 0 2rem 0 !important;
-  width: 68px !important;
-}
-
-.bb-logo-resp {
-  margin: 1rem 0 2rem 0;
-  width: 100%;
-}
-
-.bb-bg {
-  background-image: url(/assets/img/bblogo-optim.svg);
-  background-size: 68px 65px;
-  height: 65px;
-  margin: 1rem 0 2rem 0;
-  width: 68px;
-}
-
-.bb-bg-anim {
-  background-image: url(/assets/img/bblogo-anim2.svg);
-  background-size: 68px 65px;
-  height: 65px;
-  margin: 1rem 0 2rem 0;
-  width: 68px;
-}
-
-.bb-hover-anim {
-
-  .firstb {
-    fill: #000;
-    transition: fill 0.1s;
-
-    &:hover {
-      fill: #4e86b1;
-    }
-  }
-
-  .secondb {
-    fill: #4e86b1;
-    transition: fill 0.1s;
-
-    &:hover {
-      fill: #000;
-    }
-  }
-}
-
-.bb-bg-resp {
-  background-image: url(/assets/img/bblogo-optim.svg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  margin: 1rem 0 2rem 0;
-  padding-bottom: 93%;
-  width: 100%;
-}
-
-.slider-image {
-  max-width: 100%;
-  height: auto;
 }
