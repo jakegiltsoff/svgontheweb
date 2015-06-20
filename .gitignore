@@ -1,3 +1,4 @@
 .sass-cache
 mixture.json
 .htaccess
+node_modules/*
