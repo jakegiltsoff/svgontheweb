@@ -26,7 +26,6 @@
       <div class="column column--sidebar">
         <h6>About</h6>
         <p>This page accompanies a talk given by <a href="https://twitter.com/designbyjake">Jake Giltsoff</a> at <a href="http://breakingborde.rs/past-events/shaping-the-web/">Breaking Borders</a> on the 16th of June 2015. It outlines some techniques you can use to prepare, implement, and work with <span class="small-caps">SVG</span>s on the web. Anything to add or change? Fork this on <a href="https://github.com/designbyjake/svgontheweb">Github</a>. If you would like Jake to talk about <span class="small-caps">SVG</span>s for your team or event, <a href="https://twitter.com/designbyjake">get in touch</a>.</p>
-        <p>Examples on the page use the <a href="http://breakingborde.rs">Breaking Borders</a> logo.</p>
       </div>
 
       <div class="column column--main">
@@ -172,14 +171,14 @@
     <div class="section typeset">
       <div class="column column--duo">
         <h4 class="epsilon">Iframe</h4>
-        <p>You can load <span class="small-caps">SVG</span>s in an <code>&lt;iframe&gt;</code>. I’m not sure I would really recommend using this but it is an option ¯\_(ツ)_/¯.</p>
+        <p>You can load <span class="small-caps">SVG</span>s in an <code>&lt;iframe&gt;</code>. It does let you do most things, but I’m not sure it is the best method to use moving forward ¯\_(ツ)_/¯.</p>
         <pre><code>&lt;iframe src="bblogo.svg"&gt;Your browser does not support iframes&lt;/iframe&gt;</code></pre>
         <iframe src="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support iframes</iframe>
       </div>
 
       <div class="column column--duo">
         <h4 class="epsilon">Embed</h4>
-        <p><code>&lt;embed&gt;</code> is supported by most browsers but isn’t part of any spec. It was once used for flash plugins etc. You could use it for <span class="small-caps">SVG</span>s but yea just don’t.</p>
+        <p><code>&lt;embed&gt;</code> is supported by most browsers but isn’t part of any spec. You can use it for <span class="small-caps">SVG</span>s but yea just don’t.</p>
         <pre><code>&lt;embed type="image/svg+xml" src="bblogo.svg" /&gt;</code></pre>
         <embed type="image/svg+xml" src="/assets/img/bblogo-optim.svg" class="bb-logo-example" />
       </div>
@@ -316,7 +315,25 @@
         <h2><span class="small-caps">JS</span> Manipulation</h2>
       </div>
       <div class="column column--main">
-        <p>Info coming soon.</p>
+        <p>My JavaScript knowledge is pretty minimal, so I’m just going to point out some basic tips on how you can use <span class="small-caps">JS</span> to change things in an <span class="small-caps">SVG</span>. If you want to embed your scripts within the <span class="small-caps">SVG</span> file, remember to wrap them in <code>&lt![CDATA[ ... ]]&gt;</code> again to prevent parsing errors. Scripts will not run if you use <code>&lt;img&gt;</code> or <code>background-image</code> as a security measure (i.e. to prevent potentially malicious code running on your page).</p>
+
+        <p>When working with external <span class="small-caps">JS</span> (i.e. not embeded within the <span class="small-caps">SVG</span> file), if you have your <span class="small-caps">SVG</span> inline you can target it as you would any other <span class="small-caps">DOM</span> element. If you use an <code>&lt;object&gt;</code> you can target it with <code>contentDocument</code>. You can get much more creative than the following, but here is an example:</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">External scripts</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-js.svg" id="logoObject" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>window.onload=function() {
+  var object = document.getElementById("logoObject");
+  var svgDocument = object.contentDocument;
+  var svgb1 = svgDocument.getElementsByClassName("firstb");
+  var svgb2 = svgDocument.getElementsByClassName("secondb");
+  svgb1[0].setAttribute("fill", "yellow");
+  svgb2[0].setAttribute("fill", "red");
+};</code></pre>
       </div>
     </div>
   </section>
@@ -498,7 +515,7 @@
         <h2>Fallbacks</h2>
       </div>
       <div class="column column--main">
-        <p>A word on fallbacks. <span class="small-caps">SVG</span>s are supported in all modern browsers. If you still have to support <span class="small-caps">IE8</span> then you will need to implement fallbacks, most likely in the form of <span class="small-caps">PNG</span>s. I’m not going to go into this much because you probably shouldn’t be supporting <span class="small-caps">IE8</span> anymore ¯\_(ツ)_/¯. Anyway, if you do want fallbacks, basically things get pretty complicated pretty quickly as most things do with <span class="small-caps">SVG</span>, so go read this amazing article by <a href="https://twitter.com/AmeliasBrain">Amelia Bellamy-Royds</a> on <a href="https://css-tricks.com/a-complete-guide-to-svg-fallbacks/">CSS-Tricks</a>.</p>
+        <p>A word on fallbacks. <span class="small-caps">SVG</span>s are supported in all modern browsers. If you still have to support <span class="small-caps">IE8</span> then you will need to implement fallbacks, most likely in the form of <span class="small-caps">PNG</span>s. I’m not going to go into this much because you probably shouldn’t be supporting <span class="small-caps">IE8</span> anymore ¯\_(ツ)_/¯. Anyway, if you do want fallbacks, basically things get pretty complicated pretty quickly as most things do with <span class="small-caps">SVG</span>, I would recommend to read this comprehensive article by <a href="https://twitter.com/AmeliasBrain">Amelia Bellamy-Royds</a> on <a href="https://css-tricks.com/a-complete-guide-to-svg-fallbacks/">CSS-Tricks</a>.</p>
       </div>
     </div>
   </section>
@@ -561,7 +578,16 @@
     <p>An <a href="https://github.com/designbyjake/svgontheweb">open source</a> side project from <a href="https://twitter.com/designbyjake">Jake Giltsoff</a></p>
   </footer>
 
-  <script type="text/javascript">
+  <script>
+  window.onload=function() {
+    var object = document.getElementById("logoObject");
+    var svgDocument = object.contentDocument;
+    var svgb1 = svgDocument.getElementsByClassName("firstb");
+    var svgb2 = svgDocument.getElementsByClassName("secondb");
+    svgb1[0].setAttribute("fill", "yellow");
+    svgb2[0].setAttribute("fill", "red");
+  };
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
