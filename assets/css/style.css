@@ -851,39 +851,73 @@ img:not(.slider-image) {
   display: block;
   width: 20%;
   height: 0.5rem; }
+.group .title {
+  color: #040606; }
+  .group .title:before {
+    color: #ddd;
+    content: "#";
+    position: absolute;
+    left: 0;
+    -webkit-transition: color 0.2s;
+    -moz-transition: color 0.2s;
+    -ms-transition: color 0.2s;
+    -o-transition: color 0.2s;
+    transition: color 0.2s; }
 
 .group--1:before {
   background-color: #40CEB6; }
+.group--1 .title:hover:before {
+  color: #40CEB6; }
 
 .group--2:before {
   background-color: #BF4141; }
+.group--2 .title:hover:before {
+  color: #BF4141; }
 
 .group--3:before {
   background-color: #2BA8D9; }
+.group--3 .title:hover:before {
+  color: #2BA8D9; }
 
 .group--4:before {
   background-color: #EFECCA; }
+.group--4 .title:hover:before {
+  color: #EFECCA; }
 
 .group--5:before {
   background-color: #7E8AA2; }
+.group--5 .title:hover:before {
+  color: #7E8AA2; }
 
 .group--6:before {
   background-color: #D9985F; }
+.group--6 .title:hover:before {
+  color: #D9985F; }
 
 .group--7:before {
   background-color: #2C3E50; }
+.group--7 .title:hover:before {
+  color: #2C3E50; }
 
 .group--8:before {
   background-color: #FFD34E; }
+.group--8 .title:hover:before {
+  color: #FFD34E; }
 
 .group--9:before {
   background-color: #468966; }
+.group--9 .title:hover:before {
+  color: #468966; }
 
 .group--10:before {
   background-color: #A7A37E; }
+.group--10 .title:hover:before {
+  color: #A7A37E; }
 
 .group--11:before {
   background-color: #ECF0F1; }
+.group--11 .title:hover:before {
+  color: #ECF0F1; }
 
 .global-header {
   background: #64AFC0;

@@ -45,12 +45,32 @@ img:not(.slider-image) {
     width: 20%;
     height: 0.5rem;
   }
+
+  .title {
+    color: $headingColour;
+
+    &:before {
+      color: #ddd;
+      content: "#";
+      position: absolute;
+      left: 0;
+      -webkit-transition: color 0.2s;
+      -moz-transition: color 0.2s;
+      -ms-transition: color 0.2s;
+      -o-transition: color 0.2s;
+      transition: color 0.2s;
+    }
+  }
 }
 
 .group--1 {
 
   &:before {
     background-color: #40CEB6;
+  }
+
+  .title:hover:before {
+    color: #40CEB6;
   }
 }
 
@@ -59,12 +79,20 @@ img:not(.slider-image) {
   &:before {
     background-color: #BF4141;
   }
+
+  .title:hover:before {
+    color: #BF4141;
+  }
 }
 
 .group--3 {
 
   &:before {
     background-color: #2BA8D9;
+  }
+
+  .title:hover:before {
+    color: #2BA8D9;
   }
 }
 
@@ -73,12 +101,20 @@ img:not(.slider-image) {
   &:before {
     background-color: #EFECCA;
   }
+
+  .title:hover:before {
+    color: #EFECCA;
+  }
 }
 
 .group--5 {
 
   &:before {
     background-color: #7E8AA2;
+  }
+
+  .title:hover:before {
+    color: #7E8AA2;
   }
 }
 
@@ -87,12 +123,20 @@ img:not(.slider-image) {
   &:before {
     background-color: #D9985F;
   }
+
+  .title:hover:before {
+    color: #D9985F;
+  }
 }
 
 .group--7 {
 
   &:before {
     background-color: #2C3E50;
+  }
+
+  .title:hover:before {
+    color: #2C3E50;
   }
 }
 
@@ -101,12 +145,20 @@ img:not(.slider-image) {
   &:before {
     background-color: #FFD34E;
   }
+
+  .title:hover:before {
+    color: #FFD34E;
+  }
 }
 
 .group--9 {
 
   &:before {
     background-color: #468966;
+  }
+
+  .title:hover:before {
+    color: #468966;
   }
 }
 
@@ -115,11 +167,19 @@ img:not(.slider-image) {
   &:before {
     background-color: #A7A37E;
   }
+
+  .title:hover:before {
+    color: #A7A37E;
+  }
 }
 
 .group--11 {
 
   &:before {
     background-color: #ECF0F1;
+  }
+
+  .title:hover:before {
+    color: #ECF0F1;
   }
 }

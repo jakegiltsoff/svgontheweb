@@ -37,10 +37,10 @@
     </div>
   </section>
 
-  <section class="group group--1" id="#svgs">
+  <section class="group group--1" id="svgs">
     <div class="section typeset">
       <div class="column">
-        <h2>SVGs</h2>
+        <h2><a class="title" href="#svgs">SVGs</a></h2>
       </div>
       <div class="column column--duo">
         <p>Scalable Vector Graphics are an <span class="small-caps">XML</span> based markup that can contain two-dimensional vectors. The vectors can be simple shapes, paths, or well just about anything you can do in Illustrator. It is an image format that has more in common with a typical web page that it does with a <span class="small-caps">JPEG</span>. <span class="small-caps">SVG</span> is much more powerful than other image formats we can use on the web as we can manipulate them in with code (either in our text editor or with <span class="small-caps">CSS / JS</span>).</p>
@@ -62,7 +62,7 @@
   <section class="group group--2" id="preparation">
     <div class="section typeset">
       <div class="column">
-        <h2>Preparing &amp; Optimising</h2>
+        <h2><a class="title" href="#preparation">Preparing &amp; Optimising</a></h2>
       </div>
       <div class="column column--main column--left">
         <p>Preparing an <span class="small-caps">SVG</span> for use on the web is a simple process and no more complicated that exporting a <span class="small-caps">JPEG</span> or <span class="small-caps">PNG</span>. Work as you typically would in your preferred vector graphics editor (Illustrator, Sketch, etc [or even Photoshop if you use shape layers]) with the graphic at the size that you expect to use it. You’ll probably want to convert any text to outlines as it most likely will not show in the correct font unless you plan on styling them with a web font you are using on the page (which you can do!). Don’t worry about expanding all your objects to solid shapes, particularly if you have strokes as you may want to manipulate these on the page and expanding them typically doesn’t make the file size any smaller. Any names you put on layers / groups will be added into the <span class="small-caps">SVG</span> as an ID on that element. This can be handy for styling, but will add a little to the overall file size.</p>
@@ -144,7 +144,7 @@
   <section class="group group--3" id="implementation">
     <div class="section typeset">
       <div class="column">
-        <h2>Implementation options</h2>
+        <h2><a class="title" href="#implementation">Implementation options</a></h2>
       </div>
       <div class="column column--main">
         <p>When it comes to using <span class="small-caps">SVG</span>s on the web there are a number of different ways you can go. Some of them have benefits which can be useful depending on what you would like to achieve and some of them are best to be avoided. If you want to just keep things basic to get the resolution independence and file size benefits you can reference the <span class="small-caps">SVG</span> in an <code>img</code> or as a <code>background-image</code> in <span class="small-caps">CSS</span> just as you would any other image format.</p>
@@ -261,7 +261,7 @@
   <section class="group group--4" id="css">
     <div class="section typeset">
       <div class="column">
-        <h2><span class="small-caps">CSS</span> Manipulation</h2>
+        <h2><a class="title" href="#css"><span class="small-caps">CSS</span> Manipulation</a></h2>
       </div>
       <div class="column column--main">
         <p>One of the great things with using an <span class="small-caps">SVG</span> is we can change how elements within it are styled using good old <span class="small-caps">CSS</span>. Say we have an orange icon and we want it to be blue on some pages, we can do that without having to make a new blue icon. Ideal.</p>
@@ -312,7 +312,7 @@
   <section class="group group--5" id="javascript">
     <div class="section typeset">
       <div class="column">
-        <h2><span class="small-caps">JS</span> Manipulation</h2>
+        <h2><a class="title" href="#javascript"><span class="small-caps">JS</span> Manipulation</a></h2>
       </div>
       <div class="column column--main">
         <p>My JavaScript knowledge is pretty minimal, so I’m just going to point out some basic tips on how you can use <span class="small-caps">JS</span> to change things in an <span class="small-caps">SVG</span>. If you want to embed your scripts within the <span class="small-caps">SVG</span> file, remember to wrap them in <code>&lt![CDATA[ ... ]]&gt;</code> again to prevent parsing errors. Scripts will not run if you use <code>&lt;img&gt;</code> or <code>background-image</code> as a security measure (i.e. to prevent potentially malicious code running on your page).</p>
@@ -341,7 +341,7 @@
   <section class="group group--6" id="styling">
     <div class="section typeset">
       <div class="column">
-        <h2>Fixed width vs responsive</h2>
+        <h2><a class="title" href="#styling">Fixed width vs responsive</a></h2>
       </div>
       <div class="column column--main">
         <p>When using images on the web in responsive designs there are two options you can use to style them, you can keep them at a fixed-size and adjust at breakpoints if needed, or allow them to resize with the page depending on their parent container.</p>
@@ -385,7 +385,7 @@
   <section class="group group--7" id="animating">
     <div class="section typeset">
       <div class="column">
-        <h2>Animating</h2>
+        <h2><a class="title" href="#animating">Animating</a></h2>
       </div>
       <div class="column column--main">
         <p>When it comes to animating <span class="small-caps">SVG</span>s there are a few different options that we can use — <span class="small-caps">SVG</span> animation (based on the <span class="small-caps">SMIL</span> spec), <span class="small-caps">CSS3</span> animations, or <span class="small-caps">JS</span> animations. <span class="small-caps">SVG</span> animation and <span class="small-caps">CSS3</span> animations let you do most things you will want to do — with <span class="small-caps">SVG</span> animation being slightly more powerful in that it has control over a few extra things. JavaScript allows you to do some pretty complex animations relatively easily, especially with libraries such as <a href="http://snapsvg.io/">Snap.svg</a>. This is a little beyond my knowledge of JavaScript so I’ll let you check out their demos to see for yourself if that is the right option.</p>
@@ -478,7 +478,7 @@
   <section class="group group--8" id="spriting">
     <div class="section typeset">
       <div class="column">
-        <h2>Spriting</h2>
+        <h2><a class="title" href="#spriting">Spriting</a></h2>
       </div>
       <div class="column column--main">
         <p>You can create and use <span class="small-caps">SVG</span> sprites just as we typically do with <span class="small-caps">PNG</span>s and <code>background-image</code> to get the resolution benefits or you can take it a step further using the extra power we have with <span class="small-caps">SVG</span>. I’m not going to go into too much depth here again as it does get pretty complex and I’ve never found a need to implement them personally. The benefit is getting all the power of <span class="small-caps">SVG</span> with less <span class="small-caps">HTTP</span> requests.
@@ -493,7 +493,7 @@
   <section class="group group--9" id="mediaqueries">
     <div class="section typeset">
       <div class="column">
-        <h2>Media queries</h2>
+        <h2><a class="title" href="#mediaqueries">Media queries</a></h2>
       </div>
       <div class="column column--main">
         <p>A really cool thing about <span class="small-caps">SVG</span>s is if you use media queries in the styles you embed within the file, instead of them working from the viewport size they will work from the <span class="small-caps">SVG</span>s viewport size. Basically that means they have their own working implementation of element queries out of the box. Nice. This allows us to control how the <span class="small-caps">SVG</span> will look at whatever size it is shown.</p>
@@ -512,7 +512,7 @@
   <section class="group group--10" id="fallbacks">
     <div class="section typeset">
       <div class="column">
-        <h2>Fallbacks</h2>
+        <h2><a class="title" href="#fallbacks">Fallbacks</a></h2>
       </div>
       <div class="column column--main">
         <p>A word on fallbacks. <span class="small-caps">SVG</span>s are supported in all modern browsers. If you still have to support <span class="small-caps">IE8</span> then you will need to implement fallbacks, most likely in the form of <span class="small-caps">PNG</span>s. I’m not going to go into this much because you probably shouldn’t be supporting <span class="small-caps">IE8</span> anymore ¯\_(ツ)_/¯. Anyway, if you do want fallbacks, basically things get pretty complicated pretty quickly as most things do with <span class="small-caps">SVG</span>. I would recommend to read this comprehensive article by <a href="https://twitter.com/AmeliasBrain">Amelia Bellamy-Royds</a> on <a href="https://css-tricks.com/a-complete-guide-to-svg-fallbacks/">CSS-Tricks</a>.</p>
@@ -523,7 +523,7 @@
   <section class="group group--11" id="resources">
     <div class="section typeset">
       <div class="column">
-        <h2>Resources</h2>
+        <h2><a class="title" href="#resources">Resources</a></h2>
       </div>
       <div class="column column--duo">
         <h3 class="zeta">General</h3>
