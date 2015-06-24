@@ -52,13 +52,18 @@ img:not(.slider-image) {
     &:before {
       color: #ddd;
       content: "#";
-      position: absolute;
-      left: 0;
+      display: inline;
+      margin-right: 5px;
       -webkit-transition: color 0.2s;
       -moz-transition: color 0.2s;
       -ms-transition: color 0.2s;
       -o-transition: color 0.2s;
       transition: color 0.2s;
+
+      @include breakpoint(break-3) {
+        position: absolute;
+        left: 0;
+      }
     }
   }
 }

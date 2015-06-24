@@ -522,7 +522,9 @@ a {
   -moz-font-feature-settings: 'c2sc' 1, 'kern' 1;
   -ms-font-feature-settings: 'c2sc' 1, 'kern' 1;
   -o-font-feature-settings: 'c2sc' 1, 'kern' 1;
-  font-feature-settings: 'c2sc' 1, 'kern' 1; }
+  font-feature-settings: 'c2sc' 1, 'kern' 1;
+  letter-spacing: 0.05em;
+  font-kerning: normal; }
 .typeset .lining-numerals {
   -webkit-font-feature-settings: 'lnum' 1, 'kern' 1;
   -moz-font-feature-settings: 'lnum' 1, 'kern' 1;
@@ -649,10 +651,7 @@ a {
   .column--trio li,
   .column--quad li,
   .column--sidebar li {
-    line-height: 2rem;
-    font-size: 0.99412rem;
-    margin-bottom: -0.74651rem;
-    padding-top: 0.74651rem; } }
+    font-size: 0.99412rem; } }
 @media screen and (min-width: 100em) {
   .column--trio p,
   .column--quad p,
@@ -664,10 +663,7 @@ a {
   .column--trio li,
   .column--quad li,
   .column--sidebar li {
-    line-height: 2rem;
-    font-size: 0.92632rem;
-    margin-bottom: -0.7638rem;
-    padding-top: 0.7638rem; } }
+    font-size: 0.92632rem; } }
 
 @media screen and (min-width: 40em) {
   .column--right {
@@ -856,13 +852,17 @@ img:not(.slider-image) {
   .group .title:before {
     color: #ddd;
     content: "#";
-    position: absolute;
-    left: 0;
+    display: inline;
+    margin-right: 5px;
     -webkit-transition: color 0.2s;
     -moz-transition: color 0.2s;
     -ms-transition: color 0.2s;
     -o-transition: color 0.2s;
     transition: color 0.2s; }
+    @media screen and (min-width: 64em) {
+      .group .title:before {
+        position: absolute;
+        left: 0; } }
 
 .group--1:before {
   background-color: #40CEB6; }
@@ -939,3 +939,18 @@ img:not(.slider-image) {
     .global-header h2:after {
       content: ' —';
       display: inline; }
+
+.global-nav {
+  border-bottom: 1px solid #EDEDED; }
+  .global-nav .section {
+    padding: 0; }
+  .global-nav ul li {
+    border-bottom: 1px solid transparent;
+    color: #040606;
+    display: inline-block;
+    margin: 0.5rem 1rem -1px 0; }
+    .global-nav ul li.active {
+      border-bottom-color: #040606; }
+    .global-nav ul li.about {
+      float: right;
+      margin-right: 0; }

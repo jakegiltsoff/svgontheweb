@@ -292,6 +292,8 @@ a {
     -ms-font-feature-settings: 'c2sc' 1, 'kern' 1;
     -o-font-feature-settings: 'c2sc' 1, 'kern' 1;
     font-feature-settings: 'c2sc' 1, 'kern' 1;
+    letter-spacing: 0.05em;
+    font-kerning: normal;
   }
 
   // Consistent height numbers with OpenType.

@@ -21,32 +21,54 @@
     </div>
   </header>
 
+  <nav class="global-nav">
+    <div class="section">
+      <ul class="column">
+        <li class="active">Guide</li>
+        <li><a href="/changelog">Changelog</a></li>
+        <li class="about"><a href="/about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <section>
     <div class="section typeset">
       <div class="column column--sidebar">
-        <h6>About</h6>
-        <p>This page accompanies a talk given by <a href="https://twitter.com/designbyjake">Jake Giltsoff</a> at <a href="http://breakingborde.rs/past-events/shaping-the-web/">Breaking Borders</a> on the 16th of June 2015. It outlines some techniques you can use to prepare, implement, and work with <span class="small-caps">SVG</span>s on the web. Anything to add or change? Fork this on <a href="https://github.com/designbyjake/svgontheweb">Github</a>. If you would like Jake to talk about <span class="small-caps">SVG</span>s for your team or event, <a href="https://twitter.com/designbyjake">get in touch</a>.</p>
+        <h6>Contents</h6>
+        <ul>
+          <li><a href="#svg"><span class="small-caps">SVG</span></a></li>
+          <li><a href="#preparation">Preparing &amp; Optimising</a></li>
+          <li><a href="#implementation">Implementation options</a></li>
+          <li><a href="#css"><span class="small-caps">CSS</span> Manipulation</a></li>
+          <li><a href="#javascript"><span class="small-caps">JS</span> Manipulation</a></li>
+          <li><a href="#styling">Fixed width vs responsive</a></li>
+          <li><a href="#animating">Animating</a></li>
+          <li><a href="#spriting">Spriting</a></li>
+          <li><a href="#mediaqueries">Media queries</a></li>
+          <li><a href="#fallbacks">Fallbacks</a></li>
+          <li><a href="#resources">Resources</a></li>
+        </ul>
       </div>
 
       <div class="column column--main">
         <h6>Introduction</h6>
         <p>We live in the age of pixels. As designers &amp; developers of the web, pixels can be both our friends and our enemies. We want everything to look nice and sharp for anyone who uses any of the websites we work on, but we need to keep file sizes down for performance. There is pretty much only one way to go with icons, logos and illustrations on the web — <span class="small-caps">SVG</span>. Scalable Vector Graphics can look crisp at all screen resolutions, can have super small file sizes, and can be easily edited and modified.</p>
 
-        <p>This guide aims to give a practical overview of how you can use <span class="small-caps">SVG</span>s on your websites — with some tips and tricks along the way to get the most out of them. If you are an <span class="small-caps">SVG</span> beginner or expert, hopefully there will be something for you here.</p>
+        <p>This guide aims to give a practical overview of how you can use <span class="small-caps">SVG</span>s on your websites — with some tips and tricks along the way to get the most out of them.</p>
       </div>
     </div>
   </section>
 
-  <section class="group group--1" id="svgs">
+  <section class="group group--1" id="svg">
     <div class="section typeset">
       <div class="column">
-        <h2><a class="title" href="#svgs">SVGs</a></h2>
+        <h2><a class="title" href="#svg"><span class="small-caps">SVG</span></a></h2>
       </div>
-      <div class="column column--duo">
-        <p>Scalable Vector Graphics are an <span class="small-caps">XML</span> based markup that can contain two-dimensional vectors. The vectors can be simple shapes, paths, or well just about anything you can do in Illustrator. It is an image format that has more in common with a typical web page that it does with a <span class="small-caps">JPEG</span>. <span class="small-caps">SVG</span> is much more powerful than other image formats we can use on the web as we can manipulate them in with code (either in our text editor or with <span class="small-caps">CSS / JS</span>).</p>
+      <div class="column column--main">
+        <p>Scalable Vector Graphics are an <span class="small-caps">XML</span> based markup that can contain two-dimensional vectors. The vectors can be simple shapes, paths, or well just about anything you can do in Illustrator. It’s an image format that has more in common with a web page that it does with a <span class="small-caps">JPEG</span>. <span class="small-caps">SVG</span> is much more powerful than other image formats we can use on the web as we can manipulate them in with code (either in our text editor or with <span class="small-caps">CSS / JS</span>).</p>
       </div>
 
-      <div class="column column--duo">
+      <div class="column column--sidebar">
         <ul>
           <li>Resolution independent</li>
           <li>Supported by all modern browsers</li>

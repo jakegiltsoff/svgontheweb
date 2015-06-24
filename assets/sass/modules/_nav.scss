@@ -1,0 +1,29 @@
+// Navigation styles
+// ---------------------------------------
+
+.global-nav {
+  border-bottom: 1px solid #EDEDED;
+
+  .section {
+    padding: 0;
+  }
+
+  ul {
+
+    li {
+      border-bottom: 1px solid transparent;
+      color: $headingColour;
+      display: inline-block;
+      margin: 0.5rem 1rem -1px 0;
+
+      &.active {
+        border-bottom-color: $headingColour;
+      }
+
+      &.about {
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -132,7 +132,7 @@
       @include sassline($fontsize: eta, $font: $bodytype, $lineheight: 2, $below: 2, $breakpoint: 3);
     }
     li {
-      @include sassline($fontsize: eta, $font: $bodytype, $lineheight: 2, $below: 0, $breakpoint: 3);
+      @include fontsize(eta, 3);
     }
   }
 
@@ -141,7 +141,7 @@
       @include sassline($fontsize: eta, $font: $bodytype, $lineheight: 2, $below: 2, $breakpoint: 4);
     }
     li {
-      @include sassline($fontsize: eta, $font: $bodytype, $lineheight: 2, $below: 0, $breakpoint: 4);
+      @include fontsize(eta, 4);
     }
   }
 }
