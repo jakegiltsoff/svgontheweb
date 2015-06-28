@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>svg应用指南</title>
+  <link rel="stylesheet" href="/assets/css/style.min.css">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+  <script src="//use.typekit.net/erg0slu.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+
+  <header class="global-header">
+    <div class="section typeset">
+      <div class="column">
+        <h2 class="zeta">SVG</h2>
+        <h1 class="mega">应用指南</h1>
+      </div>
+    </div>
+  </header>
+
+  <nav class="global-nav">
+    <div class="section">
+      <ul class="column">
+        <li class="active">教程</li>
+        <li><a href="/changelog">更新日志</a></li>
+        <li class="about"><a href="/about">关于</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h6>主要内容</h6>
+        <ul>
+          <li><a href="#svg"><span class="small-caps">SVG</span></a></li>
+          <li><a href="#preparation">使用和优化SVG</a></li>
+          <li><a href="#implementation">SVG使用方法</a></li>
+          <li><a href="#css"><span class="small-caps">CSS</span>与SVG</a></li>
+          <li><a href="#javascript"><span class="small-caps">JS</span> 与SVG</a></li>
+          <li><a href="#styling">SVG与响应式</a></li>
+          <li><a href="#animating">SVG与动画</a></li>
+          <li><a href="#spriting">SVG与雪碧图</a></li>
+          <li><a href="#mediaqueries">SVG与媒体查询</a></li>
+          <li><a href="#fallbacks">降级使用SVG</a></li>
+          <li><a href="#resources">推荐资源</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--main">
+        <h6>前言</h6>
+        <p>我们处于一个用像素来作为度量衡的互联网世界中。 对于一名在互联网世界中工作的设计师和开发者来说, 像素对于我们来说亦敌亦友。 我们希望自己创作出的web中每一张图片、每一像素都能棱角分明（如网站中的logo，icon以及任何修饰性的图片），清晰的在任何设备上展现给用户的同时， 也能尽可能的保证图片的体积来优化性能。而<span class="small-caps">SVG</span>就是解决上面问题非常棒的一个方案。SVG 意为可缩放矢量图形（Scalable Vector Graphics）与屏幕分辨率无关, 体积上能使用Gzip的方式压缩, 而且修改编辑都很方便。</p>
+
+        <p>本网站是<span class="small-caps">SVG</span>在web开发中一些常见的应用场景、技巧以及使用方法的一个简单的入门指南。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--1" id="svg">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#svg"><span class="small-caps">SVG</span></a></h2>
+      </div>
+      <div class="column column--main">
+        <p>SVG是一种用 <span class="small-caps">XML</span> 定义的语言，用来描述二维矢量及矢量/栅格图形。 比如常用的矢量设计软件Illustrator中的形状、路径，或者是用Illustrator创作的任何图形都是矢量图形。 SVG是跟web中常用的<span class="small-caps">JPEG</span>一样是一种的图形格式。 但是<span class="small-caps">SVG</span>比其它图形格式有一个很突出的特点，就是能使用<span class="small-caps">CSS / JS</span>等web技术对它进行控制。</p>
+      </div>
+
+      <div class="column column--sidebar">
+        <ul>
+          <li>与分辨率无关</li>
+          <li>被现代浏览器支持</li>
+          <li>面向未来 (<span class="small-caps">W3C</span> 标准)</li>
+          <li>容易编辑</li>
+          <li>使用<span class="small-caps">CSS 和 JS</span>能很方便的进行控制</li>
+          <li>高度可压缩</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--2" id="preparation">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#preparation">使用和优化SVG</a></h2>
+      </div>
+      <div class="column column--main column--left">
+        <p>在web中使用 <span class="small-caps">SVG</span> 就像使用<span class="small-caps">JPEG</span> 或者 <span class="small-caps">PNG</span>一样很简单。 使用常见的矢量设计软件(Illustrator，Sketch，或者是photoshop中的形状图层) 就能设计出SVG格式的图形。下面所说的操作都是以Illustrator软件为例的（在其它矢量设计软件中可能有所不同）。如果你想要在你的矢量图形中导出特殊的文字，它可能在web中不会显示正确的字体，除非你使用CSS3中的webfont来指定显示特定的字体。在Illustrator中，扩展对象可用来将单一对象分割为若干个对象。具体的来说，如果你想单独的控制每一个对象，那就可以使用扩展对象。并且扩展对象并不会影响导出SVG的文件体积。在Illustrator中每一个图层的名字在导出SVG的时候，都会在 <span class="small-caps">SVG</span>作为元素的ID的名字，这对于使用CSS或者是JS来控制SVG提供了很大的便利，但会增加SVG文件的体积哦。</p>
+
+        <p>在导出的时候， 需要检查下画布的尺寸(比如，不要出现 <span class="lining-numerals">23.3px &times; 86.8px</span>) 这样有小数点的格式，如果这样的话它可能会对画布里的内容进行剪裁。在Illustrator，你可以通过下面的操作来避免这个问题，在菜单栏进行下面的操作<code>Object > Artboards > Fit to Artwork Bounds</code>。然后选择 <code>保存为</code> 命令选择保存为 <span class="small-caps">SVG</span> 格式，选择默认的选项就可以了。 当然，在选择保存SVG选项里，也可以进行一定的优化。后面会就SVG的优化有专门的阐述。</p>
+
+        <h3 class="delta">SVG文件体积优化的一些技巧</h3>
+
+        <p class="caption sidenote">(这里推荐一些关于SVG优化的<a href="#resources">资源</a>)</p>
+
+        <p>关于SVG优化，网络上有很多的关于这方面的文章。这里我更愿意来分享我在使用SVG过程中，对于SVG优化的一些技巧。这些技巧不需要花费很多额外的工作，你就能快速的你的工作中使用它。</p>
+
+        <p>为了使<span class="small-caps">SVG</span>s 的体积尽可能的小，你需要删除SVG中一些不需要的属性。在我看来，这方面<a href="https://github.com/svg/svgo" class="small-caps">SVGO</a>是一个很棒的优化SVG的脚本工具。它会删除SVG中一切多余的属性 — 这里需要注意的一点的是: 当你打算用<span class="small-caps">CSS / JS</span>来控制SVG，你可能要小心了。因为使用它可能会过度优化SVG，从而影响到使用CSS和JS来控制SVG。你可以使用<span class="small-caps">SVGO</span>来自动处理SVG的优化(或者是你可能更愿意使用可视化的SVGO<span class="small-caps"><a href="https://github.com/svg/svgo-gui">GUI</a></span>来处理SVG的优化。</p>
+
+        <p>其实，删除SVG中一些多余的属性我们在矢量设计软件中就可以来处理。首先你要确保使用尽可能少的路径或者是形状来设计你想要的图形，并且路径上的控制点也要尽可能的少。并且尽可能的合并你的图层。至于删除路径上的控制点，在Illustrator中，<a href="http://www.astutegraphics.com/software/vectorscribe/">VectorScribe</a>这个插件就可以做到这点。它可以删除路径上多余的控制点。</p>
+
+        <p class="caption sidenote">优化前</p>
+
+        <p><img src="/assets/img/2point.png" alt="Pre optimisation"></p>
+
+        <p class="caption sidenote">删除多余的控制点</p>
+
+        <p><img src="/assets/img/1point.png" alt="Post optimisation"></p>
+
+        <p>如果你想放大来查看图形的一些细节。在Illustrator中，你可以通过下面的操作使用像素预览（Pixel Preview）<code>View > Pixel Preview</code>来查看路径上的控制点。完美像素，是保持作品的高质量必须要关注的一个事情。相信大多数设计师都会因为这个都有过被搞得疲惫不堪的经历。通过下面两张图就可以一目了然</p>
+
+        <p class="caption sidenote">像素偏移</p>
+
+        <p><img src="/assets/img/nosnap.png" alt="Points off pixels"></p>
+
+        <p class="caption sidenote">完美像素</p>
+
+        <p><img src="/assets/img/snap.png" alt="Pixel snapped"></p>
+
+        <p>如果你有两个或者是两个以上的形状，你就需要删除多余的重叠的像素。 如果有两个对齐的路径，你会看到在它们之间有一条白色的线条，所有时候你需要避免这种重叠情况的出现。</p>
+
+        <p>注意: SVG是严格按照定义元素的顺序来渲染的，这个与HTML靠z-index值来控制分层不一样。在SVG中，写在前面的元素先被渲染，写在后面的元素后被渲染。后渲染的元素会覆盖前面的元素，虽然有时候受透明度影响，看起来不是被覆盖的，但是SVG确实是严格按照先后顺序来渲染的。</p>
+
+        <p><img src="/assets/img/whiteline.png" alt="Post optimisation"></p>
+
+        <p>当然，最后一点重要的是要在你的网站启用gzip技术来压缩<span class="small-caps">SVG</span>s。这需要在你网站的<code>htaccess</code>文件中设置一下。</p>
+
+        <pre><code>AddType image/svg+xml svg svgz
+&lt;IfModule mod_deflate.c&gt;
+    &lt;IfModule mod_filter.c&gt;
+        AddOutputFilterByType DEFLATE "image/svg+xml" \
+                                      "text/css" \
+                                      "text/html" \
+                                      "text/javascript"
+                                      ... etc
+    &lt;/IfModule&gt;
+&lt;/IfModule&gt;</code></pre>
+
+        <hr>
+
+        <p>上面说的这些优化方法，在 <a href="http://breakingborde.rs/">Breaking Borders</a> 网站上的logo（svg格式）就是这样做的: 尽可能的压缩文件, 删除路径中多余的控制点, 对齐像素, 删除重叠的部分，然后使用 <span class="small-caps">SVGO</span>来优化。</p>
+
+        <h4 class="zeta">Original: 1,413b</h4>
+
+        <img src="/assets/img/bblogo.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <h4 class="zeta">Optimised: 409b</h4>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <p><b>文件缩小了<span class="lining-numerals">~71%</span> smaller (如果使用gzip压缩的话能缩小<span class="lining-numerals">~83%</span>)</b></p>
+
+        <p><span class="small-caps highlight">小技巧:</span> <a href="https://twitter.com/robsterlini">Rob Sterlini</a>提到logo中的'b'字母是重复的你可以使用<code>&lt;use&gt;</code>这个元素来重复'b'这个字幕，这样又可以减小文件的体积。</p>
+
+        <h4 class="zeta">使用&lt;use&gt;元素来优化: 311b</h4>
+
+        <img src="/assets/img/bblogo-optim2.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <p><b><span class="lining-numerals">~78%</span> smaller</b></p>
+
+        <p>如果你一直坚持<span class="small-caps">SVG</span>s 这些优化原则，积少成多网站的性能会稳步提升。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--3" id="implementation">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#implementation">SVG使用方法</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>在网页上使用<span class="small-caps">SVG</span>s 有不同的使用方法。对于这些使用方法要具体问题具体分析，因地制宜的采用。有些使用方法是要避免使用的。如果，你只是想使用SVG跟分辨率无关和文件体积这两个特性，你可以使用<code>img</code>或者是使用<span class="small-caps">CSS</span>中<code>background-image</code>来引入<span class="small-caps">SVG</span>格式的图形，就像使用其它的图形格式一样简单。</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Img</h4>
+        <p>仅仅在img标签中引入svg就可以了。你也可以在<code>&lt;picture&gt;</code>元素中使用<span class="small-caps">SVG</span>s。需要注意的是，使用这种方法在交互性上有很多的限制，如不能使用JS来控制。</p>
+        <pre><code>&lt;img src="bblogo.svg" alt="Breaking Borders Logo" height="65" width="68"&gt;</code></pre>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Background-image</h4>
+        <p>使用背景图片方法需要注意的一点是，最好不要使用<span class="lining-numerals">base64</span>编码来格式化SVG图片，因为它在加载完前会阻塞其它资源的下载。需要注意的是，使用这种方法在交互性上有很多的限制，如不能使用JS来控制。</p>
+        <pre><code>.logo {
+  background-image: url(bblogo.svg);
+}</code></pre>
+        <div class="bb-bg"></div>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Iframe</h4>
+        <p>使用 <code>&lt;iframe&gt;</code>来加载<span class="small-caps">SVG</span>s。不过，我不确定在未来这是不是还是一种好的使用方法 ¯\_(ツ)_/¯。</p>
+        <pre><code>&lt;iframe src="bblogo.svg"&gt;Your browser does not support iframes&lt;/iframe&gt;</code></pre>
+        <iframe src="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support iframes</iframe>
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Embed</h4>
+        <p><code>&lt;embed&gt;</code>标签，大多数浏览器都支持。但最好还是不要使用这种方法。</p>
+        <pre><code>&lt;embed type="image/svg+xml" src="bblogo.svg" /&gt;</code></pre>
+        <embed type="image/svg+xml" src="/assets/img/bblogo-optim.svg" class="bb-logo-example" />
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Object</h4>
+        <p><code>&lt;object&gt;</code>是SVG使用方法中很好的一个选择，如果你想使用JS来进行交互控制的话。 只需要把它放到<span class="small-caps">HTML</span>中就行了。</p>
+        <pre><code>&lt;object type="image/svg+xml" data="bblogo.svg"&gt;Your browser does not support SVGs&lt;/object&gt;</code></pre>
+        <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Inline</h4>
+        <p>把 <span class="small-caps">SVG</span>直接插入到html中，可以节省 <span class="small-caps">HTTP</span>请求，而且很方便实用JS来控制。但是，也意味着图片不能被浏览器缓存。同时使用JS来操控<span class="small-caps">SVG</span>也意味着浏览器会发生重绘行为。</p>
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column">
+        <hr>
+      </div>
+      <div class="column column--main">
+        <h3 class="zeta">总结</h3>
+        <p>如果你想尽可能使用发挥<span class="small-caps">SVG</span>s的特性，那使用<code>&lt;object&gt;</code>来使用SVG是最好的方法。 当然，你也可以直接把SVG代码直接插入到html文件中来节省<span class="small-caps">HTTP</span> 请求， 要记住的是，它就不能被缓存了哦。 如果仅仅是想像使用其他格式图片的方法来使用SVG，那就要使用<code>&lt;img&gt;</code> 或者是 <code>background-image</code>方法。 也可以使用 <code>&lt;iframe&gt;</code> 和 <code>&lt;embed&gt;</code> 方法来使用SVG，不过我觉得这两个方法不是好的选择。</p>
+      </div>
+      <div class="column">
+        <table id="implementation-support">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Object</th>
+              <th>Inline</th>
+              <th>Img</th>
+              <th>Background-image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="feature"><span class="small-caps">CSS</span> Manipulation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Some inline</td>
+              <td>Some inline</td>
+            </tr>
+            <tr>
+              <th class="feature"><span class="small-caps">JS</span> Manipulation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th class="feature"><span class="small-caps">SVG</span> Animation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <th class="feature">Interactive <span class="small-caps">SVG</span> Animation</th>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column column--main">
+        <p>注意: ‘Some inline’ 意味着使用img和background-image方法来使用SVG的话，css方面会有一些限制。 但是，如果直接把CSS写在SVG代码里面情况就不一样了。更多关于CSS与SVG的信息在下一节阐述。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--4" id="css">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#css"><span class="small-caps">CSS</span> 与SVG</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>使用<span class="small-caps">SVG</span> 值得庆幸的事情是我们依然可以使用<span class="small-caps">CSS</span>来控制SVG的表现。比如，我们想要一个icon在一些地方显示蓝色，我们只需要改变它的颜色即可而不需要换一张新的蓝色的图片。</p>
+
+        <p>有两种方法来使用样式 — 内联样式和外链样式。内联样式，即把样式包裹在 <code>&lt;style&gt;</code> 标签里然后放到<code>&lt![CDATA[ ... ]]&gt;</code>里面。一定要记得把样式包裹在<code>&lt![CDATA[ ... ]]&gt;</code>里面，因为有时候 <span class="small-caps">XML</span>在解析一些特殊字符串的时候会有一些问题(比如<code>&gt;</code>)。即使你没有一些特殊的字符串，也建议你使用上面的方法来写SVG的内联样式。即使用<code>CDATA</code>标签来包裹内联样式。</p>
+
+        <p>使用内联样式来操作SVG是一个非常好的实践。像这种<code>&lt;img&gt;</code> 和 <code>background-image</code>内联插入图片到话是不支持<span class="small-caps">CSS3</span>动画的 (可以看看 <a href="#animating">animations</a> 部分了解更多的关于动画方面的)。 <code>background-image</code>不支持媒体查询的(关于媒体查询可以先看看 <a href="#mediaqueries">media queries</a> 这部分了解更多的关于SVG与媒体查询)。而如果把样式内联在SVG文件中就可以解决这两个问题。</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">Inline styles</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-css.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &ltstyle type="text/css"&gt;
+    &lt![CDATA[
+    .firstb { fill: yellow; }
+    .secondb { fill: red; }
+    ]]&gt;
+  &lt;/style&gt;
+  &lt;path class="secondb" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path class="firstb" d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--main">
+        <p>如果使用外链样式的话也很容易来操作SVG图形，不过对于 <code>&lt;img&gt;</code> or <code>background-image</code>就无能为力了。 如果你使用 <code>&lt;object&gt;</code>来使用SVG代码，你需要在 <span class="small-caps">SVG</span> 中引入样式表（可以看看下面的代码）。 记住一点: 如果这样使用样式的话<span class="small-caps">SVG</span>可能会识别不了它的父类(比如<code>&lt;object&gt;</code>) 所以在使用object方法的时候，不要使用外链样式。 而直接在html文件中直接插入 <span class="small-caps">SVG</span>s 就不需要这么多顾虑了，想怎么做就怎么做。</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">外链样式</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-nocss.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>// Add to very start of SVG file before &lt;svg&gt;
+&lt;?xml-stylesheet type="text/css" href="style.css"?&gt;</code></pre>
+        <pre><code>// In style.css
+.firstb { fill: yellow; }
+.secondb { fill: red; }</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--5" id="javascript">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#javascript"><span class="small-caps">JS与SVG</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>由于我的javascript经验不是很多，所以我这里只是分享一些如何使用使用<span class="small-caps">JS</span> 来控制<span class="small-caps">SVG</span>的小的技巧。如果你想把JS代码嵌入到<span class="small-caps">SVG</span> 文件中， 记住把代码包裹在 <code>&lt![CDATA[ ... ]]&gt;</code> 中。如果是<code>&lt;img&gt;</code>或者是<code>background-image</code>，就不能用脚本来控制。</p>
+
+        <p>如果是使用外链 <span class="small-caps">JS</span>，如果你的 <span class="small-caps">SVG</span> 代码是直接插入到html的话，你可以像平常开发中使用JS控制<span class="small-caps">DOM</span>元素一样来控制SVG。如果是使用 <code>&lt;object&gt;</code> 你可以使用 <code>contentDocument</code>来控制它。比如下面：</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">外链脚本</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-js.svg" id="logoObject" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>window.onload=function() {
+  var object = document.getElementById("logoObject");
+  var svgDocument = object.contentDocument;
+  var svgb1 = svgDocument.getElementsByClassName("firstb");
+  var svgb2 = svgDocument.getElementsByClassName("secondb");
+  svgb1[0].setAttribute("fill", "yellow");
+  svgb2[0].setAttribute("fill", "red");
+};</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--6" id="styling">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#styling">SVG与响应式</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>在web开发中响应式图片有两种方法，一种是制作不同固定尺寸图片，然后使用媒体查询来根据不同尺寸的设备来引用不同尺寸的图片；一种是根据图片父容器尺寸来自动调整图片自身的尺寸来适应设备。</p>
+
+        <p>如果是使用固定尺寸的图片，需要注意的一点是：如果是使用<code>background-image</code> 来使用<span class="small-caps">SVG</span>你需要使用<code>background-size</code> 属性来指定尺寸。因为浏览器可能不能正确解析它从而导致一些问题出现。</p>
+
+        <p>使用<span class="small-caps">SVG</span> 有下面几点需要注意:</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--quad">
+        <h4 class="epsilon">Object</h4>
+        <p>设置宽度 <code>width: 100%;</code></p>
+
+        <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-resp">Your browser does not support SVGs</object>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Inline</h4>
+        <p>以前要使用<code>max-height</code>才能正常的显示图片，不过现在不需要了。这里需要注意的是，如果图形很复杂，在浏览器窗口改变大小的时候，Safari可能不会立即调整图形的尺寸。 </p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-resp"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Img</h4>
+        <p>设置宽度 <code>width: 100%;</code></p>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-resp">
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Background-image</h4>
+        <p>需要设置 <code>padding-bottom: #%;</code> 来使图片能正常的显示。</p>
+
+        <div class="bb-bg-resp"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--7" id="animating">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#animating">动画</a></h2>
+      </div>
+      <div class="column column--main">
+        <p><span class="small-caps">SVG</span>s 动画方法给我们的选择很多：比如<span class="small-caps">SVG</span>本身的SVG动画(基于 <span class="small-caps">SMIL</span>)、<span class="small-caps">CSS3</span>动画、或者是<span class="small-caps">JS</span> 动画。使用 <span class="small-caps">SVG</span> 动画和 <span class="small-caps">CSS3</span> 动画就可以做出很多的动画效果，而使用<span class="small-caps">SVG</span> 动画更是CSS3动画不可比拟的。而使用Javascript则能使我们编写更加复杂的动画效果，比如 <a href="http://snapsvg.io/">Snap.svg</a>就是一个专门用来操控SVG的javascript库。这里就不详细说这个js库了，可以去它的官网看看它们的实例。</p>
+
+        <p><span class="small-caps">SVG</span>动画非常的强大。不过这里我并不会展开来说，因为我使用SVG动画的经验也比较少。不过当我了解它到强大之后，我可以想象它能制作出很强大的动画效果。唯一不足的是可能要花费点时间。如果你有兴趣的话，这里推荐一些非常不错的教程 <a href="#resources">地址</a> 。 SVG动画简而言之就是在SVG代码中插入 <code>&lt;animate&gt;</code> 元素，从而可以给路径或者是形状添加动画效果。大部分浏览器都支持SVG动画，不过 Internet Explorer不支持 <span class="small-caps">SVG</span> 动画， 当然你如果想在IE上也运行动画效果，可以使用<a href="https://leunen.me/fakesmile/">FakeSmile</a>这个javascript库来支持IE。</p>
+
+        <p>下面有一个简单的实例：两个字母之间的颜色互相切换</p>
+
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+    &lt;/path&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column">
+        <h4><span class="small-caps">SVG</span> animation</h4>
+      </div>
+      <div class="column column--quad">
+        <h4 class="epsilon">Object</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-anim2.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Inline</h4>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path></svg>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Img</h4>
+        <img src="/assets/img/bblogo-anim2.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Background-image</h4>
+        <div class="bb-bg-anim"></div>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--main">
+        <p>在web开发中，会经常遇到一些图标交互动画的场景，比如鼠标滑过图标，触发并执行动画效果。从上面的内容<a href="#implementation-support">SVG动画支持度</a>可以知道如果使用<code>&lt;img&gt;</code> or <code>background-image</code>来使用SVG的话，是不支持SVG动画的。如果是使用 <span class="small-caps">SVG</span> 动画来编写鼠标滑过动画的话，我们需要使用 <code>begin="mouseover"</code> 和 <code>begin="mouseout"</code> 属性来触发鼠标滑过动画效果。而 <span class="small-caps">CSS3</span> 动画效果就简单多，跟我们平时使用CSS3编写动画效果一样没有什么区别，只需要使用 <code>hover</code>属性就可以了。有一件需要注意的事情的是， 如果你编写的动画效果用的是外链样式的话，对于直接在html文件中插入SVG代码没有什么影响；如果是使用<code>&lt;object&gt;</code>来使用SVG的话，那你也需要在SVG代码中引入你的外部样式。</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon"><span class="small-caps">SVG</span>交互动画</h4>
+        <p>只针对<code>&lt;object&gt;</code> 或者是直接在html中插入SVG代码的方式使用SVG代码有效</p>
+        <object type="image/svg+xml" data="/assets/img/bblogo-anim.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon"><span class="small-caps">CSS3</span> 动画</h4>
+        <p>只针对 <code>&lt;object&gt;</code> 或者是直接在html中插入SVG代码的方法使用SVG。使用内联样式的方式来编写动画效果<a href="#css">previously</a>。</p>
+        <object type="image/svg+xml" data="/assets/img/bblogo-animcss.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &ltstyle type="text/css"&gt;
+    &lt![CDATA[
+    .firstb { fill: #000; transition: fill 0.1s; }
+    .firstb:hover { fill: #4e86b1; }
+    .secondb { fill: #4e86b1; transition: fill 0.1s; }
+    .secondb:hover { fill: #000; }
+    ]]&gt;
+  &lt;/style&gt;
+  &lt;path class="secondb" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path class="firstb" d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--8" id="spriting">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#spriting">SVG与雪碧图</a></h2>
+      </div>
+      <div class="column column--main">
+        <p><span class="small-caps">SVG</span> 也能使用雪碧图的技术，就像平时开发中使用的<span class="small-caps">PNG</span>s来制作雪碧图一样。不过使用<span class="small-caps">SVG</span>来做雪碧图的话，一个额外的好处是我们不再需要为高清屏准备额外的2倍图。因为SVG与分辨率无关，也就是说在任何设备上SVG都能清晰的显示。并且使用<span class="small-caps">SVG</span>还能节省<span class="small-caps">HTTP</span>请求。这里有两种方法来达到雪碧图相同的效果。第一种方法是把所有的图标使用<code>&lt;symbol&gt;</code>元素来定义在 <span class="small-caps">SVG</span> 代码中并且隐藏它。然后使用<code>&lt;use&gt;</code>元素来通过<code>&lt;symbol&gt;</code> 的 <code>xlink:href="#id"</code>来引用它。第二种方法是使用<span class="small-caps">SVG</span>的<code>viewbox</code>属性来指定显示<span class="small-caps">SVG</span>画布的区域，跟background-position原理差不多。
+          <p>如果你想详细的了解SVG雪碧图的技术，可以去看看这几篇教程<a href="#resources">资源</a>， 特别是 <a href="https://twitter.com/SaraSoueidan">Sara Soueidan’s</a> 24ways <a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">article</a>。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--9" id="mediaqueries">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#mediaqueries">媒体查询</a></h2>
+      </div>
+      <div class="column column--main">
+        <p><span class="small-caps">SVG</span>s一个有趣的地方是，如果你在嵌入的SVG文件中的样式中使用来媒体查询，那么<span class="small-caps">SVG</span>s响应的是这些元素建立起来的viewport。也就是说，这些元素的尺寸会生成描绘SVG的viewport，也会生成CSS媒体查询条件应用的viewport。这样我们就可以使用媒体查询来告知<span class="small-caps">SVG</span> 在不同viewport下的样式。</p>
+
+        <p>想象一下，如果你手头有一个大品牌的logo，你想logo都能清晰的展示出来，无论用户使用的是何种尺寸的设备。使用媒体查询就能做到，根据不同尺寸的设备改变SVG图形的尺寸。这适用于所有的使用SVG的方法，除了使用<code>background-image</code>的方法 (备注: <span class="small-caps">IE9–11</span>只支持一个断点的设置)。滑动下面的滑块试试看会发生什么：</p>
+
+        <form oninput="getElementById('responsive-logo').setAttribute('width',value=slider.value);" style="min-height: 200px;">
+          <input id="slider" type="range" min="30" max="335" value="335"></input>
+          <br>
+          <img id="responsive-logo" class="slider-image" src="/assets/img/bblogo-resp.svg" width="335" alt="svg">
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--10" id="fallbacks">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#fallbacks">降级使用SVG</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>大部分的现代浏览器都支持<span class="small-caps">SVG</span>s。如果你还要支持诸如<span class="small-caps">IE8</span>这样的老一代的浏览器你可能需要降级来处理，对不支持SVG的浏览器使用<span class="small-caps">PNG</span>s来显示。这里就不深入讨论了，现在都啥年代了，你可能早就不需要支持像<span class="small-caps">IE8</span> 这类老一代的浏览器了 ¯\_(ツ)_/¯。 不过, 如果你真的需要降级来处理SVG的话，一些本来使用 <span class="small-caps">SVG</span>就相当简单的事情就会变得稍微复杂啦。关于降级使用SVG，建议去读读<a href="https://twitter.com/AmeliasBrain">Amelia Bellamy-Royds</a> 写的<a href="https://css-tricks.com/a-complete-guide-to-svg-fallbacks/">CSS-Tricks</a>篇文章。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--11" id="resources">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#resources">推荐资源</a></h2>
+      </div>
+      <div class="column column--duo">
+        <h3 class="zeta">SVG基本介绍</h3>
+        <ul>
+          <li><a href="http://www.webdesignerdepot.com/2015/01/the-ultimate-guide-to-svg/">Ultimate guide to <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://www.sitepoint.com/add-svg-to-web-page/">How to Add <span class="small-caps">SVG</span>s to Your Web Page</a></li>
+          <li><a href="http://www.w3.org/Graphics/SVG/About.html"><span class="small-caps">W3C</span> About <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://www.smashingmagazine.com/2014/03/05/rethinking-responsive-svg/">Rethinking Responsive <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://tympanus.net/Tutorials/ResponsiveSVGs/index6.html">Making <span class="small-caps">SVG</span>s Responsive</a></li>
+          <li><a href="https://css-tricks.com/using-svg/">Using <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://blogs.adobe.com/webplatform/2013/01/08/svg-styling/"><span class="small-caps">SVG</span> Styling</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--duo">
+        <h3 class="zeta">SVG优化</h3>
+        <ul>
+          <li><a href="http://calendar.perfplanet.com/2014/tips-for-optimising-svg-delivery-for-the-web/">Tips For Optimising <span class="small-caps">SVG</span> Delivery For The Web</a></li>
+          <li><a href="http://jaydenseric.com/blog/how-to-optimize-svg">How To Optimize <span class="small-caps">SVG</span></a></li>
+          <li><a href="https://css-tricks.com/understanding-and-manually-improving-svg-optimization/">Understanding and Manually Improving <span class="small-caps">SVG</span> Optimization</a></li>
+          <li><a href="https://www.youtube.com/watch?v=1AdX8odLC8M"><span class="small-caps">SVG</span> Optimization Video</a></li>
+          <li><a href="https://jakearchibald.github.io/svgomg/"><span class="small-caps">SVGOMG</span> — <span class="small-caps">SVGO GUI</span> in browser</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h3 class="zeta">SVG动画</h3>
+        <ul>
+          <li><a href="https://css-tricks.com/guide-svg-animations-smil/">A Guide to <span class="small-caps">SVG</span> Animations</a></li>
+          <li><a href="http://www.smashingmagazine.com/2014/11/03/styling-and-animating-svgs-with-css/">Styling And Animating <span class="small-caps">SVG</span>s With <span class="small-caps">CSS</span></a></li>
+          <li><a href="http://product.voxmedia.com/2013/11/25/5426880/polygon-feature-design-svg-animations-for-fun-and-profit"><span class="small-caps">SVG</span> animations for fun and profit</a></li>
+          <li><a href="http://snapsvg.io/">Snap.svg</a></li>
+          <li><a href="http://svgjs.com/"><span class="small-caps">SVG</span>.js</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--duo">
+        <h3 class="zeta">SVG雪碧图</h3>
+        <ul>
+          <li><a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">An Overview of <span class="small-caps">SVG</span> Sprite Creation Techniques</a></li>
+          <li><a href="http://sarasoueidan.com/blog/structuring-grouping-referencing-in-svg/">Structuring, Grouping, and Referencing in <span class="small-caps">SVG</span></a></li>
+          <li><a href="http://taye.me/blog/svg/a-guide-to-svg-use-elements/">A guide to <span class="small-caps">SVG</span> &lt;use&gt; elements</a></li>
+          <li><a href="https://github.com/filamentgroup/grunticon">Grunticon</a></li>
+          <li><a href="https://github.com/lukewhitehouse/svg-icon-workflow"><span class="small-caps">SVG</span> icon workflow</a></li>
+          <li><a href="http://tomhazledine.com/inline-svg-icons/">Inline <span class="small-caps">SVG</span> icons</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="global-footer">
+    <p>An <a href="https://github.com/designbyjake/svgontheweb">open source</a> side project from <a href="https://twitter.com/designbyjake">Jake Giltsoff</a>中文翻译<a href="http://janily.gitcafe.io/">janily</a></p>
+  </footer>
+
+  <script>
+  window.onload=function() {
+    var object = document.getElementById("logoObject");
+    var svgDocument = object.contentDocument;
+    var svgb1 = svgDocument.getElementsByClassName("firstb");
+    var svgb2 = svgDocument.getElementsByClassName("secondb");
+    svgb1[0].setAttribute("fill", "yellow");
+    svgb2[0].setAttribute("fill", "red");
+  };
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23355677-22', 'auto');
+  ga('send', 'pageview');
+  </script>
+</body>
+</html>
