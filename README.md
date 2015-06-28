@@ -24,6 +24,8 @@ The page uses Sass which compiles to CSS. Make changes in the Sass folder and th
 
 If you would like to translate the page, please fork the repo and duplicate the `zz-ZZ` folder. This has the latest content without the `span`s used to style some OpenType features so it should be a little easier to work from.
 
+Thank you [janily](https://github.com/janily) for the Chinese translation.
+
 ---
 
 Love,
