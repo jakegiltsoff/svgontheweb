@@ -1372,6 +1372,8 @@ img:not(.slider-image) {
   position: absolute;
   right: 3%;
   top: 10px; }
+  [lang="zh"] .locale {
+    top: 7px; }
   .locale ul {
     list-style-type: none; }
     .locale ul li {
@@ -1395,7 +1397,6 @@ img:not(.slider-image) {
       .locale ul li.active {
         font-weight: 700; }
       .locale ul li a {
-        color: #f2f2f2;
-        border-bottom: 1px solid; }
+        color: rgba(255, 255, 255, 0.7); }
         .locale ul li a:hover, .locale ul li a:active, .locale ul li a:focus {
           color: #FFFFFF; }

@@ -33,6 +33,10 @@
   right: 3%;
   top: 10px;
 
+  [lang="zh"] & {
+    top: 7px;
+  }
+
   ul {
     list-style-type: none;
 
@@ -51,8 +55,7 @@
       }
 
       a {
-        color: darken($white,5%);
-        border-bottom: 1px solid;
+        color: rgba($white,0.7);
 
         &:hover, &:active, &:focus {
           color: $white;
