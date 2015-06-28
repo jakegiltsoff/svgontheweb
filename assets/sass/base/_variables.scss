@@ -76,6 +76,14 @@ $monospacetype: (
   cap-height: 0.68
 );
 
+$chinesetype: (
+  font-family: '"source-han-sans-simplified-c", sans-serif',
+  regular: 400,
+  bold: 700,
+  italic: normal,
+  cap-height: 0.9
+);
+
 // Here are some local fonts cap-height sizes to get you started:
 // Georgia: 0.66, Times / Times New Roman: 0.65, Palatino: 0.52
 // Lucida Grande: 0.72, Helvetica: 0.65, Verdana: 0.76, Tahoma: 0.76

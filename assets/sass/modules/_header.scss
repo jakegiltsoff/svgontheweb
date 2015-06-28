@@ -10,21 +10,38 @@
   background: -ms-linear-gradient(45deg, $head 0%,$head2 100%);
   background: linear-gradient(45deg, $head 0%,$head2 100%);
 
-  h1 {
-    color: $white;
-    font-weight: map-get($headingtype, regular);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  [lang="en"] & {
+
+    h1 {
+      color: $white;
+      font-weight: map-get($headingtype, regular);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h2 {
+      color: $white;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      &:after {
+        content: ' —';
+        display: inline;
+      }
+    }
   }
 
-  h2 {
-    color: $white;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  [lang="zh"] & {
 
-    &:after {
-      content: ' —';
-      display: inline;
+    h1 {
+      color: $white;
+      font-weight: map-get($chinesetype, regular);
+    }
+
+    h2 {
+      color: $white;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
   }
 }

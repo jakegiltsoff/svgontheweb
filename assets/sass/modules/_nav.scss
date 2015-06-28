@@ -27,3 +27,37 @@
     }
   }
 }
+
+.locale {
+  position: absolute;
+  right: 3%;
+  top: 10px;
+
+  ul {
+    list-style-type: none;
+
+    li {
+      color: $white;
+      display: inline-block;
+
+      @include fontsize(theta, all);
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      &.active {
+        font-weight: 700;
+      }
+
+      a {
+        color: darken($white,5%);
+        border-bottom: 1px solid;
+
+        &:hover, &:active, &:focus {
+          color: $white;
+        }
+      }
+    }
+  }
+}
