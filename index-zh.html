@@ -292,7 +292,7 @@
 
         <p>有两种方法来使用样式 — 内联样式和外链样式。内联样式，即把样式包裹在 <code>&lt;style&gt;</code> 标签里然后放到<code>&lt![CDATA[ ... ]]&gt;</code>里面。一定要记得把样式包裹在<code>&lt![CDATA[ ... ]]&gt;</code>里面，因为有时候 <span class="small-caps">XML</span>在解析一些特殊字符串的时候会有一些问题(比如<code>&gt;</code>)。即使你没有一些特殊的字符串，也建议你使用上面的方法来写SVG的内联样式。即使用<code>CDATA</code>标签来包裹内联样式。</p>
 
-        <p>使用内联样式来操作SVG是一个非常好的实践。像这种<code>&lt;img&gt;</code> 和 <code>background-image</code>内联插入图片到话是不支持<span class="small-caps">CSS3</span>动画的 (可以看看 <a href="#animating">animations</a> 部分了解更多的关于动画方面的)。 <code>background-image</code>不支持媒体查询的(关于媒体查询可以先看看 <a href="#mediaqueries">media queries</a> 这部分了解更多的关于SVG与媒体查询)。</p>
+        <p>使用内联样式来操作SVG是一个非常好的实践。像这种<code>&lt;img&gt;</code> 和 <code>background-image</code>内联插入图片到话是不支持<span class="small-caps">CSS3</span>动画的 (可以看看 <a href="#animating">animations</a> 部分了解更多的关于动画方面的)。 <code>background-image</code>不支持媒体查询的(关于媒体查询可以先看看 <a href="#mediaqueries">media queries</a> 这部分了解更多的关于SVG与媒体查询)。而如果把样式内联在SVG文件中就可以解决这两个问题。</p>
       </div>
     </div>
     <div class="section typeset">
@@ -315,12 +315,12 @@
     </div>
     <div class="section typeset">
       <div class="column column--main">
-        <p>如果使用外链样式的话也很容易来操作SVG图形，不过对于 <code>&lt;img&gt;</code> or <code>background-image</code>就无能为力了。 如果你使用 <code>&lt;object&gt;</code>来使用SVG代码，你需要在 <span class="small-caps">SVG</span> 中引入样式表（可以看看下面的代码）。 记住一点: 如果这样使用样式的话<span class="small-caps">SVG</span>可能活识别不了它的父类(比如<code>&lt;object&gt;</code>) 所以在使用object方法的时候，不要使用外链样式。 而直接在html文件中直接插入 <span class="small-caps">SVG</span>s 就不需要这么多顾虑了，想怎么做就怎么做。</p>
+        <p>如果使用外链样式的话也很容易来操作SVG图形，不过对于 <code>&lt;img&gt;</code> or <code>background-image</code>就无能为力了。 如果你使用 <code>&lt;object&gt;</code>来使用SVG代码，你需要在 <span class="small-caps">SVG</span> 中引入样式表（可以看看下面的代码）。 记住一点: 如果这样使用样式的话<span class="small-caps">SVG</span>可能会识别不了它的父类(比如<code>&lt;object&gt;</code>) 所以在使用object方法的时候，不要使用外链样式。 而直接在html文件中直接插入 <span class="small-caps">SVG</span>s 就不需要这么多顾虑了，想怎么做就怎么做。</p>
       </div>
     </div>
     <div class="section typeset">
       <div class="column column--sidebar">
-        <h4 class="epsilon">External styles</h4>
+        <h4 class="epsilon">外链样式</h4>
         <object type="image/svg+xml" data="/assets/img/bblogo-nocss.svg" class="bb-logo-example">Your browser does not support SVGs</object>
       </div>
       <div class="column column--main">
