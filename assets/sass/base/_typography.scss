@@ -316,5 +316,12 @@ a {
 
   .highlight {
     background-color: #FFFA96;
+
+    a {
+
+      &:hover, &:active, &:focus {
+        text-shadow: 0.1rem 0 #FFFA96,0.15rem 0 #FFFA96,-0.1rem 0 #FFFA96,-0.15rem 0 #FFFA96;
+      }
+    }
   }
 }

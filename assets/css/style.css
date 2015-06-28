@@ -539,6 +539,8 @@ a {
   font-feature-settings: 'onum' 1, 'kern' 1; }
 .typeset .highlight {
   background-color: #FFFA96; }
+  .typeset .highlight a:hover, .typeset .highlight a:active, .typeset .highlight a:focus {
+    text-shadow: 0.1rem 0 #FFFA96,0.15rem 0 #FFFA96,-0.1rem 0 #FFFA96,-0.15rem 0 #FFFA96; }
 
 .section {
   margin: 0 auto;
@@ -733,6 +735,17 @@ a {
     padding-right: 2rem;
     max-width: 36.46154%;
     left: 63.53846%; } }
+
+.column--changes p {
+  -webkit-font-feature-settings: 'kern' 1, 'lnum' 1, 'tnum' 1, 'liga' 1;
+  -moz-font-feature-settings: 'kern' 1, 'lnum' 1, 'tnum' 1, 'liga' 1;
+  -ms-font-feature-settings: 'kern' 1, 'lnum' 1, 'tnum' 1, 'liga' 1;
+  -o-font-feature-settings: 'kern' 1, 'lnum' 1, 'tnum' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'lnum' 1, 'tnum' 1, 'liga' 1;
+  font-weight: 700; }
+  @media screen and (min-width: 40em) {
+    .column--changes p {
+      text-align: right; } }
 
 .bb-logo-example {
   height: 65px !important;

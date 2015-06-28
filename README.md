@@ -20,6 +20,10 @@ The page will run at http://localhost:1234/
 
 The page uses Sass which compiles to CSS. Make changes in the Sass folder and the page will reload automagically with the changes. The Base folder contains site wide base styles and the Modules folder has some page styles. It is build with [Sassline](https://github.com/designbyjake/sassline).
 
+## Translations
+
+If you would like to translate the page, please fork the repo and duplicate the `zz-ZZ` folder. This has the latest content without the `span`s used to style some OpenType features so it should be a little easier to work from.
+
 ---
 
 Love,

@@ -520,7 +520,7 @@
       <div class="column column--main">
         <p>A really cool thing about <span class="small-caps">SVG</span>s is, if you use media queries in the styles you embed within the file, instead of them working from the viewport size they will work from the <span class="small-caps">SVG</span>s viewport size. Basically that means they have their own working implementation of element queries out of the box. Nice. This allows us to control how the <span class="small-caps">SVG</span> will look at whatever size it is shown.</p>
 
-        <p>Imagine you are a big brand and you want people to use your logo correctly no matter what size it’s shown. Well you pretty much can! Just embed some media queries and you can change its formatting based on what size it is displayed at. This works with all implementations apart from <code>background-image</code> and in all browsers (note: <span class="small-caps">IE9–11</span> seem to only let you use one breakpoint). Have a play with the slider below to see an example of how that could work:</p>
+        <p>Imagine you are a big brand and you want people to use your logo correctly no matter what size it’s shown. Well you pretty much can! Just embed some media queries and you can change its formatting based on what size it is displayed at. This works with all implementations apart from <code>background-image</code> and in all browsers (note: <span class="small-caps">IE9–11</span> seem to ignore some breakpoints). Have a play with the slider below to see an example of how that could work:</p>
 
         <form oninput="getElementById('responsive-logo').setAttribute('width',value=slider.value);" style="min-height: 200px;">
           <input id="slider" type="range" min="30" max="335" value="335"></input>
