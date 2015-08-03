@@ -83,7 +83,7 @@
         <h2><a class="title" href="#preparation">Preparing &amp; Optimising</a></h2>
       </div>
       <div class="column column--main column--left">
-        <p>Preparing an SVG for use on the web is a simple process and no more complicated that exporting a JPEG or PNG. Work as you typically would in your preferred vector graphics editor (Illustrator, Sketch, etc [or even Photoshop if you use shape layers]) with the graphic at the size that you expect to use it. You’ll probably want to convert any text to outlines as it most likely will not show in the correct font unless you plan on styling them with a web font you are using on the page (which you can do!). Don’t worry about expanding all your objects to solid shapes, particularly if you have strokes as you may want to manipulate these on the page and expanding them typically doesn’t make the file size any smaller. Any names you put on layers / groups will be added in to the SVG as an ID on that element. This can be handy for styling, but will add a little to the overall file size.</p>
+        <p>Preparing an SVG for use on the web is a simple process and no more complicated that exporting a JPEG or PNG. Work as you typically would in your preferred vector graphics editor (Illustrator, Sketch, Inkscape [free], etc [or even Photoshop if you use shape layers]) with the graphic at the size that you expect to use it. I’ll explain a few things I do using Illustrator as that is what I typically use, but the same principles apply to any software. You’ll probably want to convert any text to outlines as it most likely will not show in the correct font unless you plan on styling them with a web font you are using on the page (which you can do!). Don’t worry about expanding all your objects to solid shapes, particularly if you have strokes as you may want to manipulate these on the page and expanding them typically doesn’t make the file size any smaller. Any names you put on layers / groups will be added in to the SVG as an ID on that element. This can be handy for styling, but will add a little to the overall file size.</p>
 
         <p>To export, check that the design is sitting in an area of whole pixels (i.e. not 23.3px &times; 86.8px) otherwise it may not actually be crisp and then crop the artboard around it. You can do this in Illustrator with <code>Object > Artboards > Fit to Artwork Bounds</code>. Next hit <code>save as</code> and choose SVG and use the default settings. You can do some optimising here, but it isn’t really worth it as we will be post-processing them to optimise and any time spend playing with these settings is wasted.</p>
 
@@ -196,7 +196,7 @@
 
       <div class="column column--duo">
         <h4 class="epsilon">Embed</h4>
-        <p><code>&lt;embed&gt;</code> is supported by most browsers but isn’t part of any spec. You can use it for SVGs but yea just don’t.</p>
+        <p><code>&lt;embed&gt;</code> is meant to be used to integrate ‘an external application’ or ‘interactive content’. You can use it for SVGs but yea probably just don’t.</p>
         <pre><code>&lt;embed type="image/svg+xml" src="bblogo.svg" /&gt;</code></pre>
         <embed type="image/svg+xml" src="/assets/img/bblogo-optim.svg" class="bb-logo-example" />
       </div>
