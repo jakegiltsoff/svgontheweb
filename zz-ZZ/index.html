@@ -499,11 +499,14 @@
         <h2><a class="title" href="#spriting">Spriting</a></h2>
       </div>
       <div class="column column--main">
-        <p>You can create and use SVG sprites just as we typically do with PNGs and <code>background-image</code> to get the resolution benefits or you can take it a step further using the extra power we have with SVG. I’m not going to go in to too much depth here again as it does get pretty complex and I’ve never found a need to implement them personally. The benefit is getting all the power of SVG with fewer HTTP requests.
+        <p>You can create and use SVG sprites just as we typically do with PNGs and <code>background-image</code> to get the resolution benefits or you can take it a step further using the extra power we have with SVG. I’m not going to go in to too much depth here again as it does get pretty complex and I’ve never found a need to implement them personally. The benefit is getting all the power of SVG with fewer HTTP requests.</p>
 
-          There are two approaches you can take — in the first you define all the icons within <code>&lt;symbol&gt;</code> elements in the SVG but hide them. Then reference each later when needed with a <code>&lt;use&gt;</code> element referencing the <code>&lt;symbol&gt;</code> with <code>xlink:href="#id"</code>. The second uses the SVG <code>viewbox</code> attribute to crop the artboard (area of the SVG that shows) around a certain area. These are both quite advanced SVG uses so only worry about them if you want to use them.</p>
+        <p>There are two approaches you can take — in the first you define all the icons within <code>&lt;symbol&gt;</code> elements in the SVG but hide them. Then reference each later when needed with a <code>&lt;use&gt;</code> element referencing the <code>&lt;symbol&gt;</code> with <code>xlink:href="#id"</code>. The second uses the SVG <code>viewbox</code> attribute to crop the artboard (area of the SVG that shows) around a certain area. These are both quite advanced SVG uses so only worry about them if you want to use them.</p>
 
-          <p>If you do want to learn how to implement these techniques please take a look at the links in the <a href="#resources">resources</a>, especially <a href="https://twitter.com/SaraSoueidan">Sara Soueidan’s</a> 24ways <a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">article</a>.</p>
+        <p>If you do want to learn how to implement these techniques please take a look at the links in the <a href="#resources">resources</a>, especially <a href="https://twitter.com/SaraSoueidan">Sara Soueidan’s</a> 24ways <a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">article</a>.</p>
+
+        <p>If you want to use an SVG sprite just as you would a PNG sprite with CSS it is worth noting that you will need to add the <code>width</code> and <code>height</code> attributes back in alongside the <code>viewBox</code> attribute in the SVG code. During the optimising process these are typically removed because they aren’t usually needed. In this case however IE9 &amp; 10 need them to be able to correctly crop to part of the image sprite. This is because those browsers take the width and height sizes specified in the CSS for the image size, but these are actually the sizes of the part of the image wanted (not the whole image). Confusing I know, but it is something I ran into recently.</p>
+
       </div>
     </div>
   </section>
