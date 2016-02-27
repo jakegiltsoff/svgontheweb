@@ -10,7 +10,7 @@
   background: -ms-linear-gradient(45deg, $head 0%,$head2 100%);
   background: linear-gradient(45deg, $head 0%,$head2 100%);
 
-  [lang="en"] & {
+  html:not([lang="ru"]):not([lang="zh"]) & {
 
     h1 {
       color: $white;
@@ -31,7 +31,18 @@
     }
   }
 
-  [lang="zh"] & {
+  html[lang="ru"] & {
+
+    h1 {
+      color: $white;
+    }
+
+    h2 {
+      color: $white;
+    }
+  }
+
+  html[lang="zh"] & {
 
     h1 {
       color: $white;

@@ -135,7 +135,7 @@ a {
 }
 
 
-[lang="en"] {
+html:not([lang="ru"]):not([lang="zh"]) {
 
   // Site-wide base styles.
   body {
@@ -325,7 +325,7 @@ a {
 }
 
 
-[lang="zh"] {
+html[lang="zh"] {
 
   body {
     font-family: unquote(map-get($chinesetype, font-family));
@@ -388,9 +388,6 @@ a {
 
     h6, .zeta {
       @include sassline(zeta, $chinesetype, 2, 0, all);
-
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
     }
 
     ul, ol {
@@ -492,6 +489,181 @@ a {
 
       th {
         font-weight: map-get($chinesetype, bold);
+      }
+    }
+  }
+
+  &.wf-loading {
+
+    h1,h2,h3,h4,h5,h6,li,p {
+      visibility: hidden;
+    }
+  }
+}
+
+html[lang="ru"] {
+
+  body {
+    font-family: unquote(map-get($russiantype, font-family));
+    font-style: normal;
+    font-weight: map-get($russiantype, regular);
+    line-height: 2rem;
+
+    @include fontsize(zeta, all);
+  }
+
+  .typeset {
+
+    p {
+      -webkit-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+      -moz-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+      -ms-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+      -o-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+      font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+
+      @include baseline($fontsize: zeta, $font: $russiantype, $lineheight: 2, $below: 2, $breakpoint: all);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      -webkit-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+      -moz-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+      -ms-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+      -o-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+      font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+
+      color: $headingColour;
+      font-family: unquote(map-get($russiantype, font-family));
+      font-style: normal;
+      font-weight: map-get($russiantype, bold);
+    }
+
+    .mega {
+      @include sassline(mega, $russiantype, 4, 1, all);
+    }
+
+    h1, .alpha {
+      @include sassline($fontsize: alpha, $font: $russiantype, $lineheight: 3, $below: 1, $breakpoint: all);
+    }
+
+    h2, .beta {
+      @include sassline(beta, $russiantype, 3, 1, all);
+    }
+
+    h3, .gamma {
+      @include sassline(gamma, $russiantype, 3, 1, all);
+    }
+
+    h4, .delta {
+      @include sassline(delta, $russiantype, 2, 1, all);
+    }
+
+    h5, .epsilon {
+      @include sassline(epsilon, $russiantype, 2, 0, all);
+    }
+
+    h6, .zeta {
+      @include sassline(zeta, $russiantype, 2, 0, all);
+    }
+
+    ul, ol {
+      @include baseline(zeta, $russiantype, 2, 2, all);
+
+      li {
+        -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+        -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+        -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+        -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+        font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+
+        margin-left: 2rem;
+
+        @include breakpoint(break-1) {
+          margin-left: 0;
+        }
+      }
+    }
+
+    b, strong, .bold {
+      font-weight: map-get($russiantype, bold);
+    }
+
+    em, i, .italic {
+      font-style: map-get($russiantype, italic);
+    }
+
+    small, .caption {
+      font-family: unquote(map-get($russiantype, font-family));
+      font-style: normal;
+      font-weight: map-get($russiantype, regular);
+
+      @include fontsize(theta, all);
+    }
+
+    .caption {
+      color: $captionColour;
+
+      @include baseline(theta, $russiantype, 2, 2, all);
+    }
+
+    blockquote {
+
+      p {
+        border-left: 0.15rem solid $linkColour;
+        font-style: map-get($russiantype, italic);
+        padding-left: 1rem;
+
+        $get-scale: map-get($modular-scale, scale-0);
+        $get-size: map-get($get-scale, zeta);
+        $rootsize: nth($sizes, 1);
+        $baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($russiantype, cap-height))) / $rootsize + 0.00001};
+        $baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($russiantype, cap-height))) / $rootsize + 0.00001)};
+
+        margin-bottom: #{$baseline-push}rem;
+        padding-bottom: #{$baseline-shift}rem;
+
+        @for $i from 2 through $breakpoints-limit {
+          $get-scale: map-get($modular-scale, scale-#{$i - 1});
+          $get-size: map-get($get-scale, zeta);
+          $rootsize: nth($sizes, $i);
+          $baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($russiantype, cap-height))) / $rootsize + 0.00001};
+          $baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($russiantype, cap-height))) / $rootsize + 0.00001)};
+
+          @media screen and (min-width: nth($points, $i) / 16 * 1em ) {
+            margin-bottom: #{$baseline-push}rem;
+            padding-bottom: #{$baseline-shift}rem;
+          }
+        }
+      }
+
+      @include breakpoint(break-1) {
+        margin-left: -1rem;
+      }
+    }
+
+    table {
+      -webkit-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+      -moz-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+      -ms-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+      -o-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+      font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+
+      font-family: unquote(map-get($russiantype, font-family));
+      font-style: normal;
+      font-weight: map-get($russiantype, regular);
+      width: 100%;
+
+      @include sassline(eta, $russiantype, 2, 2, all);
+
+      thead {
+
+        th {
+          @include sassline(zeta, $russiantype, 2, 0, all);
+          padding-bottom: 1px;
+        }
+      }
+
+      th {
+        font-weight: map-get($russiantype, bold);
       }
     }
   }

@@ -150,27 +150,27 @@ a {
 .typeset .highlight {
   background-color: #FFFA96; }
   .typeset .highlight a:hover, .typeset .highlight a:active, .typeset .highlight a:focus {
-    text-shadow: 0.1rem 0 #FFFA96,0.15rem 0 #FFFA96,-0.1rem 0 #FFFA96,-0.15rem 0 #FFFA96; }
+    text-shadow: 0.1rem 0 #FFFA96, 0.15rem 0 #FFFA96, -0.1rem 0 #FFFA96, -0.15rem 0 #FFFA96; }
 
-[lang="en"] body {
+html:not([lang="ru"]):not([lang="zh"]) body {
   font-family: "comenia-sans-web", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 2rem;
   font-size: 1.33333rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] body {
+    html:not([lang="ru"]):not([lang="zh"]) body {
       font-size: 1.21429rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] body {
+    html:not([lang="ru"]):not([lang="zh"]) body {
       font-size: 1.2rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] body {
+    html:not([lang="ru"]):not([lang="zh"]) body {
       font-size: 1.17647rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] body {
+    html:not([lang="ru"]):not([lang="zh"]) body {
       font-size: 1.15789rem; } }
-[lang="en"] .typeset p {
+html:not([lang="ru"]):not([lang="zh"]) .typeset p {
   -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
   -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
   -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
@@ -180,22 +180,22 @@ a {
   margin-bottom: 1.33999rem;
   padding-top: 0.66001rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset p {
       margin-bottom: 1.30963rem;
       padding-top: 0.69037rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset p {
       margin-bottom: 1.30599rem;
       padding-top: 0.69401rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset p {
       margin-bottom: 1.29999rem;
       padding-top: 0.70001rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset p {
       margin-bottom: 1.29525rem;
       padding-top: 0.70475rem; } }
-[lang="en"] .typeset h1, [lang="en"] .typeset h2, [lang="en"] .typeset h3, [lang="en"] .typeset h4, [lang="en"] .typeset h5, [lang="en"] .typeset h6 {
+html:not([lang="ru"]):not([lang="zh"]) .typeset h1, html:not([lang="ru"]):not([lang="zh"]) .typeset h2, html:not([lang="ru"]):not([lang="zh"]) .typeset h3, html:not([lang="ru"]):not([lang="zh"]) .typeset h4, html:not([lang="ru"]):not([lang="zh"]) .typeset h5, html:not([lang="ru"]):not([lang="zh"]) .typeset h6 {
   -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
   -ms-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
@@ -205,157 +205,157 @@ a {
   font-family: "comenia-sans-web", sans-serif;
   font-style: normal;
   font-weight: 700; }
-[lang="en"] .typeset .mega {
+html:not([lang="ru"]):not([lang="zh"]) .typeset .mega {
   line-height: 4rem;
   font-size: 3rem;
   margin-bottom: -0.23501rem;
   padding-top: 1.23501rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset .mega {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .mega {
       font-size: 2.85714rem;
       margin-bottom: -0.27144rem;
       padding-top: 1.27144rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset .mega {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .mega {
       font-size: 3.33333rem;
       margin-bottom: -0.15001rem;
       padding-top: 1.15001rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset .mega {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .mega {
       font-size: 3.52941rem;
       margin-bottom: -0.10001rem;
       padding-top: 1.10001rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset .mega {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .mega {
       font-size: 3.89474rem;
       margin-bottom: -0.00685rem;
       padding-top: 1.00685rem; } }
-[lang="en"] .typeset h1, [lang="en"] .typeset .alpha {
+html:not([lang="ru"]):not([lang="zh"]) .typeset h1, html:not([lang="ru"]):not([lang="zh"]) .typeset .alpha {
   line-height: 3rem;
   font-size: 2.33333rem;
   margin-bottom: 0.09499rem;
   padding-top: 0.90501rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset h1, [lang="en"] .typeset .alpha {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h1, html:not([lang="ru"]):not([lang="zh"]) .typeset .alpha {
       font-size: 2.14286rem;
       margin-bottom: 0.04642rem;
       padding-top: 0.95358rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset h1, [lang="en"] .typeset .alpha {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h1, html:not([lang="ru"]):not([lang="zh"]) .typeset .alpha {
       font-size: 2.13333rem;
       margin-bottom: 0.04399rem;
       padding-top: 0.95601rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset h1, [lang="en"] .typeset .alpha {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h1, html:not([lang="ru"]):not([lang="zh"]) .typeset .alpha {
       font-size: 2.35294rem;
       margin-bottom: 0.09999rem;
       padding-top: 0.90001rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset h1, [lang="en"] .typeset .alpha {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h1, html:not([lang="ru"]):not([lang="zh"]) .typeset .alpha {
       font-size: 2.63158rem;
       margin-bottom: 0.17104rem;
       padding-top: 0.82896rem; } }
-[lang="en"] .typeset h2, [lang="en"] .typeset .beta {
+html:not([lang="ru"]):not([lang="zh"]) .typeset h2, html:not([lang="ru"]):not([lang="zh"]) .typeset .beta {
   line-height: 3rem;
   font-size: 2.08333rem;
   margin-bottom: 0.03124rem;
   padding-top: 0.96876rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset h2, [lang="en"] .typeset .beta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h2, html:not([lang="ru"]):not([lang="zh"]) .typeset .beta {
       font-size: 1.9rem;
       margin-bottom: -0.01551rem;
       padding-top: 1.01551rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset h2, [lang="en"] .typeset .beta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h2, html:not([lang="ru"]):not([lang="zh"]) .typeset .beta {
       font-size: 1.87333rem;
       margin-bottom: -0.02231rem;
       padding-top: 1.02231rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset h2, [lang="en"] .typeset .beta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h2, html:not([lang="ru"]):not([lang="zh"]) .typeset .beta {
       font-size: 2.08824rem;
       margin-bottom: 0.03249rem;
       padding-top: 0.96751rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset h2, [lang="en"] .typeset .beta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h2, html:not([lang="ru"]):not([lang="zh"]) .typeset .beta {
       font-size: 2.31053rem;
       margin-bottom: 0.08917rem;
       padding-top: 0.91083rem; } }
-[lang="en"] .typeset h3, [lang="en"] .typeset .gamma {
+html:not([lang="ru"]):not([lang="zh"]) .typeset h3, html:not([lang="ru"]):not([lang="zh"]) .typeset .gamma {
   line-height: 3rem;
   font-size: 1.86667rem;
   margin-bottom: -0.02401rem;
   padding-top: 1.02401rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset h3, [lang="en"] .typeset .gamma {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h3, html:not([lang="ru"]):not([lang="zh"]) .typeset .gamma {
       font-size: 1.71429rem;
       margin-bottom: -0.06287rem;
       padding-top: 1.06287rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset h3, [lang="en"] .typeset .gamma {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h3, html:not([lang="ru"]):not([lang="zh"]) .typeset .gamma {
       font-size: 1.70667rem;
       margin-bottom: -0.06481rem;
       padding-top: 1.06481rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset h3, [lang="en"] .typeset .gamma {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h3, html:not([lang="ru"]):not([lang="zh"]) .typeset .gamma {
       font-size: 1.76471rem;
       margin-bottom: -0.05001rem;
       padding-top: 1.05001rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset h3, [lang="en"] .typeset .gamma {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h3, html:not([lang="ru"]):not([lang="zh"]) .typeset .gamma {
       font-size: 1.85789rem;
       margin-bottom: -0.02625rem;
       padding-top: 1.02625rem; } }
-[lang="en"] .typeset h4, [lang="en"] .typeset .delta {
+html:not([lang="ru"]):not([lang="zh"]) .typeset h4, html:not([lang="ru"]):not([lang="zh"]) .typeset .delta {
   line-height: 2rem;
   font-size: 1.66667rem;
   margin-bottom: 0.42499rem;
   padding-top: 0.57501rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset h4, [lang="en"] .typeset .delta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h4, html:not([lang="ru"]):not([lang="zh"]) .typeset .delta {
       font-size: 1.52143rem;
       margin-bottom: 0.38795rem;
       padding-top: 0.61205rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset h4, [lang="en"] .typeset .delta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h4, html:not([lang="ru"]):not([lang="zh"]) .typeset .delta {
       font-size: 1.5rem;
       margin-bottom: 0.38249rem;
       padding-top: 0.61751rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset h4, [lang="en"] .typeset .delta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h4, html:not([lang="ru"]):not([lang="zh"]) .typeset .delta {
       font-size: 1.57059rem;
       margin-bottom: 0.40049rem;
       padding-top: 0.59951rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset h4, [lang="en"] .typeset .delta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h4, html:not([lang="ru"]):not([lang="zh"]) .typeset .delta {
       font-size: 1.63684rem;
       margin-bottom: 0.41738rem;
       padding-top: 0.58262rem; } }
-[lang="en"] .typeset h5, [lang="en"] .typeset .epsilon {
+html:not([lang="ru"]):not([lang="zh"]) .typeset h5, html:not([lang="ru"]):not([lang="zh"]) .typeset .epsilon {
   line-height: 2rem;
   font-size: 1.49167rem;
   margin-bottom: -0.61963rem;
   padding-top: 0.61963rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset h5, [lang="en"] .typeset .epsilon {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h5, html:not([lang="ru"]):not([lang="zh"]) .typeset .epsilon {
       font-size: 1.37143rem;
       margin-bottom: -0.6503rem;
       padding-top: 0.6503rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset h5, [lang="en"] .typeset .epsilon {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h5, html:not([lang="ru"]):not([lang="zh"]) .typeset .epsilon {
       font-size: 1.36667rem;
       margin-bottom: -0.65151rem;
       padding-top: 0.65151rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset h5, [lang="en"] .typeset .epsilon {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h5, html:not([lang="ru"]):not([lang="zh"]) .typeset .epsilon {
       font-size: 1.32353rem;
       margin-bottom: -0.66251rem;
       padding-top: 0.66251rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset h5, [lang="en"] .typeset .epsilon {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h5, html:not([lang="ru"]):not([lang="zh"]) .typeset .epsilon {
       font-size: 1.31579rem;
       margin-bottom: -0.66448rem;
       padding-top: 0.66448rem; } }
-[lang="en"] .typeset h6, [lang="en"] .typeset .zeta {
+html:not([lang="ru"]):not([lang="zh"]) .typeset h6, html:not([lang="ru"]):not([lang="zh"]) .typeset .zeta {
   line-height: 2rem;
   font-size: 1.33333rem;
   margin-bottom: -0.66001rem;
@@ -363,46 +363,46 @@ a {
   letter-spacing: 0.1em;
   text-transform: uppercase; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset h6, [lang="en"] .typeset .zeta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h6, html:not([lang="ru"]):not([lang="zh"]) .typeset .zeta {
       font-size: 1.21429rem;
       margin-bottom: -0.69037rem;
       padding-top: 0.69037rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset h6, [lang="en"] .typeset .zeta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h6, html:not([lang="ru"]):not([lang="zh"]) .typeset .zeta {
       font-size: 1.2rem;
       margin-bottom: -0.69401rem;
       padding-top: 0.69401rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset h6, [lang="en"] .typeset .zeta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h6, html:not([lang="ru"]):not([lang="zh"]) .typeset .zeta {
       font-size: 1.17647rem;
       margin-bottom: -0.70001rem;
       padding-top: 0.70001rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset h6, [lang="en"] .typeset .zeta {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset h6, html:not([lang="ru"]):not([lang="zh"]) .typeset .zeta {
       font-size: 1.15789rem;
       margin-bottom: -0.70475rem;
       padding-top: 0.70475rem; } }
-[lang="en"] .typeset ul, [lang="en"] .typeset ol {
+html:not([lang="ru"]):not([lang="zh"]) .typeset ul, html:not([lang="ru"]):not([lang="zh"]) .typeset ol {
   line-height: 2rem;
   margin-bottom: 1.33999rem;
   padding-top: 0.66001rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset ul, [lang="en"] .typeset ol {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset ul, html:not([lang="ru"]):not([lang="zh"]) .typeset ol {
       margin-bottom: 1.30963rem;
       padding-top: 0.69037rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset ul, [lang="en"] .typeset ol {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset ul, html:not([lang="ru"]):not([lang="zh"]) .typeset ol {
       margin-bottom: 1.30599rem;
       padding-top: 0.69401rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset ul, [lang="en"] .typeset ol {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset ul, html:not([lang="ru"]):not([lang="zh"]) .typeset ol {
       margin-bottom: 1.29999rem;
       padding-top: 0.70001rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset ul, [lang="en"] .typeset ol {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset ul, html:not([lang="ru"]):not([lang="zh"]) .typeset ol {
       margin-bottom: 1.29525rem;
       padding-top: 0.70475rem; } }
-  [lang="en"] .typeset ul li, [lang="en"] .typeset ol li {
+  html:not([lang="ru"]):not([lang="zh"]) .typeset ul li, html:not([lang="ru"]):not([lang="zh"]) .typeset ol li {
     -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
     -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
     -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
@@ -410,76 +410,76 @@ a {
     font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
     margin-left: 2rem; }
     @media screen and (min-width: 40em) {
-      [lang="en"] .typeset ul li, [lang="en"] .typeset ol li {
+      html:not([lang="ru"]):not([lang="zh"]) .typeset ul li, html:not([lang="ru"]):not([lang="zh"]) .typeset ol li {
         margin-left: 0; } }
-[lang="en"] .typeset b, [lang="en"] .typeset strong, [lang="en"] .typeset .bold {
+html:not([lang="ru"]):not([lang="zh"]) .typeset b, html:not([lang="ru"]):not([lang="zh"]) .typeset strong, html:not([lang="ru"]):not([lang="zh"]) .typeset .bold {
   font-weight: 700; }
-[lang="en"] .typeset em, [lang="en"] .typeset i, [lang="en"] .typeset .italic {
+html:not([lang="ru"]):not([lang="zh"]) .typeset em, html:not([lang="ru"]):not([lang="zh"]) .typeset i, html:not([lang="ru"]):not([lang="zh"]) .typeset .italic {
   font-style: normal; }
-[lang="en"] .typeset small, [lang="en"] .typeset .caption {
+html:not([lang="ru"]):not([lang="zh"]) .typeset small, html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
   font-family: "comenia-sans-web", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.06667rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset small, [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset small, html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       font-size: 0.97143rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset small, [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset small, html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       font-size: 0.96rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset small, [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset small, html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       font-size: 0.88235rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset small, [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset small, html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       font-size: 0.82105rem; } }
-[lang="en"] .typeset .caption {
+html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
   color: #BDC8CC;
   line-height: 2rem;
   margin-bottom: 1.27199rem;
   padding-top: 0.72801rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       margin-bottom: 1.2477rem;
       padding-top: 0.7523rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       margin-bottom: 1.24479rem;
       padding-top: 0.75521rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       margin-bottom: 1.22499rem;
       padding-top: 0.77501rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset .caption {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset .caption {
       margin-bottom: 1.20936rem;
       padding-top: 0.79064rem; } }
-[lang="en"] .typeset blockquote p {
+html:not([lang="ru"]):not([lang="zh"]) .typeset blockquote p {
   border-left: 0.15rem solid #57A5B3;
   font-style: normal;
   padding-left: 1rem;
   margin-bottom: 1.67999rem;
   padding-bottom: 0.66001rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset blockquote p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset blockquote p {
       margin-bottom: 1.61928rem;
       padding-bottom: 0.69037rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset blockquote p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset blockquote p {
       margin-bottom: 1.61199rem;
       padding-bottom: 0.69401rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset blockquote p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset blockquote p {
       margin-bottom: 1.59999rem;
       padding-bottom: 0.70001rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset blockquote p {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset blockquote p {
       margin-bottom: 1.59052rem;
       padding-bottom: 0.70475rem; } }
 @media screen and (min-width: 40em) {
-  [lang="en"] .typeset blockquote {
+  html:not([lang="ru"]):not([lang="zh"]) .typeset blockquote {
     margin-left: -1rem; } }
-[lang="en"] .typeset table {
+html:not([lang="ru"]):not([lang="zh"]) .typeset table {
   -webkit-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
   -moz-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
   -ms-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
@@ -492,57 +492,57 @@ a {
   line-height: 2rem;
   font-size: 1.19167rem;
   margin-bottom: 1.30387rem;
-  padding-top: 0.69614rem; }
+  padding-top: 0.69613rem; }
   @media screen and (min-width: 40em) {
-    [lang="en"] .typeset table {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset table {
       font-size: 1.09286rem;
       margin-bottom: 1.27867rem;
       padding-top: 0.72133rem; } }
   @media screen and (min-width: 50em) {
-    [lang="en"] .typeset table {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset table {
       font-size: 1.08667rem;
       margin-bottom: 1.27709rem;
       padding-top: 0.72291rem; } }
   @media screen and (min-width: 64em) {
-    [lang="en"] .typeset table {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset table {
       font-size: 0.99412rem;
       margin-bottom: 1.25349rem;
       padding-top: 0.74651rem; } }
   @media screen and (min-width: 100em) {
-    [lang="en"] .typeset table {
+    html:not([lang="ru"]):not([lang="zh"]) .typeset table {
       font-size: 0.92632rem;
       margin-bottom: 1.2362rem;
       padding-top: 0.7638rem; } }
-  [lang="en"] .typeset table thead th {
+  html:not([lang="ru"]):not([lang="zh"]) .typeset table thead th {
     line-height: 2rem;
     font-size: 1.33333rem;
     margin-bottom: -0.66001rem;
     padding-top: 0.66001rem;
     padding-bottom: 1px; }
     @media screen and (min-width: 40em) {
-      [lang="en"] .typeset table thead th {
+      html:not([lang="ru"]):not([lang="zh"]) .typeset table thead th {
         font-size: 1.21429rem;
         margin-bottom: -0.69037rem;
         padding-top: 0.69037rem; } }
     @media screen and (min-width: 50em) {
-      [lang="en"] .typeset table thead th {
+      html:not([lang="ru"]):not([lang="zh"]) .typeset table thead th {
         font-size: 1.2rem;
         margin-bottom: -0.69401rem;
         padding-top: 0.69401rem; } }
     @media screen and (min-width: 64em) {
-      [lang="en"] .typeset table thead th {
+      html:not([lang="ru"]):not([lang="zh"]) .typeset table thead th {
         font-size: 1.17647rem;
         margin-bottom: -0.70001rem;
         padding-top: 0.70001rem; } }
     @media screen and (min-width: 100em) {
-      [lang="en"] .typeset table thead th {
+      html:not([lang="ru"]):not([lang="zh"]) .typeset table thead th {
         font-size: 1.15789rem;
         margin-bottom: -0.70475rem;
         padding-top: 0.70475rem; } }
-  [lang="en"] .typeset table th {
+  html:not([lang="ru"]):not([lang="zh"]) .typeset table th {
     font-weight: 700; }
 
-[lang="zh"] body {
+html[lang="zh"] body {
   font-family: "source-han-sans-simplified-c", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -550,18 +550,18 @@ a {
   text-align: justify;
   font-size: 1.33333rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] body {
+    html[lang="zh"] body {
       font-size: 1.21429rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] body {
+    html[lang="zh"] body {
       font-size: 1.2rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] body {
+    html[lang="zh"] body {
       font-size: 1.17647rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] body {
+    html[lang="zh"] body {
       font-size: 1.15789rem; } }
-[lang="zh"] .typeset p {
+html[lang="zh"] .typeset p {
   -webkit-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
   -moz-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
   -ms-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
@@ -571,22 +571,22 @@ a {
   margin-bottom: 1.59999rem;
   padding-top: 0.40001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset p {
+    html[lang="zh"] .typeset p {
       margin-bottom: 1.54642rem;
       padding-top: 0.45358rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset p {
+    html[lang="zh"] .typeset p {
       margin-bottom: 1.53999rem;
       padding-top: 0.46001rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset p {
+    html[lang="zh"] .typeset p {
       margin-bottom: 1.5294rem;
       padding-top: 0.4706rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset p {
+    html[lang="zh"] .typeset p {
       margin-bottom: 1.52104rem;
       padding-top: 0.47896rem; } }
-[lang="zh"] .typeset h1, [lang="zh"] .typeset h2, [lang="zh"] .typeset h3, [lang="zh"] .typeset h4, [lang="zh"] .typeset h5, [lang="zh"] .typeset h6 {
+html[lang="zh"] .typeset h1, html[lang="zh"] .typeset h2, html[lang="zh"] .typeset h3, html[lang="zh"] .typeset h4, html[lang="zh"] .typeset h5, html[lang="zh"] .typeset h6 {
   -webkit-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
   -moz-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
   -ms-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
@@ -596,204 +596,202 @@ a {
   font-family: "source-han-sans-simplified-c", sans-serif;
   font-style: normal;
   font-weight: 700; }
-[lang="zh"] .typeset .mega {
+html[lang="zh"] .typeset .mega {
   line-height: 4rem;
   font-size: 3rem;
   margin-bottom: 0.34999rem;
   padding-top: 0.65001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset .mega {
+    html[lang="zh"] .typeset .mega {
       font-size: 2.85714rem;
       margin-bottom: 0.2857rem;
       padding-top: 0.7143rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset .mega {
+    html[lang="zh"] .typeset .mega {
       font-size: 3.33333rem;
       margin-bottom: 0.49999rem;
       padding-top: 0.50001rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset .mega {
+    html[lang="zh"] .typeset .mega {
       font-size: 3.52941rem;
       margin-bottom: 0.58823rem;
       padding-top: 0.41177rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset .mega {
+    html[lang="zh"] .typeset .mega {
       font-size: 3.89474rem;
       margin-bottom: 0.75262rem;
       padding-top: 0.24738rem; } }
-[lang="zh"] .typeset h1, [lang="zh"] .typeset .alpha {
+html[lang="zh"] .typeset h1, html[lang="zh"] .typeset .alpha {
   line-height: 3rem;
   font-size: 2.33333rem;
   margin-bottom: 0.54999rem;
   padding-top: 0.45001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset h1, [lang="zh"] .typeset .alpha {
+    html[lang="zh"] .typeset h1, html[lang="zh"] .typeset .alpha {
       font-size: 2.14286rem;
       margin-bottom: 0.46428rem;
       padding-top: 0.53572rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset h1, [lang="zh"] .typeset .alpha {
+    html[lang="zh"] .typeset h1, html[lang="zh"] .typeset .alpha {
       font-size: 2.13333rem;
       margin-bottom: 0.45999rem;
       padding-top: 0.54001rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset h1, [lang="zh"] .typeset .alpha {
+    html[lang="zh"] .typeset h1, html[lang="zh"] .typeset .alpha {
       font-size: 2.35294rem;
       margin-bottom: 0.55881rem;
       padding-top: 0.44119rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset h1, [lang="zh"] .typeset .alpha {
+    html[lang="zh"] .typeset h1, html[lang="zh"] .typeset .alpha {
       font-size: 2.63158rem;
       margin-bottom: 0.6842rem;
       padding-top: 0.3158rem; } }
-[lang="zh"] .typeset h2, [lang="zh"] .typeset .beta {
+html[lang="zh"] .typeset h2, html[lang="zh"] .typeset .beta {
   line-height: 3rem;
   font-size: 2.08333rem;
   margin-bottom: 0.43749rem;
   padding-top: 0.56251rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset h2, [lang="zh"] .typeset .beta {
+    html[lang="zh"] .typeset h2, html[lang="zh"] .typeset .beta {
       font-size: 1.9rem;
       margin-bottom: 0.35499rem;
       padding-top: 0.64501rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset h2, [lang="zh"] .typeset .beta {
+    html[lang="zh"] .typeset h2, html[lang="zh"] .typeset .beta {
       font-size: 1.87333rem;
       margin-bottom: 0.34299rem;
       padding-top: 0.65701rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset h2, [lang="zh"] .typeset .beta {
+    html[lang="zh"] .typeset h2, html[lang="zh"] .typeset .beta {
       font-size: 2.08824rem;
       margin-bottom: 0.4397rem;
       padding-top: 0.5603rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset h2, [lang="zh"] .typeset .beta {
+    html[lang="zh"] .typeset h2, html[lang="zh"] .typeset .beta {
       font-size: 2.31053rem;
       margin-bottom: 0.53973rem;
       padding-top: 0.46027rem; } }
-[lang="zh"] .typeset h3, [lang="zh"] .typeset .gamma {
+html[lang="zh"] .typeset h3, html[lang="zh"] .typeset .gamma {
   line-height: 3rem;
   font-size: 1.86667rem;
   margin-bottom: 0.33999rem;
   padding-top: 0.66001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset h3, [lang="zh"] .typeset .gamma {
+    html[lang="zh"] .typeset h3, html[lang="zh"] .typeset .gamma {
       font-size: 1.71429rem;
       margin-bottom: 0.27142rem;
       padding-top: 0.72858rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset h3, [lang="zh"] .typeset .gamma {
+    html[lang="zh"] .typeset h3, html[lang="zh"] .typeset .gamma {
       font-size: 1.70667rem;
       margin-bottom: 0.26799rem;
       padding-top: 0.73201rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset h3, [lang="zh"] .typeset .gamma {
+    html[lang="zh"] .typeset h3, html[lang="zh"] .typeset .gamma {
       font-size: 1.76471rem;
       margin-bottom: 0.29411rem;
       padding-top: 0.70589rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset h3, [lang="zh"] .typeset .gamma {
+    html[lang="zh"] .typeset h3, html[lang="zh"] .typeset .gamma {
       font-size: 1.85789rem;
       margin-bottom: 0.33604rem;
       padding-top: 0.66396rem; } }
-[lang="zh"] .typeset h4, [lang="zh"] .typeset .delta {
+html[lang="zh"] .typeset h4, html[lang="zh"] .typeset .delta {
   line-height: 2rem;
   font-size: 1.66667rem;
   margin-bottom: 0.74999rem;
   padding-top: 0.25001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset h4, [lang="zh"] .typeset .delta {
+    html[lang="zh"] .typeset h4, html[lang="zh"] .typeset .delta {
       font-size: 1.52143rem;
       margin-bottom: 0.68463rem;
       padding-top: 0.31537rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset h4, [lang="zh"] .typeset .delta {
+    html[lang="zh"] .typeset h4, html[lang="zh"] .typeset .delta {
       font-size: 1.5rem;
       margin-bottom: 0.67499rem;
       padding-top: 0.32501rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset h4, [lang="zh"] .typeset .delta {
+    html[lang="zh"] .typeset h4, html[lang="zh"] .typeset .delta {
       font-size: 1.57059rem;
       margin-bottom: 0.70675rem;
       padding-top: 0.29325rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset h4, [lang="zh"] .typeset .delta {
+    html[lang="zh"] .typeset h4, html[lang="zh"] .typeset .delta {
       font-size: 1.63684rem;
       margin-bottom: 0.73657rem;
       padding-top: 0.26343rem; } }
-[lang="zh"] .typeset h5, [lang="zh"] .typeset .epsilon {
+html[lang="zh"] .typeset h5, html[lang="zh"] .typeset .epsilon {
   line-height: 2rem;
   font-size: 1.49167rem;
   margin-bottom: -0.32876rem;
   padding-top: 0.32876rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset h5, [lang="zh"] .typeset .epsilon {
+    html[lang="zh"] .typeset h5, html[lang="zh"] .typeset .epsilon {
       font-size: 1.37143rem;
       margin-bottom: -0.38287rem;
       padding-top: 0.38287rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset h5, [lang="zh"] .typeset .epsilon {
+    html[lang="zh"] .typeset h5, html[lang="zh"] .typeset .epsilon {
       font-size: 1.36667rem;
       margin-bottom: -0.38501rem;
       padding-top: 0.38501rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset h5, [lang="zh"] .typeset .epsilon {
+    html[lang="zh"] .typeset h5, html[lang="zh"] .typeset .epsilon {
       font-size: 1.32353rem;
       margin-bottom: -0.40442rem;
       padding-top: 0.40442rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset h5, [lang="zh"] .typeset .epsilon {
+    html[lang="zh"] .typeset h5, html[lang="zh"] .typeset .epsilon {
       font-size: 1.31579rem;
       margin-bottom: -0.4079rem;
       padding-top: 0.4079rem; } }
-[lang="zh"] .typeset h6, [lang="zh"] .typeset .zeta {
+html[lang="zh"] .typeset h6, html[lang="zh"] .typeset .zeta {
   line-height: 2rem;
   font-size: 1.33333rem;
   margin-bottom: -0.40001rem;
-  padding-top: 0.40001rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase; }
+  padding-top: 0.40001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset h6, [lang="zh"] .typeset .zeta {
+    html[lang="zh"] .typeset h6, html[lang="zh"] .typeset .zeta {
       font-size: 1.21429rem;
       margin-bottom: -0.45358rem;
       padding-top: 0.45358rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset h6, [lang="zh"] .typeset .zeta {
+    html[lang="zh"] .typeset h6, html[lang="zh"] .typeset .zeta {
       font-size: 1.2rem;
       margin-bottom: -0.46001rem;
       padding-top: 0.46001rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset h6, [lang="zh"] .typeset .zeta {
+    html[lang="zh"] .typeset h6, html[lang="zh"] .typeset .zeta {
       font-size: 1.17647rem;
       margin-bottom: -0.4706rem;
       padding-top: 0.4706rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset h6, [lang="zh"] .typeset .zeta {
+    html[lang="zh"] .typeset h6, html[lang="zh"] .typeset .zeta {
       font-size: 1.15789rem;
       margin-bottom: -0.47896rem;
       padding-top: 0.47896rem; } }
-[lang="zh"] .typeset ul, [lang="zh"] .typeset ol {
+html[lang="zh"] .typeset ul, html[lang="zh"] .typeset ol {
   line-height: 2rem;
   margin-bottom: 1.59999rem;
   padding-top: 0.40001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset ul, [lang="zh"] .typeset ol {
+    html[lang="zh"] .typeset ul, html[lang="zh"] .typeset ol {
       margin-bottom: 1.54642rem;
       padding-top: 0.45358rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset ul, [lang="zh"] .typeset ol {
+    html[lang="zh"] .typeset ul, html[lang="zh"] .typeset ol {
       margin-bottom: 1.53999rem;
       padding-top: 0.46001rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset ul, [lang="zh"] .typeset ol {
+    html[lang="zh"] .typeset ul, html[lang="zh"] .typeset ol {
       margin-bottom: 1.5294rem;
       padding-top: 0.4706rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset ul, [lang="zh"] .typeset ol {
+    html[lang="zh"] .typeset ul, html[lang="zh"] .typeset ol {
       margin-bottom: 1.52104rem;
       padding-top: 0.47896rem; } }
-  [lang="zh"] .typeset ul li, [lang="zh"] .typeset ol li {
+  html[lang="zh"] .typeset ul li, html[lang="zh"] .typeset ol li {
     -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
     -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
     -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
@@ -801,76 +799,76 @@ a {
     font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
     margin-left: 2rem; }
     @media screen and (min-width: 40em) {
-      [lang="zh"] .typeset ul li, [lang="zh"] .typeset ol li {
+      html[lang="zh"] .typeset ul li, html[lang="zh"] .typeset ol li {
         margin-left: 0; } }
-[lang="zh"] .typeset b, [lang="zh"] .typeset strong, [lang="zh"] .typeset .bold {
+html[lang="zh"] .typeset b, html[lang="zh"] .typeset strong, html[lang="zh"] .typeset .bold {
   font-weight: 700; }
-[lang="zh"] .typeset em, [lang="zh"] .typeset i, [lang="zh"] .typeset .italic {
+html[lang="zh"] .typeset em, html[lang="zh"] .typeset i, html[lang="zh"] .typeset .italic {
   font-style: normal; }
-[lang="zh"] .typeset small, [lang="zh"] .typeset .caption {
+html[lang="zh"] .typeset small, html[lang="zh"] .typeset .caption {
   font-family: "source-han-sans-simplified-c", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.06667rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset small, [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset small, html[lang="zh"] .typeset .caption {
       font-size: 0.97143rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset small, [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset small, html[lang="zh"] .typeset .caption {
       font-size: 0.96rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset small, [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset small, html[lang="zh"] .typeset .caption {
       font-size: 0.88235rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset small, [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset small, html[lang="zh"] .typeset .caption {
       font-size: 0.82105rem; } }
-[lang="zh"] .typeset .caption {
+html[lang="zh"] .typeset .caption {
   color: #BDC8CC;
   line-height: 2rem;
   margin-bottom: 1.47999rem;
   padding-top: 0.52001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset .caption {
       margin-bottom: 1.43713rem;
       padding-top: 0.56287rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset .caption {
       margin-bottom: 1.43199rem;
       padding-top: 0.56801rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset .caption {
       margin-bottom: 1.39705rem;
       padding-top: 0.60295rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset .caption {
+    html[lang="zh"] .typeset .caption {
       margin-bottom: 1.36946rem;
       padding-top: 0.63054rem; } }
-[lang="zh"] .typeset blockquote p {
+html[lang="zh"] .typeset blockquote p {
   border-left: 0.15rem solid #57A5B3;
   font-style: normal;
   padding-left: 1rem;
   margin-bottom: 2.19999rem;
   padding-bottom: 0.40001rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset blockquote p {
+    html[lang="zh"] .typeset blockquote p {
       margin-bottom: 2.09285rem;
       padding-bottom: 0.45358rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset blockquote p {
+    html[lang="zh"] .typeset blockquote p {
       margin-bottom: 2.07999rem;
       padding-bottom: 0.46001rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset blockquote p {
+    html[lang="zh"] .typeset blockquote p {
       margin-bottom: 2.05881rem;
       padding-bottom: 0.4706rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset blockquote p {
+    html[lang="zh"] .typeset blockquote p {
       margin-bottom: 2.0421rem;
       padding-bottom: 0.47896rem; } }
 @media screen and (min-width: 40em) {
-  [lang="zh"] .typeset blockquote {
+  html[lang="zh"] .typeset blockquote {
     margin-left: -1rem; } }
-[lang="zh"] .typeset table {
+html[lang="zh"] .typeset table {
   -webkit-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
   -moz-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
   -ms-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
@@ -885,54 +883,444 @@ a {
   margin-bottom: 1.53624rem;
   padding-top: 0.46376rem; }
   @media screen and (min-width: 40em) {
-    [lang="zh"] .typeset table {
+    html[lang="zh"] .typeset table {
       font-size: 1.09286rem;
       margin-bottom: 1.49178rem;
       padding-top: 0.50822rem; } }
   @media screen and (min-width: 50em) {
-    [lang="zh"] .typeset table {
+    html[lang="zh"] .typeset table {
       font-size: 1.08667rem;
       margin-bottom: 1.48899rem;
       padding-top: 0.51101rem; } }
   @media screen and (min-width: 64em) {
-    [lang="zh"] .typeset table {
+    html[lang="zh"] .typeset table {
       font-size: 0.99412rem;
       margin-bottom: 1.44734rem;
       padding-top: 0.55266rem; } }
   @media screen and (min-width: 100em) {
-    [lang="zh"] .typeset table {
+    html[lang="zh"] .typeset table {
       font-size: 0.92632rem;
       margin-bottom: 1.41683rem;
       padding-top: 0.58317rem; } }
-  [lang="zh"] .typeset table thead th {
+  html[lang="zh"] .typeset table thead th {
     line-height: 2rem;
     font-size: 1.33333rem;
     margin-bottom: -0.40001rem;
     padding-top: 0.40001rem;
     padding-bottom: 1px; }
     @media screen and (min-width: 40em) {
-      [lang="zh"] .typeset table thead th {
+      html[lang="zh"] .typeset table thead th {
         font-size: 1.21429rem;
         margin-bottom: -0.45358rem;
         padding-top: 0.45358rem; } }
     @media screen and (min-width: 50em) {
-      [lang="zh"] .typeset table thead th {
+      html[lang="zh"] .typeset table thead th {
         font-size: 1.2rem;
         margin-bottom: -0.46001rem;
         padding-top: 0.46001rem; } }
     @media screen and (min-width: 64em) {
-      [lang="zh"] .typeset table thead th {
+      html[lang="zh"] .typeset table thead th {
         font-size: 1.17647rem;
         margin-bottom: -0.4706rem;
         padding-top: 0.4706rem; } }
     @media screen and (min-width: 100em) {
-      [lang="zh"] .typeset table thead th {
+      html[lang="zh"] .typeset table thead th {
         font-size: 1.15789rem;
         margin-bottom: -0.47896rem;
         padding-top: 0.47896rem; } }
-  [lang="zh"] .typeset table th {
+  html[lang="zh"] .typeset table th {
     font-weight: 700; }
-[lang="zh"].wf-loading h1, [lang="zh"].wf-loading h2, [lang="zh"].wf-loading h3, [lang="zh"].wf-loading h4, [lang="zh"].wf-loading h5, [lang="zh"].wf-loading h6, [lang="zh"].wf-loading li, [lang="zh"].wf-loading p {
+html[lang="zh"].wf-loading h1, html[lang="zh"].wf-loading h2, html[lang="zh"].wf-loading h3, html[lang="zh"].wf-loading h4, html[lang="zh"].wf-loading h5, html[lang="zh"].wf-loading h6, html[lang="zh"].wf-loading li, html[lang="zh"].wf-loading p {
+  visibility: hidden; }
+
+html[lang="ru"] body {
+  font-family: "ff-tisa-sans-web-pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  font-size: 1.33333rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] body {
+      font-size: 1.21429rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] body {
+      font-size: 1.2rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] body {
+      font-size: 1.17647rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] body {
+      font-size: 1.15789rem; } }
+html[lang="ru"] .typeset p {
+  -webkit-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+  -moz-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+  -ms-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+  -o-font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+  font-feature-settings: 'kern' 1, 'lnum' 1, 'liga' 1;
+  line-height: 2rem;
+  margin-bottom: 1.33999rem;
+  padding-top: 0.66001rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset p {
+      margin-bottom: 1.30963rem;
+      padding-top: 0.69037rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset p {
+      margin-bottom: 1.30599rem;
+      padding-top: 0.69401rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset p {
+      margin-bottom: 1.29999rem;
+      padding-top: 0.70001rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset p {
+      margin-bottom: 1.29525rem;
+      padding-top: 0.70475rem; } }
+html[lang="ru"] .typeset h1, html[lang="ru"] .typeset h2, html[lang="ru"] .typeset h3, html[lang="ru"] .typeset h4, html[lang="ru"] .typeset h5, html[lang="ru"] .typeset h6 {
+  -webkit-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+  -ms-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+  -o-font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+  font-feature-settings: 'liga' 1, 'lnum' 1, 'kern' 1;
+  color: #040606;
+  font-family: "ff-tisa-sans-web-pro", sans-serif;
+  font-style: normal;
+  font-weight: 700; }
+html[lang="ru"] .typeset .mega {
+  line-height: 4rem;
+  font-size: 3rem;
+  margin-bottom: -0.23501rem;
+  padding-top: 1.23501rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset .mega {
+      font-size: 2.85714rem;
+      margin-bottom: -0.27144rem;
+      padding-top: 1.27144rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset .mega {
+      font-size: 3.33333rem;
+      margin-bottom: -0.15001rem;
+      padding-top: 1.15001rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset .mega {
+      font-size: 3.52941rem;
+      margin-bottom: -0.10001rem;
+      padding-top: 1.10001rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset .mega {
+      font-size: 3.89474rem;
+      margin-bottom: -0.00685rem;
+      padding-top: 1.00685rem; } }
+html[lang="ru"] .typeset h1, html[lang="ru"] .typeset .alpha {
+  line-height: 3rem;
+  font-size: 2.33333rem;
+  margin-bottom: 0.09499rem;
+  padding-top: 0.90501rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset h1, html[lang="ru"] .typeset .alpha {
+      font-size: 2.14286rem;
+      margin-bottom: 0.04642rem;
+      padding-top: 0.95358rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset h1, html[lang="ru"] .typeset .alpha {
+      font-size: 2.13333rem;
+      margin-bottom: 0.04399rem;
+      padding-top: 0.95601rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset h1, html[lang="ru"] .typeset .alpha {
+      font-size: 2.35294rem;
+      margin-bottom: 0.09999rem;
+      padding-top: 0.90001rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset h1, html[lang="ru"] .typeset .alpha {
+      font-size: 2.63158rem;
+      margin-bottom: 0.17104rem;
+      padding-top: 0.82896rem; } }
+html[lang="ru"] .typeset h2, html[lang="ru"] .typeset .beta {
+  line-height: 3rem;
+  font-size: 2.08333rem;
+  margin-bottom: 0.03124rem;
+  padding-top: 0.96876rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset h2, html[lang="ru"] .typeset .beta {
+      font-size: 1.9rem;
+      margin-bottom: -0.01551rem;
+      padding-top: 1.01551rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset h2, html[lang="ru"] .typeset .beta {
+      font-size: 1.87333rem;
+      margin-bottom: -0.02231rem;
+      padding-top: 1.02231rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset h2, html[lang="ru"] .typeset .beta {
+      font-size: 2.08824rem;
+      margin-bottom: 0.03249rem;
+      padding-top: 0.96751rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset h2, html[lang="ru"] .typeset .beta {
+      font-size: 2.31053rem;
+      margin-bottom: 0.08917rem;
+      padding-top: 0.91083rem; } }
+html[lang="ru"] .typeset h3, html[lang="ru"] .typeset .gamma {
+  line-height: 3rem;
+  font-size: 1.86667rem;
+  margin-bottom: -0.02401rem;
+  padding-top: 1.02401rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset h3, html[lang="ru"] .typeset .gamma {
+      font-size: 1.71429rem;
+      margin-bottom: -0.06287rem;
+      padding-top: 1.06287rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset h3, html[lang="ru"] .typeset .gamma {
+      font-size: 1.70667rem;
+      margin-bottom: -0.06481rem;
+      padding-top: 1.06481rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset h3, html[lang="ru"] .typeset .gamma {
+      font-size: 1.76471rem;
+      margin-bottom: -0.05001rem;
+      padding-top: 1.05001rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset h3, html[lang="ru"] .typeset .gamma {
+      font-size: 1.85789rem;
+      margin-bottom: -0.02625rem;
+      padding-top: 1.02625rem; } }
+html[lang="ru"] .typeset h4, html[lang="ru"] .typeset .delta {
+  line-height: 2rem;
+  font-size: 1.66667rem;
+  margin-bottom: 0.42499rem;
+  padding-top: 0.57501rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset h4, html[lang="ru"] .typeset .delta {
+      font-size: 1.52143rem;
+      margin-bottom: 0.38795rem;
+      padding-top: 0.61205rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset h4, html[lang="ru"] .typeset .delta {
+      font-size: 1.5rem;
+      margin-bottom: 0.38249rem;
+      padding-top: 0.61751rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset h4, html[lang="ru"] .typeset .delta {
+      font-size: 1.57059rem;
+      margin-bottom: 0.40049rem;
+      padding-top: 0.59951rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset h4, html[lang="ru"] .typeset .delta {
+      font-size: 1.63684rem;
+      margin-bottom: 0.41738rem;
+      padding-top: 0.58262rem; } }
+html[lang="ru"] .typeset h5, html[lang="ru"] .typeset .epsilon {
+  line-height: 2rem;
+  font-size: 1.49167rem;
+  margin-bottom: -0.61963rem;
+  padding-top: 0.61963rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset h5, html[lang="ru"] .typeset .epsilon {
+      font-size: 1.37143rem;
+      margin-bottom: -0.6503rem;
+      padding-top: 0.6503rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset h5, html[lang="ru"] .typeset .epsilon {
+      font-size: 1.36667rem;
+      margin-bottom: -0.65151rem;
+      padding-top: 0.65151rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset h5, html[lang="ru"] .typeset .epsilon {
+      font-size: 1.32353rem;
+      margin-bottom: -0.66251rem;
+      padding-top: 0.66251rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset h5, html[lang="ru"] .typeset .epsilon {
+      font-size: 1.31579rem;
+      margin-bottom: -0.66448rem;
+      padding-top: 0.66448rem; } }
+html[lang="ru"] .typeset h6, html[lang="ru"] .typeset .zeta {
+  line-height: 2rem;
+  font-size: 1.33333rem;
+  margin-bottom: -0.66001rem;
+  padding-top: 0.66001rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset h6, html[lang="ru"] .typeset .zeta {
+      font-size: 1.21429rem;
+      margin-bottom: -0.69037rem;
+      padding-top: 0.69037rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset h6, html[lang="ru"] .typeset .zeta {
+      font-size: 1.2rem;
+      margin-bottom: -0.69401rem;
+      padding-top: 0.69401rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset h6, html[lang="ru"] .typeset .zeta {
+      font-size: 1.17647rem;
+      margin-bottom: -0.70001rem;
+      padding-top: 0.70001rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset h6, html[lang="ru"] .typeset .zeta {
+      font-size: 1.15789rem;
+      margin-bottom: -0.70475rem;
+      padding-top: 0.70475rem; } }
+html[lang="ru"] .typeset ul, html[lang="ru"] .typeset ol {
+  line-height: 2rem;
+  margin-bottom: 1.33999rem;
+  padding-top: 0.66001rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset ul, html[lang="ru"] .typeset ol {
+      margin-bottom: 1.30963rem;
+      padding-top: 0.69037rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset ul, html[lang="ru"] .typeset ol {
+      margin-bottom: 1.30599rem;
+      padding-top: 0.69401rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset ul, html[lang="ru"] .typeset ol {
+      margin-bottom: 1.29999rem;
+      padding-top: 0.70001rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset ul, html[lang="ru"] .typeset ol {
+      margin-bottom: 1.29525rem;
+      padding-top: 0.70475rem; } }
+  html[lang="ru"] .typeset ul li, html[lang="ru"] .typeset ol li {
+    -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    -moz-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    -ms-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    -o-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    margin-left: 2rem; }
+    @media screen and (min-width: 40em) {
+      html[lang="ru"] .typeset ul li, html[lang="ru"] .typeset ol li {
+        margin-left: 0; } }
+html[lang="ru"] .typeset b, html[lang="ru"] .typeset strong, html[lang="ru"] .typeset .bold {
+  font-weight: 700; }
+html[lang="ru"] .typeset em, html[lang="ru"] .typeset i, html[lang="ru"] .typeset .italic {
+  font-style: normal; }
+html[lang="ru"] .typeset small, html[lang="ru"] .typeset .caption {
+  font-family: "ff-tisa-sans-web-pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.06667rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset small, html[lang="ru"] .typeset .caption {
+      font-size: 0.97143rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset small, html[lang="ru"] .typeset .caption {
+      font-size: 0.96rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset small, html[lang="ru"] .typeset .caption {
+      font-size: 0.88235rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset small, html[lang="ru"] .typeset .caption {
+      font-size: 0.82105rem; } }
+html[lang="ru"] .typeset .caption {
+  color: #BDC8CC;
+  line-height: 2rem;
+  margin-bottom: 1.27199rem;
+  padding-top: 0.72801rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset .caption {
+      margin-bottom: 1.2477rem;
+      padding-top: 0.7523rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset .caption {
+      margin-bottom: 1.24479rem;
+      padding-top: 0.75521rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset .caption {
+      margin-bottom: 1.22499rem;
+      padding-top: 0.77501rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset .caption {
+      margin-bottom: 1.20936rem;
+      padding-top: 0.79064rem; } }
+html[lang="ru"] .typeset blockquote p {
+  border-left: 0.15rem solid #57A5B3;
+  font-style: normal;
+  padding-left: 1rem;
+  margin-bottom: 1.67999rem;
+  padding-bottom: 0.66001rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset blockquote p {
+      margin-bottom: 1.61928rem;
+      padding-bottom: 0.69037rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset blockquote p {
+      margin-bottom: 1.61199rem;
+      padding-bottom: 0.69401rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset blockquote p {
+      margin-bottom: 1.59999rem;
+      padding-bottom: 0.70001rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset blockquote p {
+      margin-bottom: 1.59052rem;
+      padding-bottom: 0.70475rem; } }
+@media screen and (min-width: 40em) {
+  html[lang="ru"] .typeset blockquote {
+    margin-left: -1rem; } }
+html[lang="ru"] .typeset table {
+  -webkit-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+  -moz-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+  -ms-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+  -o-font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+  font-feature-settings: 'liga' 1, 'lnum' 1, 'tnum' 1, 'kern' 1;
+  font-family: "ff-tisa-sans-web-pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  width: 100%;
+  line-height: 2rem;
+  font-size: 1.19167rem;
+  margin-bottom: 1.30387rem;
+  padding-top: 0.69613rem; }
+  @media screen and (min-width: 40em) {
+    html[lang="ru"] .typeset table {
+      font-size: 1.09286rem;
+      margin-bottom: 1.27867rem;
+      padding-top: 0.72133rem; } }
+  @media screen and (min-width: 50em) {
+    html[lang="ru"] .typeset table {
+      font-size: 1.08667rem;
+      margin-bottom: 1.27709rem;
+      padding-top: 0.72291rem; } }
+  @media screen and (min-width: 64em) {
+    html[lang="ru"] .typeset table {
+      font-size: 0.99412rem;
+      margin-bottom: 1.25349rem;
+      padding-top: 0.74651rem; } }
+  @media screen and (min-width: 100em) {
+    html[lang="ru"] .typeset table {
+      font-size: 0.92632rem;
+      margin-bottom: 1.2362rem;
+      padding-top: 0.7638rem; } }
+  html[lang="ru"] .typeset table thead th {
+    line-height: 2rem;
+    font-size: 1.33333rem;
+    margin-bottom: -0.66001rem;
+    padding-top: 0.66001rem;
+    padding-bottom: 1px; }
+    @media screen and (min-width: 40em) {
+      html[lang="ru"] .typeset table thead th {
+        font-size: 1.21429rem;
+        margin-bottom: -0.69037rem;
+        padding-top: 0.69037rem; } }
+    @media screen and (min-width: 50em) {
+      html[lang="ru"] .typeset table thead th {
+        font-size: 1.2rem;
+        margin-bottom: -0.69401rem;
+        padding-top: 0.69401rem; } }
+    @media screen and (min-width: 64em) {
+      html[lang="ru"] .typeset table thead th {
+        font-size: 1.17647rem;
+        margin-bottom: -0.70001rem;
+        padding-top: 0.70001rem; } }
+    @media screen and (min-width: 100em) {
+      html[lang="ru"] .typeset table thead th {
+        font-size: 1.15789rem;
+        margin-bottom: -0.70475rem;
+        padding-top: 0.70475rem; } }
+  html[lang="ru"] .typeset table th {
+    font-weight: 700; }
+html[lang="ru"].wf-loading h1, html[lang="ru"].wf-loading h2, html[lang="ru"].wf-loading h3, html[lang="ru"].wf-loading h4, html[lang="ru"].wf-loading h5, html[lang="ru"].wf-loading h6, html[lang="ru"].wf-loading li, html[lang="ru"].wf-loading p {
   visibility: hidden; }
 
 .section {
@@ -1036,28 +1424,20 @@ a {
     padding-right: 2rem; } }
 
 @media screen and (min-width: 64em) {
-  .column--trio p,
-  .column--quad p,
-  .column--sidebar p {
+  .column--trio p, .column--quad p, .column--sidebar p {
     line-height: 2rem;
     font-size: 0.99412rem;
     margin-bottom: 1.25349rem;
     padding-top: 0.74651rem; }
-  .column--trio li,
-  .column--quad li,
-  .column--sidebar li {
+  .column--trio li, .column--quad li, .column--sidebar li {
     font-size: 0.99412rem; } }
 @media screen and (min-width: 100em) {
-  .column--trio p,
-  .column--quad p,
-  .column--sidebar p {
+  .column--trio p, .column--quad p, .column--sidebar p {
     line-height: 2rem;
     font-size: 0.92632rem;
     margin-bottom: 1.2362rem;
     padding-top: 0.7638rem; }
-  .column--trio li,
-  .column--quad li,
-  .column--sidebar li {
+  .column--trio li, .column--quad li, .column--sidebar li {
     font-size: 0.92632rem; } }
 
 @media screen and (min-width: 40em) {
@@ -1201,6 +1581,12 @@ a {
   @media screen and (min-width: 100em) {
     .global-footer p {
       font-size: 0.92632rem; } }
+  html[lang="zh"] .global-footer p {
+    font-family: "source-han-sans-simplified-c", sans-serif;
+    font-weight: 400; }
+  html[lang="ru"] .global-footer p {
+    font-family: "ff-tisa-sans-web-pro", sans-serif;
+    font-weight: 400; }
 
 body {
   background-color: #FFFFFF;
@@ -1333,22 +1719,26 @@ img:not(.slider-image) {
   background: -o-linear-gradient(45deg, #64AFC0 0%, #35D8B3 100%);
   background: -ms-linear-gradient(45deg, #64AFC0 0%, #35D8B3 100%);
   background: linear-gradient(45deg, #64AFC0 0%, #35D8B3 100%); }
-  [lang="en"] .global-header h1 {
+  html:not([lang="ru"]):not([lang="zh"]) .global-header h1 {
     color: #FFFFFF;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-  [lang="en"] .global-header h2 {
+  html:not([lang="ru"]):not([lang="zh"]) .global-header h2 {
     color: #FFFFFF;
     letter-spacing: 0.1em;
     text-transform: uppercase; }
-    [lang="en"] .global-header h2:after {
+    html:not([lang="ru"]):not([lang="zh"]) .global-header h2:after {
       content: ' —';
       display: inline; }
-  [lang="zh"] .global-header h1 {
+  html[lang="ru"] .global-header h1 {
+    color: #FFFFFF; }
+  html[lang="ru"] .global-header h2 {
+    color: #FFFFFF; }
+  html[lang="zh"] .global-header h1 {
     color: #FFFFFF;
     font-weight: 400; }
-  [lang="zh"] .global-header h2 {
+  html[lang="zh"] .global-header h2 {
     color: #FFFFFF;
     letter-spacing: 0.1em;
     text-transform: uppercase; }

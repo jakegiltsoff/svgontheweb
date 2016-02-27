@@ -13,5 +13,15 @@
     text-align: center;
 
     @include fontsize(eta, all);
+
+    html[lang="zh"] & {
+      font-family: unquote(map-get($chinesetype, font-family));
+      font-weight: map-get($chinesetype, regular);
+    }
+
+    html[lang="ru"] & {
+      font-family: unquote(map-get($russiantype, font-family));
+      font-weight: map-get($russiantype, regular);
+    }
   }
 }
