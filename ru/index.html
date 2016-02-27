@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Практическое руководство о SVG в вебе</title>
+  <link rel="stylesheet" href="/assets/css/style.min.css">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+  <script src="//use.typekit.net/erg0slu.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+
+<header class="global-header">
+  <nav class="locale">
+    <ul>
+      <li><a href="/">En</a></li>
+      <li><a href="/zh">中国</a></li>
+      <li class="active">Ru</li>
+    </ul>
+  </nav>
+  <div class="section typeset">
+    <div class="column">
+      <h2 class="zeta">SVG в вебе</h2>
+      <h1 class="mega">Практическое<br>руководство</h1>
+    </div>
+  </div>
+</header>
+
+<nav class="global-nav">
+  <div class="section">
+    <ul class="column">
+      <li class="active">Руководство</li>
+      <li><a href="/changelog">Изменения</a></li>
+      <li class="about"><a href="/about">О проекте</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section>
+  <div class="section typeset">
+    <div class="column column--sidebar">
+      <h6>Содержание</h6>
+      <ul>
+        <li><a href="#svg"><span class="small-caps">SVG</span></a></li>
+        <li><a href="#preparation">Подготовка и оптимизация</a></li>
+        <li><a href="#implementation">Варианты использования (реализации)</a></li>
+        <li><a href="#css"><span class="small-caps">CSS</span>-манипуляции</a></li>
+        <li><a href="#javascript"><span class="small-caps">JS</span>-манипуляции</a></li>
+        <li><a href="#styling">Фиксированная ширина и адаптивность</a></li>
+        <li><a href="#animating">Анимация</a></li>
+        <li><a href="#spriting">Спрайты</a></li>
+        <li><a href="#mediaqueries">Медиавыражения</a></li>
+        <li><a href="#fallbacks">Запасной вариант</a></li>
+        <li><a href="#resources">Ресурсы</a></li>
+      </ul>
+    </div>
+
+    <div class="column column--main">
+      <h6>Введение</h6>
+      <p>Мы живём в век пикселей. Как дизайнеры и разработчики в вебе, пиксели могут быть нам как друзьями, так и врагами. Мы хотим, чтобы всё выглядело красиво и чётко для всех, кто пользуется нашими сайтами, и нам необходимо уменьшать размеры файлов для улучшения производительности. В общем-то, есть только один способ для иконок, логотипов и иллюстраций — это <span class="small-caps">SVG</span>. Масштабируемая векторная графика (Scalable Vector Graphics) позволяет изображению выглядеть чётко на мониторе с любым разрешением, при этом иметь очень маленький размер файла и легко поддаваться редактированию и изменениям.</p>
+
+      <p>Цель этого руководства — дать обзор практического применения <span class="small-caps">SVG</span>-изображений в вебе с некоторыми советами и хитростями, которые помогут получить максимальную отдачу от них.</p>
+    </div>
+  </div>
+</section>
+
+<section class="group group--1" id="svg">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#svg"><span class="small-caps">SVG</span></a></h2>
+    </div>
+    <div class="column column--main">
+      <p>Scalable Vector Graphics это разметка, основанная на <span class="small-caps">XML</span>, который содержит двумерные векторы. Векторами могут быть простые геометрические формы, сложные контуры, да и всё то же самое, что можно сделать в Иллюстраторе. Этот формат изображений имеет намного больше общего с веб-страницей, чем тот же <span class="small-caps">JPEG</span>. <span class="small-caps">SVG</span> намного мощнее — им легко можно управлять при помощи кода (в текстовом редакторе или с помощью <span class="small-caps">CSS / JS</span>).</p>
+    </div>
+
+    <div class="column column--sidebar">
+      <ul>
+        <li>не зависит от разрешения</li>
+        <li>поддерживается во всех современных браузерах</li>
+        <li>актуален в будущем (<span class="small-caps">W3C</span> стандарт)</li>
+        <li>легко создавать и редактировать</li>
+        <li>изменяется с помощью <span class="small-caps">CSS &amp; JS</span></li>
+        <li>поддаётся сжатию</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="group group--2" id="preparation">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#preparation">Подготовка и оптимизация</a></h2>
+    </div>
+    <div class="column column--main column--left">
+      <p>Подготовка <span class="small-caps">SVG</span> для использования в вебе это очень простой процесс, не сложнее экспорта <span class="small-caps">JPEG</span> или <span class="small-caps">PNG</span>. Используйте любой привычный для вас графический редактор (Illustrator, Sketch, Inkscape [бесплатен], и тому подобное [или даже Photoshop, если вы используете слои с формами]) с тем размером изображения, который вы планируете использовать. Обычно я работаю в Иллюстраторе, поэтому я объясню некоторые способы подготовки файлов в этой программе, но вообще они применимы и для любой другой программы. Вам, возможно, стоит перевести текст в кривые, поскольку шрифт, скорее всего, будет неправильно отображаться, если, конечно, вы не планируете стилизовать их с помощью веб-шрифта, используемого на странице (что возможно!). Не стоит также превращать все объекты в единые формы, особенно если у вас есть обводка, которой необходимо будет управлять на странице, тем более преобразование объектов зачастую не уменьшает размер файла. Любые имена, присвоенные группам или слоям, будут добавлены к <span class="small-caps">SVG</span> как ID элемента. Это довольно удобно для стилизации, но немного увеличит общий размер файла.</p>
+
+      <p>Перед тем как сделать экспорт, необходимо проверить, все ли изображения находятся в целочисленной пиксельной сетке (то есть, например не <span class="lining-numerals">23.3px &times; 86.8px</span>). В противном случае скорее всего изображению не будет хватать чёткости и часть изображения обрежется. В Иллюстраторе это можно сделать следующим образом: <code>Object > Artboards > Fit to Artwork Bounds</code>. Затем жмём <code>save as</code> и выбираем <span class="small-caps">SVG</span>, и оставляем настройки по умолчанию. Здесь можно сделать небольшую оптимизацию, но на самом деле не стоит, так как далее мы будем применять разные улучшающие приёмы, поэтому сейчас мы не будем тратить впустую время на эти настройки.</p>
+
+      <h3 class="delta">Приёмы для уменьшения размеров файла.</h3>
+
+      <p class="caption sidenote">(Смотрите <a href="#resources">ресурсы</a> по оптимизации)</p>
+
+      <p>Существует множество статей по оптимизации <span class="small-caps">SVG</span>, предлагающих кладезь знаний в этой теме, но я хочу поделиться парой приёмов, которые считаю наиболее эффективными и полезными. Они не требуют много усилий и могут легко вписаться в рабочий процесс.</p>
+
+      <p>Чтобы добиться наименьшего размера <span class="small-caps">SVG</span>, логично будет удалить из него всё лишнее. Наиболее известная и полезная программа (по крайней мере я так думаю) для обработки <span class="small-caps">SVG</span> это <a href="https://github.com/svg/svgo" class="small-caps">SVGO</a>. Она удаляет весь не нужный код. Но! Будьте внимательны используя эту программу, если планируете управлять <span class="small-caps">SVG</span> при помощи <span class="small-caps">CSS / JS</span>, так как она может слишком сильно почистить код, что затруднит дальнейшие изменения. Удобство <span class="small-caps">SVGO</span> ещё и в том, что её можно включить в процесс автоматической сборки проекта, но можно также использовать <span class="small-caps"><a href="https://github.com/svg/svgo-gui">GUI</a></span> если хочется.</p>
+
+      <p>Разбираясь подробнее с правильным удалением всего ненужного, мы можем сделать ещё кое-что в графическом редакторе. Сперва нужно убедиться, что используется настолько мало контуров/форм, насколько это возможно, так же как и точек на этих контурах. Можно объединять и упрощать всё, что поддаётся упрощению, и удалить все ненужные точки. В Иллюстраторе есть плагин <a href="http://www.astutegraphics.com/software/vectorscribe/">VectorScribe</a> с инструментом <code>Smart Remove Brush Tool</code>, который поможет удалить точки и при этом оставить общую форму той же.</p>
+
+      <p class="caption sidenote">Предварительная оптимизация</p>
+
+      <p><img src="/assets/img/2point.png" alt="Pre optimisation"></p>
+
+      <p class="caption sidenote">Smart Remove Brush Tool удалил точки</p>
+
+      <p><img src="/assets/img/1point.png" alt="Post optimisation"></p>
+
+      <p>Дальше будем увеличивать изображение. В Иллюстраторе удобно включить просмотр с пиксельной сеткой <code>View &gt; Pixel Preview</code> и проверить, как располагаются контуры. Чтобы разместить контуры по сетке, потребуется немного времени, но эти усилия окупятся и позволят добиться более чёткого рендеринга (лучше обратить на это внимание заранее).</p>
+
+      <p class="caption sidenote">Точки вне сетки</p>
+
+      <p><img src="/assets/img/nosnap.png" alt="Points off pixels"></p>
+
+      <p class="caption sidenote">Выравнивание по сетке</p>
+
+      <p><img src="/assets/img/snap.png" alt="Pixel snapped"></p>
+
+      <p>Если есть два и более объекта для выравнивания, то стоит удалить все ненужные перекрытия. Иногда даже если контуры тщательно выровнены, может быть видна тонкая белая линия. Чтобы предотвратить такое, можно немного наложить объекты друг на друга в местах перекрытия. Важно: в <span class="small-caps">SVG</span> <code>z-index</code> имеет определённый порядок, который зависит от объекта, находящегося снизу, поэтому стоит поместить верхний объект в нижнюю часть файла в коде.</p>
+
+      <p><img src="/assets/img/whiteline.png" alt="Post optimisation"></p>
+
+      <p>И, наконец, последнее, но немаловажное, то, о чём обычно забывают — это активировать gzip сжатие <span class="small-caps">SVG</span> на вашем сайте в <code>.htaccess</code> файле.</p>
+
+      <pre><code>AddType image/svg+xml svg svgz
+&lt;IfModule mod_deflate.c&gt;
+  &lt;IfModule mod_filter.c&gt;
+      AddOutputFilterByType DEFLATE "image/svg+xml" \
+                                    "text/css" \
+                                    "text/html" \
+                                    "text/javascript"
+                                    ... etc
+  &lt;/IfModule&gt;
+&lt;/IfModule&gt;</code></pre>
+
+      <hr>
+
+      <p>В качестве примера того, насколько эффективна эта техника, я воспользуюсь оригинальным логотипом <a href="http://breakingborde.rs/">Breaking Borders</a> и оптимизирую его таким образом: увеличиваю размер до того, каким он должен быть; приведу в порядок контуры; удалю максимально возможное количество точек; передвину точки на целочисленные пиксели; сдвину все области перекрытий и отправлю это всё в <span class="small-caps">SVGO</span>.</p>
+
+      <h4 class="zeta">Оригинал: 1,413b</h4>
+
+      <img src="/assets/img/bblogo.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+      <h4 class="zeta">После оптимизации: 409b</h4>
+
+      <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+      <p><b>В итоге размер файла стал меньше на <span class="lining-numerals">~71%</span> (и на <span class="lining-numerals">~83%</span> при сжатии)</b></p>
+
+      <p><span class="small-caps highlight">Дополнение:</span> <a href="https://twitter.com/robsterlini">Rob Sterlini</a> заметил, поскольку &laquo;b&raquo; повторяется, можно использовать элемент <code>&lt;use&gt;</code>, для повторения, что ещё больше уменьшит размер файла — и был абсолютно прав.</p>
+
+      <h4 class="zeta">После оптимизации с использованием &lt;use&gt;: 311b</h4>
+
+      <img src="/assets/img/bblogo-optim2.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+      <p><b>Размер файла стал меньше на <span class="lining-numerals">~78%</span></b></p>
+
+      <p>Если применить эту технику ко всем файлам <span class="small-caps">SVG</span>, это значительно улучшит ваш сайт.</p>
+    </div>
+  </div>
+</section>
+
+<section class="group group--3" id="implementation">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#implementation">Варианты использования (реализации)</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>Когда приходит время использовать <span class="small-caps">SVG</span> в вебе, появляется много различных способов, как это сделать. Некоторые из них имеют определённые преимущества в зависимости от того, чего вы хотите добиться, а некоторых стоит и вовсе избегать. Если требуется только базовая настройка, а разрешение и размер файла должны быть небольшими, то можно прописать <span class="small-caps">SVG</span> в <code>img</code> или как <code>background-image</code> в <span class="small-caps">CSS</span>, так же как любой другой формат файла.</p>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--duo">
+      <h4 class="epsilon">Img</h4>
+      <p>Здесь всё делается так же, как с любым изображением в этом формате. Можно даже использовать <span class="small-caps">SVG</span> как элемент <code>&lt;picture&gt;</code>. Но помните, что возможности преобразований в этом формате ограничены.</p>
+      <pre><code>&lt;img src="bblogo.svg" alt="Breaking Borders Logo" height="65" width="68"&gt;</code></pre>
+
+      <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+    </div>
+
+    <div class="column column--duo">
+      <h4 class="epsilon">Background-image</h4>
+      <p>Не стоит сохранять этот формат в <span class="lining-numerals">base64</span>, это приведёт к блокировке загрузки стилей. Помните, что возможности манипуляций в этом формате ограничены.</p>
+      <pre><code>.logo {
+  background-image: url(bblogo.svg);
+}</code></pre>
+      <div class="bb-bg"></div>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--duo">
+      <h4 class="epsilon">Iframe</h4>
+      <p>Вы можете загрузить <span class="small-caps">SVG</span> как <code>&lt;iframe&gt;</code>. Это позволит сделать многое, но я не уверен, что это лучший вариант использования, чтобы продвинуться вперёд ¯\_(ツ)_/¯.</p>
+      <pre><code>&lt;iframe src="bblogo.svg"&gt;Your browser does not support iframes&lt;/iframe&gt;</code></pre>
+      <iframe src="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support iframes</iframe>
+    </div>
+
+    <div class="column column--duo">
+      <h4 class="epsilon">Embed</h4>
+      <p><code>&lt;embed&gt;</code> применяется &laquo;во внешних приложениях&raquo; или &laquo;в интерактивном контенте&raquo;. Вы можете использовать это для <span class="small-caps">SVG</span>, но лучше не стоит.</p>
+      <pre><code>&lt;embed type="image/svg+xml" src="bblogo.svg" /&gt;</code></pre>
+      <embed type="image/svg+xml" src="/assets/img/bblogo-optim.svg" class="bb-logo-example" />
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--duo">
+      <h4 class="epsilon">Object</h4>
+      <p><code>&lt;object&gt;</code> возможно лучший вариант, если вам нужно изменять <span class="small-caps">SVG</span>, не встраивая его в <span class="small-caps">HTML</span>.</p>
+      <pre><code>&lt;object type="image/svg+xml" data="bblogo.svg"&gt;Your browser does not support SVGs&lt;/object&gt;</code></pre>
+      <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+    </div>
+
+    <div class="column column--duo">
+      <h4 class="epsilon">Inline</h4>
+      <p>Встраивание <span class="small-caps">SVG</span> в код не повлияет на <span class="small-caps">HTTP</span>-запрос, но изображение не будет кешироваться в браузере. Это самый простой способ управления, однако поддержка встроенного <span class="small-caps">SVG</span> кода может стать настоящим мучением.</p>
+      <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column">
+      <hr>
+    </div>
+    <div class="column column--main">
+      <h3 class="zeta">Заключение</h3>
+      <p>Если хочется выжать максимум из <span class="small-caps">SVG</span>, используйте <code>&lt;object&gt;</code>. В качестве альтернативы подходит встроенный SVG, который не повлияет на <span class="small-caps">HTTP</span>-запрос, но не будет кешироваться. Если <span class="small-caps">SVG</span> выступает в роли обычного изображения, то подойдёт <code>&lt;img&gt;</code> или <code>background-image</code>. Можно использовать <code>&lt;iframe&gt;</code> и <code>&lt;embed&gt;</code>, но я не думаю, что это лучшие варианты, и поэтому не буду больше заострять на них внимание.</p>
+    </div>
+    <div class="column">
+      <table id="implementation-support">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Object</th>
+          <th>Inline</th>
+          <th>Img</th>
+          <th>Background-image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th class="feature"><span class="small-caps">CSS</span>-манипуляции</th>
+          <td>Да</td>
+          <td>Да</td>
+          <td>Частично</td>
+          <td>Частично</td>
+        </tr>
+        <tr>
+          <th class="feature"><span class="small-caps">JS</span>-манипуляции</th>
+          <td>Да</td>
+          <td>Да</td>
+          <td>Нет</td>
+          <td>Нет</td>
+        </tr>
+        <tr>
+          <th class="feature"><span class="small-caps">SVG</span>-анимация</th>
+          <td>Да</td>
+          <td>Да</td>
+          <td>Да</td>
+          <td>Да</td>
+        </tr>
+        <tr>
+          <th class="feature">Интерактивная <span class="small-caps">SVG</span>-анимация</th>
+          <td>Да</td>
+          <td>Да</td>
+          <td>Нет</td>
+          <td>Нет</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="column column--main">
+      <p>Важно: &laquo;Частично&raquo; означает, что частично работает, но при условии, что в <span class="small-caps">CSS</span> <code>&lt;style&gt;</code> встроены в код <span class="small-caps">SVG</span>. Больше информации об этом в следующей части.</p>
+    </div>
+  </div>
+</section>
+
+<section class="group group--4" id="css">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#css"><span class="small-caps">CSS</span>-манипуляции</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>То, что действительно выгодно отличает <span class="small-caps">SVG</span>, это возможность изменять стили его элементов, используя старый добрый <span class="small-caps">CSS</span>. Скажем, у нас есть оранжевая иконка, и мы хотим, чтобы на некоторых страницах она была синей, и это можно сделать без создания новой синей иконки. Идеально.</p>
+
+      <p>Есть два способа изменить стили — во встроенном <span class="small-caps">SVG</span> и через внешнее подключение (например, в списке стилей). Чтобы встроить стили, оберните их в тег <code>&lt;style&gt;</code> и также внутри <code>&lt![CDATA[ ... ]]&gt;</code>. Лучше делать именно так, потому что иногда <span class="small-caps">XML</span> анализаторы могут конфликтовать с определённым символами (например <code>&gt;</code>). Даже если у вас нет шибко модных символов сейчас, лучше всё равно использовать <code>CDATA</code>, вдруг позже они появятся и всё сломают.</p>
+
+      <p>В основном встроенные стили будут работать со всеми реализациями <code>&lt;img&gt;</code> и <code>background-image</code> не поддерживают <span class="small-caps">CSS3</span>-анимацию, даже если они встроены (подробнее в разделе об <a href="#animating">анимации</a>). <code>background-image</code> не поддерживает встроенные медиазапросы (подробнее в разделе о <a href="#mediaqueries">медиазапросах</a>).</p>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--sidebar">
+      <h4 class="epsilon">Встроенные стили</h4>
+      <object type="image/svg+xml" data="/assets/img/bblogo-css.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+    </div>
+    <div class="column column--main">
+      <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &ltstyle type="text/css"&gt;
+    &lt![CDATA[
+    .firstb { fill: yellow; }
+    .secondb { fill: red; }
+    ]]&gt;
+  &lt;/style&gt;
+  &lt;path class="secondb" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path class="firstb" d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--main">
+      <p>Если хочется использовать внешние стили, с которыми в целом проще работать и поддерживать, то нельзя использовать <code>&lt;img&gt;</code> или <code>background-image</code>. Если вы используете <code>&lt;object&gt;</code>, то стоит добавить сноски к списку стилей, внутри <span class="small-caps">SVG</span>-файла (код прилагаю). Помните: если вы всё это сделаете, <span class="small-caps">SVG</span> не будет знать, к какому родительскому классу он относится (речь об <code>&lt;object&gt;</code>), поэтому не стоит применять этот способ для стилизации. Встроенные <span class="small-caps">SVG</span> не нуждаются в подобных дополнениях, следовательно и работать с таким методом в этом смысле немного проще.</p>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--sidebar">
+      <h4 class="epsilon">Внешние стили</h4>
+      <object type="image/svg+xml" data="/assets/img/bblogo-nocss.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+    </div>
+    <div class="column column--main">
+      <pre><code>// Add to very start of SVG file before &lt;svg&gt;
+&lt;?xml-stylesheet type="text/css" href="style.css"?&gt;</code></pre>
+      <pre><code>// In style.css
+.firstb { fill: yellow; }
+.secondb { fill: red; }</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="group group--5" id="javascript">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#javascript"><span class="small-caps">JS</span>-манипуляции</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>Мои знания Javascript очень маленькие, поэтому я дам только основные советы о том, как можно использовать <span class="small-caps">JS</span> для изменений в <span class="small-caps">SVG</span>. Если вы хотите вставить свои скрипты внутри <span class="small-caps">SVG</span>, то не забудьте обернуть их в <code>&lt![CDATA[ ... ]]&gt;</code> снова, чтобы избежать ошибок анализа. Скрипты не будут работать если использовать <code>&lt;img&gt;</code> или <code>background-image</code> из-за мер безопасности (то есть чтобы предотвратить запуск потенциально вредоносного кода на вашей странице).</p>
+
+      <p>Когда вы работаете с внешним <span class="small-caps">JS</span> (то есть не встроенным в файл <span class="small-caps">SVG</span>), если у вас встроенные <span class="small-caps">SVG</span>, вы можете выбрать его как любой другой <span class="small-caps">DOM</span>-элемент. Если вы используете <code>&lt;object&gt;</code> вы можете выбрать его через <code>contentDocument</code>. Вы можете предложить ещё что-то более креативное, чем следующее, но вот пример:</p>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--sidebar">
+      <h4 class="epsilon">Внешние скрипты</h4>
+      <object type="image/svg+xml" data="/assets/img/bblogo-js.svg" id="logoObject" class="bb-logo-example">Your browser does not support SVGs</object>
+    </div>
+    <div class="column column--main">
+      <pre><code>window.onload=function() {
+  var object = document.getElementById("logoObject");
+  var svgDocument = object.contentDocument;
+  var svgb1 = svgDocument.getElementsByClassName("firstb");
+  var svgb2 = svgDocument.getElementsByClassName("secondb");
+  svgb1[0].setAttribute("fill", "yellow");
+  svgb2[0].setAttribute("fill", "red");
+};</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="group group--6" id="styling">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#styling">Фиксированная ширина и адаптивность</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>При использовании изображений в адаптивном дизайне существуют две опции, которые помогают стилизовать их: можно использовать фиксированные размеры и регулировать контрольные точки по необходимости или позволить им изменять размер на странице в зависимости от родительского контейнера.</p>
+
+      <p>Если размеры фиксированы, то единственная важная вещь, с которой нужно быть осторожным, если вы используете <span class="small-caps">SVG</span> как <code>background-image</code> — это то, что вам нужно быть уверенным, что <code>background-size</code> прописан, так как браузеры могут немного запутаться и или подрезать изображение, или сжать его, особенно, если отображаются размеры, отличные от оригинального размера изображения.</p>
+
+      <p>Когда вы изменяете размер <span class="small-caps">SVG</span>, нужно помнить о некоторых вещах (если используем <code>background-image</code>):</p>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--quad">
+      <h4 class="epsilon">Объект</h4>
+      <p>Работает, как ожидается, при <code>width: 100%;</code></p>
+
+      <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-resp">Your browser does not support SVGs</object>
+    </div>
+
+    <div class="column column--quad">
+      <h4 class="epsilon">Встроенные</h4>
+      <p>Ранее требовалась значение <code>max-height</code> для работы, в настоящее время работает, как ожидается. Помните, что Safari не так быстро отрисовывает изображения (если они сложные) при изменении размеров окна.</p>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-resp"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+    </div>
+
+    <div class="column column--quad">
+      <h4 class="epsilon">Img</h4>
+      <p>Работает, как ожидается, при <code>width: 100%;</code></p>
+
+      <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-resp">
+    </div>
+
+    <div class="column column--quad">
+      <h4 class="epsilon">Background-image</h4>
+      <p>Требует <code>padding-bottom: #%;</code>, чтобы сохранить пропорций изображения, иначе не отображается.</p>
+
+      <div class="bb-bg-resp"></div>
+    </div>
+  </div>
+</section>
+
+<section class="group group--7" id="animating">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#animating">Анимация</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>Когда требуется анимировать <span class="small-caps">SVG</span> существует несколько различных опций, которые можно использовать — анимирование <span class="small-caps">SVG</span> (основанное на <span class="small-caps">SMIL</span>-стандарте), <span class="small-caps">CSS3</span>-анимация или <span class="small-caps">JS</span>-анимация. <span class="small-caps">SVG</span>- и <span class="small-caps">CSS3</span>-анимации позволят сделать большую часть того, что вам захочется сделать, при этом <span class="small-caps">SVG</span>-анимация чуть мощнее, потому как имеет возможность &laquo;контролировать&raquo; некоторые особенности (или даёт доступ к некоторым возможностям). JS позволит относительно легко делать неплохую сложную анимацию, особенно используя такие библиотеки как <a href="http://snapsvg.io/">Snap.svg</a>. Это находится вне моих знаний о JavaScript, поэтому я позволю вам потестировать их демо версии, чтобы убедиться подходит ли это вам.</p>
+
+      <p><span class="small-caps">SVG</span>-анимация даёт огромные возможности, но я не собираюсь останавливаться на этом подробно, и, честно говоря, я ни разу не использовал её. Я могу представить, что может быть полезно добавить некоторую хорошую анимацию для ваших иллюстраций, но честно говоря, с практической точки зрения, не каждый проект имеет на это достаточное время и бюджет. Если у вас всё же есть возможность, довольно просто начать экспериментировать с этим, есть <a href="#resources">много прекрасных онлайн-уроков</a>. В основном можно добавлять дочерние элементы <code>&lt;animate&gt;</code> к любому контуру или форме в ваших <span class="small-caps">SVG</span>-файлах, которые позволят контролировать анимацию. Самое лучшее в этом то, что оно работает со всеми методами использования <span class="small-caps">SVG</span>. Internet Explorer не поддерживает <span class="small-caps">SVG</span>-анимацию, однако вы можете использоваться полифил, такой как <a href="https://leunen.me/fakesmile/">FakeSmile</a> для работы с <span class="small-caps">IE</span>.</p>
+
+      <p>Вот вам небольшой пример. Обратите внимание: я подсветил голубым цветом, чтобы легче было увидеть анимацию.</p>
+
+      <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+    &lt;/path&gt;
+&lt;/svg&gt;</code></pre>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column">
+      <h4><span class="small-caps">SVG</span>-анимация</h4>
+    </div>
+    <div class="column column--quad">
+      <h4 class="epsilon">Object</h4>
+      <object type="image/svg+xml" data="/assets/img/bblogo-anim2.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+    </div>
+
+    <div class="column column--quad">
+      <h4 class="epsilon">Inline</h4>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path></svg>
+    </div>
+
+    <div class="column column--quad">
+      <h4 class="epsilon">Img</h4>
+      <img src="/assets/img/bblogo-anim2.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+    </div>
+
+    <div class="column column--quad">
+      <h4 class="epsilon">Background-image</h4>
+      <div class="bb-bg-anim"></div>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--main">
+      <p>Обычно, когда мы хотим анимировать иконки или иллюстрации в вебе, мы это делаем для добавления интерактива, то есть при наведении мыши и тому подобное. Это подпадает под пункты <span class="small-caps">&laquo;Управление с помощью CSS&raquo;</span> и <span class="small-caps">&laquo;Интерактивная SVG-анимация&raquo;</span> из <a href="#implementation-support">табличек выше</a>, и следовательно, не работает ни с <span class="small-caps">SVG</span>-, ни с <span class="small-caps">CSS3</span>-анимациями при использовании <code>&lt;img&gt;</code> или <code>background-image</code>. Чтобы сделать интерактивную анимацию в <span class="small-caps">SVG</span> можно добавить <code>begin="mouseover"</code> и <code>begin="mouseout"</code>. Для <span class="small-caps">CSS3</span>-анимации всё то же самое, что и в любом другом случае — добавьте классы для <span class="small-caps">SVG</span>-элементов и стилизуйте их при (наведении) <code>hover</code>. Обратите внимание на одну вещь — если вы хотите стилизовать анимации из внешнего списка стилей, они будут работать, как ожидается при использовании встроенного <span class="small-caps">SVG</span>. А при использовании <code>&lt;object&gt;</code> нужно сослаться на внешний список стилей из <span class="small-caps">SVG</span> в том числе.</p>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--sidebar">
+      <h4 class="epsilon">Интерактивная <span class="small-caps">SVG</span>-анимация</h4>
+      <p>Работает только с <code>&lt;object&gt;</code> или встроенным <span class="small-caps">SVG</span>.</p>
+      <object type="image/svg+xml" data="/assets/img/bblogo-anim.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+    </div>
+    <div class="column column--main">
+      <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;/svg&gt;</code></pre>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--sidebar">
+      <h4 class="epsilon"><span class="small-caps">CSS3</span>-анимация</h4>
+      <p>Работает с <code>&lt;object&gt;</code> встроенным, также работает с внешним <span class="small-caps">CSS</span>, как было описано <a href="#css">выше</a>.</p>
+      <object type="image/svg+xml" data="/assets/img/bblogo-animcss.svg" class="bb-logo-example">Your browser does not support SVGs</object>
+    </div>
+    <div class="column column--main">
+      <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &ltstyle type="text/css"&gt;
+    &lt![CDATA[
+    .firstb { fill: #000; transition: fill 0.1s; }
+    .firstb:hover { fill: #4e86b1; }
+    .secondb { fill: #4e86b1; transition: fill 0.1s; }
+    .secondb:hover { fill: #000; }
+    ]]&gt;
+  &lt;/style&gt;
+  &lt;path class="secondb" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path class="firstb" d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="group group--8" id="spriting">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#spriting">Спрайты</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>Можно создавать и использовать <span class="small-caps">SVG</span>-спрайты так же, как и в случае с <span class="small-caps">PNG</span> или <code>background-image</code>, чтобы получить преимущества в разрешении, или же можно шагнуть чуть дальше, используя дополнительные возможности <span class="small-caps">SVG</span>. Я не буду на этом подробно останавливаться, так как это становится довольно сложным (это комплексный подход), и я лично никогда не сталкивался с необходимостью использовать его. Основное преимущество — это использовать всю мощь <span class="small-caps">SVG</span> с меньшим числом <span class="small-caps">HTTP</span>-запросов.</p>
+
+      <p>Существует два подхода, которые можно использовать — в первом вы определяете все иконки внутри тега <code>&lt;symbol&gt;</code> в <span class="small-caps">SVG</span>, но скрываете их. Затем обращаетесь к каждому, когда это потребуется, используя элемент <code>&lt;use&gt;</code>, ссылаясь на <code>&lt;symbol&gt;</code> с <code>xlink:href="#id"</code>. Второй подход — это использовать в <span class="small-caps">SVG</span> <code>viewbox</code> атрибут, чтобы обрезать рабочую область (область в <span class="small-caps">SVG</span>, которая видна) вокруг определённой области. Эти оба способа достаточно продвинутые, поэтому задумайтесь о них, только если решите использовать.</p>
+
+      <p>Если вы хотите узнать как внедрить эти техники, то обратитесь к ссылкам на <a href="#resources">ресурсы</a>, приложенные ниже, особенно к статье <a href="https://twitter.com/SaraSoueidan">Sara Soueidan&rsquo;s</a> на <a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">24ways</a>.</p>
+
+      <p>Если вы хотите использовать <span class="small-caps">SVG</span>-спрайт как <span class="small-caps">PNG</span>-спрайт с <span class="small-caps">CSS</span>, то нужно добавить атрибуты <code>width</code> и <code>height</code> рядом с атрибутом <code>viewBox</code> в <span class="small-caps">SVG</span>-коде. Традиционно, в процессе оптимизации они удаляются, потому что обычно они не нужны. Однако, в этом случае эти параметры требуются для <span class="small-caps">IE9 &amp; 10</span> чтобы корректно порезать их на части. Это происходит потому, что эти браузеры принимают размеры высоты и ширины, указанные в <span class="small-caps">CSS</span>, за размер изображения, а на самом деле это как раз размеры требуемой части изображения (а не всего изображения в целом).</p>
+    </div>
+  </div>
+</section>
+
+<section class="group group--9" id="mediaqueries">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#mediaqueries">Медиавыражения</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>Действительно крутая штука в <span class="small-caps">SVG</span> состоит в том, что если использовать медиавыражения в стилях, вставленных внутри файла, то вместо того, чтобы работать через размер вьюпорта, они будут работать через размеры вьюпорта в <span class="small-caps">SVG</span>. В основном это значит, что у них уже есть своя реализация медиавыражений к элементам. Как чудесно. Это позволяет нам контролировать, как <span class="small-caps">SVG</span> будет выглядеть в любом отображаемом размере.</p>
+
+      <p>Представьте, что вы большой бренд и вы хотите, чтобы ваш логотип использовался правильно, независимо от отображаемого размера. И вам это удастся. Только вставьте нужное медиавыражение, и вы сможете менять формат в зависимости от размера изображения на дисплее. Это работает со всеми реализациями, кроме <code>background-image</code>, и во всех браузерах (но помните: <span class="small-caps">IE9—11</span> может игнорировать некоторые контрольные точки). Поэкспериментируйте со слайдером ниже, чтобы увидеть на живом примере, как это может работать:</p>
+
+      <form oninput="getElementById('responsive-logo').setAttribute('width',value=slider.value);" style="min-height: 200px;">
+        <input id="slider" type="range" min="30" max="335" value="335"></input>
+        <br>
+        <img id="responsive-logo" class="slider-image" src="/assets/img/bblogo-resp.svg" width="335" alt="svg">
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="group group--10" id="fallbacks">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#fallbacks">Запасной вариант</a></h2>
+    </div>
+    <div class="column column--main">
+      <p>К слову о запасных вариантах. <span class="small-caps">SVG</span> поддерживается во всех современных браузерах, но если ещё требуется поддержка <span class="small-caps">IE8</span>, то нужно использовать запасные варианты, скорее всего, в виде <span class="small-caps">PNG</span>. Я не буду останавливаться на этом хотя бы потому, что уже пора прекратить пользоваться <span class="small-caps">IE8</span> ¯\_(ツ)_/¯. В любом случае, если вам всё же нужны запасные варианты, всё усложняется довольно быстро, как и большинство вещей с <span class="small-caps">SVG</span>. Советую прочитать исчерпывающую статью <a href="https://twitter.com/AmeliasBrain">Amelia Bellamy-Royds</a> на <a href="https://css-tricks.com/a-complete-guide-to-svg-fallbacks/">CSS-Tricks</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="group group--11" id="resources">
+  <div class="section typeset">
+    <div class="column">
+      <h2><a class="title" href="#resources">Ресурсы</a></h2>
+    </div>
+    <div class="column column--duo">
+      <h3 class="zeta">Общее</h3>
+      <ul>
+        <li><a href="http://www.webdesignerdepot.com/2015/01/the-ultimate-guide-to-svg/">Ultimate guide to <span class="small-caps">SVG</span></a></li>
+        <li><a href="http://www.sitepoint.com/add-svg-to-web-page/">How to Add <span class="small-caps">SVG</span>s to Your Web Page</a></li>
+        <li><a href="http://www.w3.org/Graphics/SVG/About.html"><span class="small-caps">W3C</span> About <span class="small-caps">SVG</span></a></li>
+        <li><a href="http://www.smashingmagazine.com/2014/03/05/rethinking-responsive-svg/">Rethinking Responsive <span class="small-caps">SVG</span></a></li>
+        <li><a href="http://tympanus.net/Tutorials/ResponsiveSVGs/index6.html">Making <span class="small-caps">SVG</span>s Responsive</a></li>
+        <li><a href="https://css-tricks.com/using-svg/">Using <span class="small-caps">SVG</span></a></li>
+        <li><a href="http://blogs.adobe.com/webplatform/2013/01/08/svg-styling/"><span class="small-caps">SVG</span> Styling</a></li>
+      </ul>
+    </div>
+
+    <div class="column column--duo">
+      <h3 class="zeta">Оптимизация</h3>
+      <ul>
+        <li><a href="http://calendar.perfplanet.com/2014/tips-for-optimising-svg-delivery-for-the-web/">Tips For Optimising <span class="small-caps">SVG</span> Delivery For The Web</a></li>
+        <li><a href="http://jaydenseric.com/blog/how-to-optimize-svg">How To Optimize <span class="small-caps">SVG</span></a></li>
+        <li><a href="https://css-tricks.com/understanding-and-manually-improving-svg-optimization/">Understanding and Manually Improving <span class="small-caps">SVG</span> Optimization</a></li>
+        <li><a href="https://www.youtube.com/watch?v=1AdX8odLC8M"><span class="small-caps">SVG</span> Optimization Video</a></li>
+        <li><a href="https://jakearchibald.github.io/svgomg/"><span class="small-caps">SVGOMG</span> — <span class="small-caps">SVGO GUI</span> in browser</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="section typeset">
+    <div class="column column--duo">
+      <h3 class="zeta">Анимация</h3>
+      <ul>
+        <li><a href="https://css-tricks.com/guide-svg-animations-smil/">A Guide to <span class="small-caps">SVG</span> Animations</a></li>
+        <li><a href="http://www.smashingmagazine.com/2014/11/03/styling-and-animating-svgs-with-css/">Styling And Animating <span class="small-caps">SVG</span>s With <span class="small-caps">CSS</span></a></li>
+        <li><a href="http://product.voxmedia.com/2013/11/25/5426880/polygon-feature-design-svg-animations-for-fun-and-profit"><span class="small-caps">SVG</span> animations for fun and profit</a></li>
+        <li><a href="http://snapsvg.io/">Snap.svg</a></li>
+        <li><a href="http://svgjs.com/"><span class="small-caps">SVG</span>.js</a></li>
+      </ul>
+    </div>
+
+    <div class="column column--duo">
+      <h3 class="zeta">Спрайты</h3>
+      <ul>
+        <li><a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">An Overview of <span class="small-caps">SVG</span> Sprite Creation Techniques</a></li>
+        <li><a href="http://sarasoueidan.com/blog/structuring-grouping-referencing-in-svg/">Structuring, Grouping, and Referencing in <span class="small-caps">SVG</span></a></li>
+        <li><a href="http://taye.me/blog/svg/a-guide-to-svg-use-elements/">A guide to <span class="small-caps">SVG</span> &lt;use&gt; elements</a></li>
+        <li><a href="https://github.com/filamentgroup/grunticon">Grunticon</a></li>
+        <li><a href="https://github.com/lukewhitehouse/svg-icon-workflow"><span class="small-caps">SVG</span> icon workflow</a></li>
+        <li><a href="http://tomhazledine.com/inline-svg-icons/">Inline <span class="small-caps">SVG</span> icons</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="global-footer">
+  <p>An <a href="https://github.com/designbyjake/svgontheweb">open source</a> side project from <a href="https://twitter.com/designbyjake">Jake Giltsoff</a>, русский перевод <a href="https://github.com/dmitrylebedev">dmitrylebedev</a>, <a href="https://github.com/KateAlf">KateAlf</a> для <a href="https://htmlacademy.ru">HTML Academy</a>.</p>
+</footer>
+
+<script>
+  window.onload=function() {
+    var object = document.getElementById("logoObject");
+    var svgDocument = object.contentDocument;
+    var svgb1 = svgDocument.getElementsByClassName("firstb");
+    var svgb2 = svgDocument.getElementsByClassName("secondb");
+    svgb1[0].setAttribute("fill", "yellow");
+    svgb2[0].setAttribute("fill", "red");
+  };
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23355677-22', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
