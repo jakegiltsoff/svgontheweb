@@ -18,7 +18,7 @@ Once that is done you can start the server with `gulp` and stop it with `ctrl` +
 
 The page will run at http://localhost:1234/
 
-The page uses Sass which compiles to CSS. Make changes in the Sass folder and the page will reload automagically with the changes. The Base folder contains site wide base styles and the Modules folder has some page styles. It is built with [Sassline](https://github.com/designbyjake/sassline).
+The page uses Sass which compiles to CSS. Make changes in the Sass folder and the page will reload automagically with the changes. The Base folder contains site wide base styles and the Modules folder has some page styles. It is built with [Sassline](https://github.com/jakegiltsoff/sassline).
 
 ## Translations
 
