@@ -50,7 +50,7 @@
 
       <div class="column column--main">
         <h6>들어가며</h6>
-        <p>우리는 픽셀의 시대를 살아가고 있습니다. 웹 디자이너와 웹 개발자들에게 픽셀이란 뗄레야 뗄 수 없는 친구이면서 골치덩어리입니다. 완벽한 웹 사이트를 위해서는 파일 용량을 줄여 성능을 높여야 합니다. 웹 상에 아이콘, 로고, 일러스트레이션 이미지 등을 사용한다면, SVG를 사용하는 것이 유일한 방법입니다. SVG는 확장 가능한 벡터 그래픽(Scalable Vector Graphics)은 모든 스크린에서 화질이 선명하며, 최소 용량이고, 편집과 수정이 쉽다는 장점을 지니고 있기 때문입니다.</p>
+        <p>우리는 픽셀의 시대를 살아가고 있습니다. 웹 디자이너와 웹 개발자들에게 픽셀이란 뗄레야 뗄 수 없는 친구이면서 골치덩어리입니다. 완벽한 웹 사이트를 위해서는 파일 용량을 줄여 성능을 높여야 합니다. 웹 상에 아이콘, 로고, 일러스트레이션 이미지 등을 사용한다면, SVG를 사용하는 것이 유일한 방법입니다. SVG는 확장 가능한 벡터 그래픽(Scalable Vector Graphics)의 약자로 모든 스크린에서 화질이 선명하며, 최소 용량이고, 편집과 수정이 쉽다는 장점을 지니고 있기 때문입니다.</p>
         <p>본 실습 가이드에서는 웹에서 SVG 사용법에 관한 유용한 팁과 방법들을 알려드리고, 여러분의 웹 사이트 개발 과정에 최대한 활용하실 수 있게 도움을 드리고자 합니다.</p>
       </div>
     </div>
@@ -94,7 +94,7 @@
 
         <p>SVG 최적화와 관련된 훌륭한 글들이 이미 많이 있지만, 그 중 가장 효과적이고 유용한 몇 가지 팁과 방법을 공유합니다. 별도로 해야할 추가 작업이 많지 않아 쉽게 도입하여 작업할 수 있습니다.</p>
 
-        <p>SVG 파일 용량을 가장 효과적으로 최소화하려면 불필요한 코드를 제거하는 것이 가장 효과적입니다. <a href="https://github.com/svg/svgo">SVGO</a>는 가장 유명하고 최상의 도구로, 불필요한 코드를 모두 제거합니다. - 참고 : CSS / JS로 조작하려는 경우에는 주의하여 새용해야합니다. 파일을 과도하게 최적화하면, 추후 작업이 더 어려워질 수 있습니다. SVGO의 가장 편리한 기능은 빌드 프로세스에 추가하여 자동으로 사용할 수 있다는 것입니다. (또는 <a href="https://github.com/svg/svgo-gui">GUI</a>를 사용할 수 있습니다)</p>
+        <p>SVG 파일 용량을 가장 효과적으로 최소화하려면 불필요한 코드를 제거하는 것이 가장 효과적입니다. <a href="https://github.com/svg/svgo">SVGO</a>는 가장 유명하고 최상의 도구로, 불필요한 코드를 모두 제거합니다. - 참고 : CSS / JS로 조작하려는 경우에는 주의하여 사용해야합니다. 파일을 과도하게 최적화하면, 추후 작업이 더 어려워질 수 있습니다. SVGO의 가장 편리한 기능은 빌드 프로세스에 추가하여 자동으로 사용할 수 있다는 것입니다. (또는 <a href="https://github.com/svg/svgo-gui">GUI</a>를 사용할 수 있습니다)</p>
 
         <p>'불필요한 코드 삭제'에서 더 나아가 그래픽 편집기에서 추가 작업을 할 수 있습니다. 먼저 가능한 적은 수의 경로/도형을 사용해 작업을 했는지, 한 경로에 몇 개의 포인트가 있는지 확인합니다. 가능한 모든 요소를 결합하고 단순화하여, 경로 내 포인트 수를 최대한 제거합니다. <a href="http://www.astutegraphics.com/software/vectorscribe/">VectorScribe</a>는 일러스트레이터 플러그인으로 Smart Remove Brush Tool으로 전체 모양을 동일하게 유지하면서 포인트를 제거 할 수 있습니다.</p>
 
@@ -205,7 +205,7 @@
     <div class="section typeset">
       <div class="column column--duo">
         <h4 class="epsilon">Object</h4>
-        <p><code>&lt;object&gt;</code>요소는 <code>HTML</code>에서 인라인을 넣을 필요없이 SVG를 조작하는 경우에 가장 좋은 방법입니다.</p>
+        <p><code>&lt;object&gt;</code>요소는 <code>HTML</code>HTML 내에 직접 내장(inline)시키지 않고 SVG를 조작하는 경우에 가장 좋은 방법입니다.</p>
         <pre><code>&lt;object type="image/svg+xml" data="bblogo.svg"&gt;현재 브라우저는 iframe을 지원하지 않습니다.&lt;/object&gt;</code></pre>
         <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
       </div>
@@ -335,7 +335,7 @@
       </div>
       <div class="column column--main">
         <p>자바스크립트를 사용한 기본적인 SVG 변경 방법을 몇 가지 설명하고자 합니다. SVG 파일에 스크립트를 포함시키려면 파싱 오류를 방지하기 위해 <code>&lt[!][CDATA [...]]&gt;</code>에 안에 코드를 작성해야합니다. <code>&lt;img&gt;</code> 또는 <code>background-image</code>에 보안을 적용하면 스크립트가 실행되지 않습니다. (페이지 내부에 잠재적 악성 코드 실행을 방지하기 위해) </p> 
-        <p>외부 JS로 작업 할 때 (SVG 파일 내 코드를 삽입하지 않고) SVG 인라인이 있으면 다른 DOM 요소처럼 타겟팅 할 수 있습니다. <code>&lt;object&gt;</code>를 사용하는 경우 <code>contentDocument</code>로 타겟팅 할 수 있습니다. 아래 예제보다 더 멋진 작품을 만들어 보세요.</p>
+        <p>외부 JS로 작업 할 때 (SVG 파일 내 코드를 삽입하지 않고) SVG가 인라인으로 HTML문서안에 내장되어 있으면, 다른 DOM요소처럼 타켓팅 할 수 있습니다. <code>&lt;object&gt;</code>를 사용하는 경우 <code>contentDocument</code>로 타겟팅 할 수 있습니다. 아래 예제보다 더 멋진 작품을 만들어 보세요.</p>
       </div>
     </div>
     <div class="section typeset">
@@ -517,7 +517,7 @@
       <div class="column column--main">
         <p>SVG의 큰 장점은 뷰포트 사이즈에서 작업하는 대신 미디어 쿼리(media query)를 통해 이미지 사이즈를 변경할 수 있다는 것입니다. 각 요소의 쿼리를 실행해 구현할 수 있습니다. 멋지죠. 이를 통해 실제 보여지는 SVG 사이즈를 제어할 수 있습니다.</p>
 
-        <p>모든 이미지 사이즈에서 회사 로고가 올바르게 보여지게 하려면 어떻게 해야할까요. 어렵지 않습니다!  미디어 쿼리를 통해 크기에 따라 형식을 변경할 수 있습니다. <code>background-image</code>와 별도로 모든 브라우저 내에서 구현할 수 있습니다.(IE9-11은 정지점을 무시할 수 있습니다) 아래 슬라이더를 움직여 확인해보세요.</p>
+        <p>모든 이미지 사이즈에서 회사 로고가 올바르게 보여지게 하려면 어떻게 해야할까요. 어렵지 않습니다!  미디어 쿼리를 통해 크기에 따라 형식을 변경할 수 있습니다. <code>background-image</code>와 별도로 모든 브라우저 내에서 구현할 수 있습니다.(IE9-11은 breakpoint을 무시할 수 있습니다) 아래 슬라이더를 움직여 확인해보세요.</p>
 
         <form oninput="getElementById('responsive-logo').setAttribute('width',value=slider.value);" style="min-height: 200px;">
           <input id="slider" type="range" min="30" max="335" value="335"></input>
@@ -556,7 +556,6 @@
           <li><a href="http://blogs.adobe.com/webplatform/2013/01/08/svg-styling/">SVG 스타일링</a></li>
         </ul>
       </div>
-
       <div class="column column--duo">
         <h3 class="zeta">최적화</h3>
         <ul>
@@ -580,7 +579,6 @@
           <li><a href="http://pablojs.com/">Pablo</a></li>
         </ul>
       </div>
-
       <div class="column column--duo">
         <h3 class="zeta">스프라이트</h3>
         <ul>
@@ -596,7 +594,7 @@
   </section>
 
   <footer class="global-footer">
-    <p><a href="https://twitter.com/designbyjake">Jake Giltsoff</a>의 <a href="https://github.com/designbyjake/svgontheweb">오픈소스 프로젝트</a>, <a href="http://github.com/sujinleeme">이수진</a>의 번역</p>
+    <p><a href="https://twitter.com/designbyjake">Jake Giltsoff</a>의 <a href="https://github.com/designbyjake/svgontheweb">오픈소스 프로젝트</a>, <a href="http://github.com/sujinleeme">이수진</a>의 번역, <a href="https://github.com/wengdiiiy/">안정민</a>의 감수</p>
   </footer>
 
   <script>
