@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹에서 SVG 사용하기</title>
+  <link rel="stylesheet" href="/assets/css/style.min.css">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+  <script src="//use.typekit.net/erg0slu.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+
+  <header class="global-header">
+    <nav class="locale">
+      <ul>
+        <li><a href="/">En</a></li>
+        <li><a href="/zh">中国</a></li>
+        <li><a href="/ru">Ru</a></li>
+        <li class="active"><a href="/ko">한국어</a></li>
+      </ul>
+    </nav>
+    <div class="section typeset">
+      <div class="column">
+        <h2 class="zeta">웹에서 SVG 사용하기</h2>
+        <h1 class="mega">실습 가이드</h1>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h6>목차</h6>
+        <ul>
+          <li><a href="#svg">SVG</a></li>
+          <li><a href="#preparation">준비 및 최적화</a></li>
+          <li><a href="#implementation">구현 옵션</a></li>
+          <li><a href="#css">CSS 조작</a></li>
+          <li><a href="#javascript">JS 조작</a></li>
+          <li><a href="#styling">고정 너비 vs 반응형</a></li>
+          <li><a href="#animating">애니메이션</a></li>
+          <li><a href="#spriting">스프라이트</a></li>
+          <li><a href="#mediaqueries">미디어 쿼리</a></li>
+          <li><a href="#fallbacks">폴백</a></li>
+          <li><a href="#resources">참고자료</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--main">
+        <h6>들어가며</h6>
+        <p>우리는 픽셀의 시대를 살아가고 있습니다. 웹 디자이너와 웹 개발자들에게 픽셀이란 뗄레야 뗄 수 없는 친구이면서 골치덩어리입니다. 완벽한 웹 사이트를 위해서는 파일 용량을 줄여 성능을 높여야 합니다. 웹 상에 아이콘, 로고, 일러스트레이션 이미지 등을 사용한다면, SVG를 사용하는 것이 유일한 방법입니다. SVG는 확장 가능한 벡터 그래픽(Scalable Vector Graphics)은 모든 스크린에서 화질이 선명하며, 최소 용량이고, 편집과 수정이 쉽다는 장점을 지니고 있기 때문입니다.</p>
+        <p>본 실습 가이드에서는 웹에서 SVG 사용법에 관한 유용한 팁과 방법들을 알려드리고, 여러분의 웹 사이트 개발 과정에 최대한 활용하실 수 있게 도움을 드리고자 합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--1" id="svg">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#svg">SVG</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>확장 가능한 벡터 그래픽(Scalable Vector Graphics)는 2차원 그래픽을 표현하기 위해 만들어진 XML파일 형식의 마크업 언어입니다. 벡터는 기본적인 도형, 패스 등 일러스트에서 작업하는 모든 것이 될 수 있습니다. 일반적으로 웹 상 이미지 파일형식은 JPEG를 많이 사용합니다. SVG는 코드로 수정할 수 있기 때문에 (텍스트 편집기에서 수정이 가능하고, CSS / JS로 이미지 변경이 가능합니다) 다른 이미지 형식보다 강력한 기능을 가지고 있습니다.</p>
+      </div>
+
+      <div class="column column--sidebar">
+        <ul>
+          <li>독립적인 해상도</li>
+          <li>모든 종류의 최신 브라우저 지원</li>
+          <li>경쟁력있는 기술(W3C 표준)</li>
+          <li>작성 및 수정의 편리</li>
+          <li>CSS &amp; JS로 구현</li>
+          <li>높은 압축 용량</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--2" id="preparation">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#preparation">준비 및 최적화</a></h2>
+      </div>
+      <div class="column column--main column--left">
+        <p>웹을 위한 SVG 제작 과정은 매우 간단합니다. JPEG 또는 PNG 파일 변환 작업보다 복잡하지 않습니다. 선호하는 벡터 그래픽 편집기 (Illustrator, Sketch, Inkscape [무료], [shape 레이어를 사용하는 경우 Photoshop에서도 가능])에서 실제 원하는 결과물과 동일한 크기로 그래픽 작업을 하세요. 제가 사용하고 있는 일러스트레이터를 중심으로 설명하겠지만, 모든 소프트웨어에도 동일하게 적용하여 작업할 수 있습니다. 페이지에서 사용 중인 웹 글꼴로 스타일을 지정하지 않으면 올바른 글꼴로 표시되지 않을 가능성이 높으므로, 텍스트를 윤곽선으로 변환해야 합니다. 모든 객체를 솔리드 모양으로 확장하는 것을 걱정하지 마십시오. 특히 스트로크가 있는 경우 페이지에서 이를 조작하고 확장하더라도 파일 크기는 작아지지 않습니다. 레이어 / 그룹에 넣은 이름은 해당 요소의 ID로 변경되어 SVG에 추가됩니다. 전체 파일 크기 용량이 조금 증가되겠지만 스타일링을 편하게 해 줍니다.</p>
+
+        <p>SVG로 내보내기 위해 먼저 디자인 작업 내용이 전체 픽셀 (23.3px x 86.8px이 아닌)의 영역 내에 있는지 확인하세요. 영역 밖에 있으면 실제 결과물이 선명하지 않을 수 있으므로 주변에 있는 아트보드를 자르세요. 일러스트에서는 <code>Object > Artboards > Fit to Artwork Bounds</code>를 사용하여 아트웍 경계에 맞춰서 자릅니다. 그 다음, <code>save as</code> 버튼을 누르고 SVG를 선택하고, 기본 설정 그대로 사용하세요. 물론 지금 단계에서 최적화가 가능하겠지만, 이후에 최적화 작업을 할 것이기 때문에 지금 설정 단계에서 시간을 보내는 것은 무의미합니다.</p>
+
+        <h3 class="delta">파일 용량 줄이는 방법</h3>
+
+        <p class="caption sidenote">(<a href="#resources">외부 참고자료</a>를 확인하세요)</p>
+
+        <p>SVG 최적화와 관련된 훌륭한 글들이 이미 많이 있지만, 그 중 가장 효과적이고 유용한 몇 가지 팁과 방법을 공유합니다. 별도로 해야할 추가 작업이 많지 않아 쉽게 도입하여 작업할 수 있습니다.</p>
+
+        <p>SVG 파일 용량을 가장 효과적으로 최소화하려면 불필요한 코드를 제거하는 것이 가장 효과적입니다. <a href="https://github.com/svg/svgo">SVGO</a>는 가장 유명하고 최상의 도구로, 불필요한 코드를 모두 제거합니다. - 참고 : CSS / JS로 조작하려는 경우에는 주의하여 새용해야합니다. 파일을 과도하게 최적화하면, 추후 작업이 더 어려워질 수 있습니다. SVGO의 가장 편리한 기능은 빌드 프로세스에 추가하여 자동으로 사용할 수 있다는 것입니다. (또는 <a href="https://github.com/svg/svgo-gui">GUI</a>를 사용할 수 있습니다)</p>
+
+        <p>'불필요한 코드 삭제'에서 더 나아가 그래픽 편집기에서 추가 작업을 할 수 있습니다. 먼저 가능한 적은 수의 경로/도형을 사용해 작업을 했는지, 한 경로에 몇 개의 포인트가 있는지 확인합니다. 가능한 모든 요소를 결합하고 단순화하여, 경로 내 포인트 수를 최대한 제거합니다. <a href="http://www.astutegraphics.com/software/vectorscribe/">VectorScribe</a>는 일러스트레이터 플러그인으로 Smart Remove Brush Tool으로 전체 모양을 동일하게 유지하면서 포인트를 제거 할 수 있습니다.</p>
+
+        <p class="caption sidenote">최적화 전</p>
+
+        <p><img src="/assets/img/2point.png" alt="Pre optimisation"></p>
+
+        <p class="caption sidenote">Smart Remove Brush Tool로 포인트 제거</p>
+
+        <p><img src="/assets/img/1point.png" alt="Post optimisation"></p>
+
+        <p>이제 화면을 확대해 보겠습니다. 일러스트레이터에서 <code>View > Pixel Preview</code>로 픽셀 미리보기를 활성화하고 경로 포인트 위치를 ​​확인합니다. 파일 크기를 최소화하기 위해서는 이미지를 픽셀 격자(예 : 전체 픽셀 값) 내로 배치합니다. 모든 곳을 꼼꼼하게 작업해야 가장 선명한 화질로 렌더링을 해줍니다. (반 픽셀 이상을 넘지 않도록 주의하세요)</p>
+
+        <p class="caption sidenote">포인트가 픽셀과 맞지 않음</p>
+
+        <p><img src="/assets/img/nosnap.png" alt="포인트가 픽셀과 맞지 않음"></p>
+
+        <p class="caption sidenote">포인트를 픽셀에 맞춤</p>
+
+        <p><img src="/assets/img/snap.png" alt="포인트를 픽셀에 맞춤"></p>
+
+        <p>도형이 두 개 이상인 경우, 불필요하게 겹쳐져 있는 부분을 제거합니다. 패스가 정렬되어 있어도 흰색 선이 희미하게 보이기 때문에 이를 없애기 위해 서로 약간 겹쳐 놓습니다. 기억하세요 : SVG에서 <code>z-index</code>는 파일의 맨 마지막 부터 차례대로 순서에 따라 정의되므로, 가장 맨 앞에 올 도형의 코드는 파일 맨 끝에 넣습니다.</p>
+
+        <p><img src="/assets/img/whiteline.png" alt="최적화 후"></p>
+
+        <p>마지막으로, 잊지말고 <code>.htaccess</code>파일에서 웹 사이트에서 SVG의 gzip 압축을 사용하도록 설정해야합니다.</p>
+
+        <pre><code>AddType image/svg+xml svg svgz
+&lt;IfModule mod_deflate.c&gt;
+    &lt;IfModule mod_filter.c&gt;
+        AddOutputFilterByType DEFLATE "image/svg+xml" \
+                                      "text/css" \
+                                      "text/html" \
+                                      "text/javascript"
+                                      ... etc
+    &lt;/IfModule&gt;
+&lt;/IfModule&gt;</code></pre>
+
+        <hr>
+
+        <p>앞에서 설명한 테크닉의 효과성을 구체적으로 설명하기 위해, <a href="http://breakingborde.rs/">Breaking Borders</a>로고 이미지를 예제로 최적화를 했습니다. 실제 사용할 크기로 만들고, 패스를 정돈하고, 가능한 한 많은 포인트를 제거하고, 포인트를 픽셀 값에 맞추고, 겹치는 영역을 최대한 제거하여 SVGO를 통해 최종 산출물을 얻었습니다.</p>
+
+        <h4 class="zeta">원 이미지: 1,413b</h4>
+
+        <img src="/assets/img/bblogo.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <h4 class="zeta">최적화된 이미지: 409b</h4>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <p><b>전체 용량이 71%으로 감소되었음을 알 수 있었습니다. (gzip으로 압축할 경우 83% 이상으로 감소)</b></p>
+
+        <p>추가 : <a href="https://twitter.com/robsterlini">롭 스텔리니(Rob Sterlini)</a>는 'b'가 반복할 때마다 <code>&lt;use&gt;</code>요소를 반복하여 사용하면 용량을 더 줄일 수 있다고 말했습니다. 정말 좋은 방법입니다.</p>
+
+        <h4 class="zeta">&lt;use&gt;로 최적화된 이미지 : 311b</h4>
+
+        <img src="/assets/img/bblogo-optim2.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+
+        <p><b>전체 용량이 78%이상 감소되었습니다.</b></p>
+
+        <p>여러분 사이트에 있는 모든 SVG를 이와 같은 방법으로 작업하여 이미지 용량을 최소화 할 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--3" id="implementation">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#implementation">구현 옵션</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>웹에서 SVG를 사용하는 방법은 다양합니다. 일부는 유용하지만 피해야 할 것도 있습니다. 해상도 독립성 및 파일 용량의 최소화를 위해서는, SVG를 일반 이미지 형식과 같이 <code>&lt;img&gt;</code>로 참조하거나, CSS에서 <code>background-image</code>로 참조합니다.</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Img</h4>
+        <p>일반 이미지와 같이 <code>&lt;picture&gt;</code>요소에서 SVG를 사용할 수 있습니다. 이 메서드는 조작 기능을 제한합니다.</p>
+        <pre><code>&lt;img src="bblogo.svg" alt="Breaking Borders Logo" height="65" width="68"&gt;</code></pre>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Background-image</h4>
+        <p>base64 인코딩을  하면 다운로드하는 동안 나머지 스타일 로딩을 차단시키기 때문에 사용하지 않는 편이 좋습니다. 이 메서드는 조작 기능을 제한합니다.</p>
+        <pre><code>.logo {
+  background-image: url(bblogo.svg);
+}</code></pre>
+        <div class="bb-bg"></div>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Iframe</h4>
+        <p><code>&lt;iframe&gt;</code>요소 내 SVG를 로드할 수 있습니다. 대부분의 작업을 구현할 수 있지만, 더 발전적인 기능을 사용하고자 한다면 가장 좋은 방법은 아닙니다. ¯\_(ツ)_/¯</p>
+        <pre><code>&lt;iframe src="bblogo.svg"&gt;Your browser does not support iframes&lt;/iframe&gt;</code></pre>
+        <iframe src="/assets/img/bblogo-optim.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</iframe>
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Embed</h4>
+        <p><code>&lt;embed&gt;</code>요소는 '외부 응용 프로그램', '대화형 콘텐츠'를 통합할 때 사용됩니다. SVG를 사용할 수 있겠으나, 사용하지 않는 편이 낫습니다.</p>
+        <pre><code>&lt;embed type="image/svg+xml" src="bblogo.svg" /&gt;</code></pre>
+        <embed type="image/svg+xml" src="/assets/img/bblogo-optim.svg" class="bb-logo-example" />
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h4 class="epsilon">Object</h4>
+        <p><code>&lt;object&gt;</code>요소는 <code>HTML</code>에서 인라인을 넣을 필요없이 SVG를 조작하는 경우에 가장 좋은 방법입니다.</p>
+        <pre><code>&lt;object type="image/svg+xml" data="bblogo.svg"&gt;현재 브라우저는 iframe을 지원하지 않습니다.&lt;/object&gt;</code></pre>
+        <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+
+      <div class="column column--duo">
+        <h4 class="epsilon">Inline</h4>
+        <p>SVG 코드를 인라인하면 HTTP 요청은 저장되지만, 이미지는 브라우저에 캐시되지 않습니다. 조작이 가장 쉬운 방법이지만, 인라인 SVG 코드를 유지하는 것은 어려울 수 있습니다.</p>
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column">
+        <hr>
+      </div>
+      <div class="column column--main">
+        <h3 class="zeta">결론</h3>
+        <p>SVG를 최대한 활용하려면 <code>&lt;object&gt;</code>을 사용하세요. 또는 HTTP 요청을 저장하기 위해 인라인으로 사용할 수 있지만 이미지는 캐시되지 않는 문제가 있습니다. 이미지처럼 동일하게 SVG를 사용하려면 <code>&lt;img&gt;</code>또는 <code>background-image</code>를 사용하세요. <code>&lt;iframe&gt;</code> 및 <code>&lt;embed&gt;</code>를 사용할 수 있겠으나 가장 좋은 방법은 아니므로 더 이상 설명은 하지 않겠습니다.</p>
+      </div>
+      <div class="column">
+        <table id="implementation-support">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Object</th>
+              <th>Inline</th>
+              <th>Img</th>
+              <th>Background-image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="feature">CSS 조작</th>
+              <td>가능</td>
+              <td>가능</td>
+              <td>일부 inline</td>
+              <td>일부 inline</td>
+            </tr>
+            <tr>
+              <th class="feature">JS 조작</th>
+              <td>가능</td>
+              <td>가능</td>
+              <td>불가능</td>
+              <td>불가능</td>
+            </tr>
+            <tr>
+              <th class="feature">SVG 조작</th>
+              <td>가능</td>
+              <td>가능</td>
+              <td>가능</td>
+              <td>가능</td>
+            </tr>
+            <tr>
+              <th class="feature">인터렉티브 SVG 애니메이션</th>
+              <td>가능</td>
+              <td>가능</td>
+              <td>불가능</td>
+              <td>불가능</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column column--main">
+        <p>참고 : '일부 inline'는 CSS <code>&lt;style&gt;</code>이 SVG 코드에 포함 된 경우에 한하여 작동합니다. 자세한 내용은 다음 부분을 참고하세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--4" id="css">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#css">CSS 조작</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>SVG의 가장 큰 장점은 CSS 사용해 스타일을 변경할 수 있다는 것입니다. 일부 페이지에서 파란색 아이콘을 주황색으로 바꾸고 싶을 때, 새 파란색 아이콘을 다시 만들지 않아도 됩니다.</p>
+
+        <p>SVG 스타일 변경 방법은 두 가지로, SVG 코드 내부에서 변경하는 방법(inline style)과 외부 스타일 시트(external style)로 변경하는 방법이 있습니다. 인라인 스타일에서는 <code>&lt;style&gt</code> 태그와 <code>&lt![CDATA [...]]&gt;</code>태그로 스타일을 묶습니다. 간혹 XML 파서가 특정 문자(예 : <code>&gt;</code>)와 충돌 할 수 있기 때문에 이 방법을 사용하는 것이 가장 좋습니다. 현재 특별한 문자가 없는 경우에도 나중에 <code>CDATA</code>를 사용하여 추가 코드를 작성할 수 있습니다.</p>
+        
+        <p>인라인 스타일에서는 대부분 모든 것이 구현 가능합니다. 그러나 <code>&lt;img&gt;</code> 및 <code>background-image</code>는 CSS3 애니메이션을 지원하지 않습니다 (<a href="#animating">애니메이션</a> 섹션 참고) <code>background-image</code>는 인라인 미디어 쿼리를 지원하지 않습니다. (자세한 내용은 <a href="#mediaqueries"> 미디어 쿼리</a> 섹션 참고)</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">인라인 스타일</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-css.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &ltstyle type="text/css"&gt;
+    &lt![CDATA[
+    .firstb { fill: yellow; }
+    .secondb { fill: red; }
+    ]]&gt;
+  &lt;/style&gt;
+  &lt;path class="secondb" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path class="firstb" d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--main">
+        <p>작업 및 유지 관리 편이를 위해 외부 스타일을 사용한다면, <code>&lt;img&gt;</code> 또는 <code>background-image</code>를 사용하면 안됩니다. <code>&lt;object&gt;</code>를 사용하는 경우 SVG 파일에서 내부적으로 스타일 시트를 참조해야합니다. (아래 코드를 보세요) 참고사항 : SVG는 부모 클래스가 무엇인지 (예 : <code>&lt;object&gt;</code>) 알 수 없으므로 스타일을 사용하지 마세요. 인라인 SVG에서는 불필요하기 때문에 더 쉽게 작업할 수 있다는 장점이 있습니다.</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">외부 스타일</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-nocss.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>// &lt;svg&gt;태그 전에 선언
+&lt;?xml-stylesheet type="text/css" href="style.css"?&gt;</code></pre>
+        <pre><code>// style.css 파일 내
+.firstb { fill: yellow; }
+.secondb { fill: red; }</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--5" id="javascript">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#javascript">JS 조작</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>자바스크립트를 사용한 기본적인 SVG 변경 방법을 몇 가지 설명하고자 합니다. SVG 파일에 스크립트를 포함시키려면 파싱 오류를 방지하기 위해 <code>&lt[!][CDATA [...]]&gt;</code>에 안에 코드를 작성해야합니다. <code>&lt;img&gt;</code> 또는 <code>background-image</code>에 보안을 적용하면 스크립트가 실행되지 않습니다. (페이지 내부에 잠재적 악성 코드 실행을 방지하기 위해) </p> 
+        <p>외부 JS로 작업 할 때 (SVG 파일 내 코드를 삽입하지 않고) SVG 인라인이 있으면 다른 DOM 요소처럼 타겟팅 할 수 있습니다. <code>&lt;object&gt;</code>를 사용하는 경우 <code>contentDocument</code>로 타겟팅 할 수 있습니다. 아래 예제보다 더 멋진 작품을 만들어 보세요.</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">외부 스크립트</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-js.svg" id="logoObject" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>window.onload=function() {
+  var object = document.getElementById("logoObject");
+  var svgDocument = object.contentDocument;
+  var svgb1 = svgDocument.getElementsByClassName("firstb");
+  var svgb2 = svgDocument.getElementsByClassName("secondb");
+  svgb1[0].setAttribute("fill", "yellow");
+  svgb2[0].setAttribute("fill", "red");
+};</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--6" id="styling">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#styling">고정 너비 vs 반응형</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>반응형 웹 디자인에서는 이미지 스타일 지정을 위한 두 가지 옵션이 있습니다. 이미지를 고정 크기로 유지하고 필요할 경우 중단점에서 조정하거나 부모 컨테이너에 따라 페이지 크기를 조정할 수 있습니다.</p>
+
+        <p>SVG를 <code>background-image</code>로 사용하는 경우, 브라우저에게 혼란을 줄 수 있어 주의해야 합니다. 이미지 실제 사이즈에서 다른 사이즈 변경할 경우, <code>background-size</code>를 사용해 사이즈 축소 또는 잘라내기 등을 해야합니다. </p>
+          
+        <p>사이즈 조정이 가능한 SVG를 만들 때, 다음과 같은 몇 가지 사항을 기억해야합니다. (<code>background-image</code> 구현과 함께)</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--quad">
+        <h4 class="epsilon">Object</h4>
+        <p><code>width: 100%;</code>로 설정합니다.</p>
+
+        <object type="image/svg+xml" data="/assets/img/bblogo-optim.svg" class="bb-logo-resp">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Inline</h4>
+        <p><code>max-height</code>이 필요합니다. Safari는 (복잡한 경우) 창 크기를 재조정하지 않습니다.</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-resp"><path fill="#1A374D" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Img</h4>
+        <p><code>width: 100%;</code>로 설정합니다.</p>
+
+        <img src="/assets/img/bblogo-optim.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-resp">
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Background-image</h4>
+        <p>이미지 비율을 조절하려면 <code>padding-bottom: #%;</code>를 추가합니다. 이 요소가 없으면 이미지는 보이지 않습니다.</p>
+        <div class="bb-bg-resp"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--7" id="animating">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#animating">애니메이션</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>SVG 애니메이션은 SMIL 사양을 기반으로 한 애니메이션 효과를 적용할 수 있습니다. CSS3 애니메이션 또는 JS 애니메이션을 사용할 수 있습니다. SVG 애니메이션과 CSS3 애니메이션을 함께 사용하면 거의 원하는 모든 것을 할 수 있습니다. SVG 애니메이션은 좀더 강력한 기능을 가지고 있습니다. <a href="http://snapsvg.io/">Snap.svg</a>와 같은 자바스크립트 라이브러리를 사용해 복잡한 애니메이션도 비교적 쉽게 만들 수 있습니다. 이 라이브러리는 필자의 자바스크립트 수준의 이상임으로, 아래 예제를 통해 살펴보시길 바랍니다.</p>
+
+        <p>SVG 애니메이션 기능은 매우 강력하지만, 실제로 제가 사용한 애니메이션은 일부라 너무 깊이 다루지 않겠습니다. 멋진 애니메이션을 만들고 싶겠지만, 모든 프로젝트가 이를 위해 소비할 수 있는 시간과 예산은 한정적입니다. 그래서 여러분들이 다루기 쉬운 <a href="#resources">훌륭한 온라인 튜토리얼</a>이 있는 것입니다. 가장 좋은 점은 모든 구현 방법에서 작동한다는 것입니다. 기본적으로 애니메이션을 제어 할 SVG의 모든 경로와 모양에 하위 요소로 <code>&lt;animiate&gt;</code>를 추가 할 수 있습니다. 가장 좋은 점은 모든 애니메이션이 작동한다는 것입니다. Internet Explorer는 SVG 애니메이션을 지원하지 않습니다만, Internet Explorer에서도 작동하게 하려면 <a href="https://leunen.me/fakesmile/">FakeSmile</a> 등의 polyfill을 사용할 수 있습니다.</p>
+
+        <p>아래 예제가 있습니다. 애니메이션 효과가 좀더 잘 보이도록 파란색을 밝게 했습니다.</p>
+
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/&gt;
+    &lt;/path&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column">
+        <h4>SVG 애니메이션</h4>
+      </div>
+      <div class="column column--quad">
+        <h4 class="epsilon">Object</h4>
+        <object type="image/svg+xml" data="/assets/img/bblogo-anim2.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Inline</h4>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65" class="bb-logo-example"><path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path><path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"><animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/></path></svg>
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Img</h4>
+        <img src="/assets/img/bblogo-anim2.svg" alt="Breaking Borders Logo" height="65" width="68" class="bb-logo-example">
+      </div>
+
+      <div class="column column--quad">
+        <h4 class="epsilon">Background-image</h4>
+        <div class="bb-bg-anim"></div>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--main">
+        <p>웹 상의 아이콘이나 일러스트레이션의 애니메이션은 마우스 호버(hover) 등 인터렉션을 위해 사용됩니다. 앞에서 CSS 조작 및 SVG 애니메이션 지원 <a href="#mplementation-support">비교 표</a>를 보았듯이, <code>&lt;img&gt;</code>과 <code>background-image</code>는 SVG 애니메이션이나 CSS3 애니메이션을 지원하지 않습니다. SVG 애니메이션에서 인터렉티브한 애니메이션 효과를 주려면 <code>begin="mouseover"&amp; begin="mouseout"</code>을 추가하고 하거나, CSS3 애니메이션에 SVG 요소에 클래스를 추가하고 호버에 스타일을 적용 할 수 있습니다. 주의 사항은 외부 스타일 시트에 애니메이션 스타일을 지정하려면 SVG 인라인을 사용하는 경우에는 정상적으로 작동하지만, <code>&lt;object&gt;</code>를 사용하는 경우 SVG 내에 외부 스타일 시트를 참조해야합니다.</p>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">인터렉티브 SVG 애니메이션</h4>
+        <p><code>&lt;object&gt;</code> 또는 인라인에서만 구현됩니다.</p>
+        <object type="image/svg+xml" data="/assets/img/bblogo-anim.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &lt;path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#4e86b1" from="#000000" attributeName="fill" begin="mouseover"/&gt;
+    &lt;animate fill="freeze" dur="0.1s" to="#000000" from="#4e86b1" attributeName="fill" begin="mouseout"/&gt;
+  &lt;/path&gt;
+  &lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--sidebar">
+        <h4 class="epsilon">CSS3 애니메이션</h4>
+        <p><code>&lt;object&gt;</code> 또는 인라인에서만 구현됩니다. <a href="#css">이전에 설명한대로</a> 외부 CSS에서도 작동합니다.</p>
+        <object type="image/svg+xml" data="/assets/img/bblogo-animcss.svg" class="bb-logo-example">현재 브라우저는 iframe을 지원하지 않습니다.</object>
+      </div>
+      <div class="column column--main">
+        <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65"&gt;
+  &ltstyle type="text/css"&gt;
+    &lt![CDATA[
+    .firstb { fill: #000; transition: fill 0.1s; }
+    .firstb:hover { fill: #4e86b1; }
+    .secondb { fill: #4e86b1; transition: fill 0.1s; }
+    .secondb:hover { fill: #000; }
+    ]]&gt;
+  &lt;/style&gt;
+  &lt;path class="secondb" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+  &lt;path class="firstb" d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--8" id="spriting">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#spriting">스프린트</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>PNG와 <code>background-image</code>로 고화질 해상도를 얻을 수 있는 것처럼, SVG 스프라이트를 사용하거나 추가 기능을 사용해 한 단계 더 발전시킬 수 있습니다. 좀더 깊이 들어가면 설명이 복잡해지고 굳이 구현할 필요성도 느끼지 못해 간략히 알아보겠습니다. SVG는 더 적은 HTTP 요청으로 모든 기능을 구현할 수 있다는 것이 큰 장점입니다.</p>
+
+        <p>두 가지 방법이 있습니다. 첫 번째 방법은 먼저 SVG 내 <code>&lt;symbol&gt;</code>요소에 정의된 모든 아이콘을 숨긴 후, 필요시에 <code>xlink : href="#id”</code>와 함께 <code>&lt;symbol&gt;</code>을 참조하는 <code>&lt;use&gt;</code>요소를 참조하는 것입니다.  두 번째 방법은 SVG viewbox 속성으로 특정 영역 주변의 아트 보드 (표시된 SVG 영역)를 자르는 것입니다. 이 두 방법 모두 SVG 고급 기술로 실제 사용은 좀더 고려해보는 것이 좋습니다.</p>
+
+        <p>이 부분에 대해 좀더 자세히 알고 싶다면 아래 <a href="#resources">참고자료 리스트</a>를 확인하길 바랍니다. 이 중 <a href="https://twitter.com/SaraSoueidan">Sara Soueidan</a>의 <a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">SVG 스프라이트 창작 테크닉 개요</a>를 읽어보기를 추천합니다.</p>
+
+        <p>CSS가 있는 PNG 스프라이트와 같이 SVG 스프라이트를 사용하려면, SVG 코드의 <code>viewBox</code> 속성과 함께 <code>width</code> 및 <code>height</code> 속성을 다시 추가해야합니다. 일반적인 최적화 프로세스 중에는 필요하지 않은 속성임으로 제거됩니다. 이 경우 IE9와 10에서는 이미지 스프라이트의 일부를 올바르게 자를 수 있어야 처리해야 합니다. 이들 브라우저에서는 CSS 이미지 사이즈에 정의된 너비와 높이를 사용하기 때문에 실제로는 (전체 이미지가 아닌) 이미지 일부분만 보이게 될 것입니다. 최근에 제가 부딪힌 문제이기도 합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--9" id="mediaqueries">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#mediaqueries">미디어 쿼리</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>SVG의 큰 장점은 뷰포트 사이즈에서 작업하는 대신 미디어 쿼리(media query)를 통해 이미지 사이즈를 변경할 수 있다는 것입니다. 각 요소의 쿼리를 실행해 구현할 수 있습니다. 멋지죠. 이를 통해 실제 보여지는 SVG 사이즈를 제어할 수 있습니다.</p>
+
+        <p>모든 이미지 사이즈에서 회사 로고가 올바르게 보여지게 하려면 어떻게 해야할까요. 어렵지 않습니다!  미디어 쿼리를 통해 크기에 따라 형식을 변경할 수 있습니다. <code>background-image</code>와 별도로 모든 브라우저 내에서 구현할 수 있습니다.(IE9-11은 정지점을 무시할 수 있습니다) 아래 슬라이더를 움직여 확인해보세요.</p>
+
+        <form oninput="getElementById('responsive-logo').setAttribute('width',value=slider.value);" style="min-height: 200px;">
+          <input id="slider" type="range" min="30" max="335" value="335"></input>
+          <br>
+          <img id="responsive-logo" class="slider-image" src="/assets/img/bblogo-resp.svg" width="335" alt="svg">
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--10" id="fallbacks">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#fallbacks">폴백</a></h2>
+      </div>
+      <div class="column column--main">
+        <p>폴백(fallbacks)이란 브라우저별로 지원 사양이 다르기 때문에, 의도한 기능이 지원되지 않을 경우를 대비하여 이와 유사하게 동작하도록 만드는 방법을 말합니다. SVGs는 모든 최신 브라우저에서 지원합니다. IE8는 SVG를 지원하지 않아 PNGs로 처리해야 합니다. 저는 IE8 지원은 불필요하다고 생각하여 이 부분을 깊게 다루지 않을 겁니다. ¯\_(ツ)_/¯  만약 IE8에서 SVG지원을 하고 싶다면, SVG 폴백 작업이 꽤 복잡해질 겁니다. <a href="https://twitter.com/AmeliasBrain">Amelia Bellamy-Royds</a>가 작성한 <a href="https://css-tricks.com/a-complete-guide-to-svg-fallbacks/">CSS-Tricks - SVG 폴백 완벽 가이드</a>를 참고하세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="group group--11" id="resources">
+    <div class="section typeset">
+      <div class="column">
+        <h2><a class="title" href="#resources">참고자료</a></h2>
+      </div>
+      <div class="column column--duo">
+        <h3 class="zeta">일반</h3>
+        <ul>
+          <li><a href="http://www.webdesignerdepot.com/2015/01/the-ultimate-guide-to-svg/">SVG 기본 가이드</a></li>
+          <li><a href="http://www.sitepoint.com/add-svg-to-web-page/">웹 페이지에 SVG 추가하기</a></li>
+          <li><a href="http://www.w3.org/Graphics/SVG/About.html">W3C - SVG</a></li>
+          <li><a href="http://www.smashingmagazine.com/2014/03/05/rethinking-responsive-svg/">반응형 SVG 재고찰</a></li>
+          <li><a href="http://tympanus.net/Tutorials/ResponsiveSVGs/index6.html">반응형 SVGs 제작</a></li>
+          <li><a href="https://css-tricks.com/using-svg/">SVG 사용법</a></li>
+          <li><a href="http://blogs.adobe.com/webplatform/2013/01/08/svg-styling/">SVG 스타일링</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--duo">
+        <h3 class="zeta">최적화</h3>
+        <ul>
+          <li><a href="http://calendar.perfplanet.com/2014/tips-for-optimising-svg-delivery-for-the-web/">웹을 위한 SVG 최적화 방법</a></li>
+          <li><a href="http://jaydenseric.com/blog/how-to-optimize-svg">SVG 최적화 방법</a></li>
+          <li><a href="https://css-tricks.com/understanding-and-manually-improving-svg-optimization/">SVG 최적화 이해 및 수동 개선</a></li>
+          <li><a href="https://www.youtube.com/watch?v=1AdX8odLC8M">SVG 최적화 동영상 강의</a></li>
+          <li><a href="https://jakearchibald.github.io/svgomg/">SVGOMG — 브라우저 내 SVGO GUI</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section typeset">
+      <div class="column column--duo">
+        <h3 class="zeta">애니메이션</h3>
+        <ul>
+          <li><a href="https://css-tricks.com/guide-svg-animations-smil/">SVG 애니메이션 가이드</a></li>
+          <li><a href="http://www.smashingmagazine.com/2014/11/03/styling-and-animating-svgs-with-css/">CSS로 SVGs 스타일링 및 애니메이션</a></li>
+          <li><a href="http://product.voxmedia.com/2013/11/25/5426880/polygon-feature-design-svg-animations-for-fun-and-profit">재미와 효과, 두 마리 토끼를 위한 SVG 애니메이션</a></li>
+          <li><a href="http://snapsvg.io/">Snap.svg</a></li>
+          <li><a href="http://svgjs.com/">SVG.js</a></li>
+          <li><a href="http://pablojs.com/">Pablo</a></li>
+        </ul>
+      </div>
+
+      <div class="column column--duo">
+        <h3 class="zeta">스프라이트</h3>
+        <ul>
+          <li><a href="http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">SVG 스프라이트 창작 테크닉 개요</a></li>
+          <li><a href="http://sarasoueidan.com/blog/structuring-grouping-referencing-in-svg/">SVG 구조, 그룹화, 참조방법</a></li>
+          <li><a href="http://taye.me/blog/svg/a-guide-to-svg-use-elements/">SVG &lt;use&gt; 요소 가이드</a></li>
+          <li><a href="https://github.com/filamentgroup/grunticon">Grunticon</a></li>
+          <li><a href="https://github.com/lukewhitehouse/svg-icon-workflow">SVG 아이콘 작업과정</a></li>
+          <li><a href="http://tomhazledine.com/inline-svg-icons/">인라인 SVG 아이콘</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="global-footer">
+    <p><a href="https://twitter.com/designbyjake">Jake Giltsoff</a>의 <a href="https://github.com/designbyjake/svgontheweb">오픈소스 프로젝트</a>, <a href="http://github.com/sujinleeme">이수진</a>의 번역</p>
+  </footer>
+
+  <script>
+  window.onload=function() {
+    var object = document.getElementById("logoObject");
+    var svgDocument = object.contentDocument;
+    var svgb1 = svgDocument.getElementsByClassName("firstb");
+    var svgb2 = svgDocument.getElementsByClassName("secondb");
+    svgb1[0].setAttribute("fill", "yellow");
+    svgb2[0].setAttribute("fill", "red");
+  };
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23355677-22', 'auto');
+  ga('send', 'pageview');
+  </script>
+</body>
+</html>
