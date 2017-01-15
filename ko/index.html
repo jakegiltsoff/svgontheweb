@@ -4,10 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>웹에서 SVG 사용하기</title>
+  <script>document.documentElement.classList.add('wf-loading');</script>
   <link rel="stylesheet" href="/assets/css/style.min.css">
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
-  <script src="//use.typekit.net/erg0slu.js"></script>
-  <script>try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
@@ -18,7 +17,7 @@
         <li><a href="/">En</a></li>
         <li><a href="/zh">中国</a></li>
         <li><a href="/ru">Ru</a></li>
-        <li class="active"><a href="/ko">한국어</a></li>
+        <li class="active">한국어</li>
       </ul>
     </nav>
     <div class="section typeset">
@@ -286,7 +285,7 @@
         <p>SVG의 가장 큰 장점은 CSS 사용해 스타일을 변경할 수 있다는 것입니다. 일부 페이지에서 파란색 아이콘을 주황색으로 바꾸고 싶을 때, 새 파란색 아이콘을 다시 만들지 않아도 됩니다.</p>
 
         <p>SVG 스타일 변경 방법은 두 가지로, SVG 코드 내부에서 변경하는 방법(inline style)과 외부 스타일 시트(external style)로 변경하는 방법이 있습니다. 인라인 스타일에서는 <code>&lt;style&gt</code> 태그와 <code>&lt![CDATA [...]]&gt;</code>태그로 스타일을 묶습니다. 간혹 XML 파서가 특정 문자(예 : <code>&gt;</code>)와 충돌 할 수 있기 때문에 이 방법을 사용하는 것이 가장 좋습니다. 현재 특별한 문자가 없는 경우에도 나중에 <code>CDATA</code>를 사용하여 추가 코드를 작성할 수 있습니다.</p>
-        
+
         <p>인라인 스타일에서는 대부분 모든 것이 구현 가능합니다. 그러나 <code>&lt;img&gt;</code> 및 <code>background-image</code>는 CSS3 애니메이션을 지원하지 않습니다 (<a href="#animating">애니메이션</a> 섹션 참고) <code>background-image</code>는 인라인 미디어 쿼리를 지원하지 않습니다. (자세한 내용은 <a href="#mediaqueries"> 미디어 쿼리</a> 섹션 참고)</p>
       </div>
     </div>
@@ -334,7 +333,7 @@
         <h2><a class="title" href="#javascript">JS 조작</a></h2>
       </div>
       <div class="column column--main">
-        <p>자바스크립트를 사용한 기본적인 SVG 변경 방법을 몇 가지 설명하고자 합니다. SVG 파일에 스크립트를 포함시키려면 파싱 오류를 방지하기 위해 <code>&lt[!][CDATA [...]]&gt;</code>에 안에 코드를 작성해야합니다. <code>&lt;img&gt;</code> 또는 <code>background-image</code>에 보안을 적용하면 스크립트가 실행되지 않습니다. (페이지 내부에 잠재적 악성 코드 실행을 방지하기 위해) </p> 
+        <p>자바스크립트를 사용한 기본적인 SVG 변경 방법을 몇 가지 설명하고자 합니다. SVG 파일에 스크립트를 포함시키려면 파싱 오류를 방지하기 위해 <code>&lt[!][CDATA [...]]&gt;</code>에 안에 코드를 작성해야합니다. <code>&lt;img&gt;</code> 또는 <code>background-image</code>에 보안을 적용하면 스크립트가 실행되지 않습니다. (페이지 내부에 잠재적 악성 코드 실행을 방지하기 위해) </p>
         <p>외부 JS로 작업 할 때 (SVG 파일 내 코드를 삽입하지 않고) SVG가 인라인으로 HTML문서안에 내장되어 있으면, 다른 DOM요소처럼 타켓팅 할 수 있습니다. <code>&lt;object&gt;</code>를 사용하는 경우 <code>contentDocument</code>로 타겟팅 할 수 있습니다. 아래 예제보다 더 멋진 작품을 만들어 보세요.</p>
       </div>
     </div>
@@ -365,7 +364,7 @@
         <p>반응형 웹 디자인에서는 이미지 스타일 지정을 위한 두 가지 옵션이 있습니다. 이미지를 고정 크기로 유지하고 필요할 경우 중단점에서 조정하거나 부모 컨테이너에 따라 페이지 크기를 조정할 수 있습니다.</p>
 
         <p>SVG를 <code>background-image</code>로 사용하는 경우, 브라우저에게 혼란을 줄 수 있어 주의해야 합니다. 이미지 실제 사이즈에서 다른 사이즈 변경할 경우, <code>background-size</code>를 사용해 사이즈 축소 또는 잘라내기 등을 해야합니다. </p>
-          
+
         <p>사이즈 조정이 가능한 SVG를 만들 때, 다음과 같은 몇 가지 사항을 기억해야합니다. (<code>background-image</code> 구현과 함께)</p>
       </div>
     </div>
@@ -594,8 +593,11 @@
   </section>
 
   <footer class="global-footer">
-    <p><a href="https://twitter.com/designbyjake">Jake Giltsoff</a>의 <a href="https://github.com/designbyjake/svgontheweb">오픈소스 프로젝트</a>, <a href="http://github.com/sujinleeme">이수진</a>의 번역, <a href="https://github.com/wengdiiiy/">안정민</a>의 감수</p>
+    <p><a href="https://twitter.com/jakegiltsoff">Jake Giltsoff</a>의 <a href="https://github.com/jakegiltsoff/svgontheweb">오픈소스 프로젝트</a>, <a href="http://github.com/sujinleeme">이수진</a>의 번역, <a href="https://github.com/wengdiiiy/">안정민</a>의 감수</p>
   </footer>
+
+  <script src="https://use.typekit.net/kgi8wbb.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
   <script>
   window.onload=function() {

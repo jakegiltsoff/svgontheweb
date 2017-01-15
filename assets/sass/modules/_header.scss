@@ -10,7 +10,7 @@
   background: -ms-linear-gradient(45deg, $head 0%,$head2 100%);
   background: linear-gradient(45deg, $head 0%,$head2 100%);
 
-  html:not([lang="ru"]):not([lang="zh"]) & {
+  html:not([lang="ru"]):not([lang="zh"]):not([lang="ko"]) & {
 
     h1 {
       color: $white;
@@ -47,6 +47,20 @@
     h1 {
       color: $white;
       font-weight: map-get($chinesetype, regular);
+    }
+
+    h2 {
+      color: $white;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+
+  html[lang="ko"] & {
+
+    h1 {
+      color: $white;
+      font-weight: map-get($koreantype, regular);
     }
 
     h2 {
